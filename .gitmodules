@@ -1,0 +1,3 @@
+[submodule "packages/model/src/RWKV-LM"]
+	path = packages/model/src/RWKV-LM
+	url = https://github.com/BlinkDL/RWKV-LM.git

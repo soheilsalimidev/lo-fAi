@@ -7,7 +7,7 @@ import numpy as np
 import gc
 import os
 import torch
-import lightning.pytorch as pl
+import pytorch_lightning  as pl
 import deepspeed
 import sys
 from multiprocessing import cpu_count
@@ -15,8 +15,8 @@ from loguru import logger
 from pathlib import Path
 from collections import namedtuple, OrderedDict
 from typing import Dict
-from lightning.pytorch.callbacks import Callback
-from lightning.pytorch.strategies import DeepSpeedStrategy
+from pytorch_lightning.callbacks import Callback
+from pytorch_lightning.strategies import DeepSpeedStrategy
 from torch.utils.data import DataLoader
 from dataset import MIDIDataset, RegularDataset
 import os
@@ -50,6 +50,7 @@ LR_RATE = 1e-4
 LR_DECAY = 0
 
 os.environ['RWKV_JIT_ON'] = '0'
+os.environ['MODEL_TYPE'] = 'x060'
 os.environ['RWKV_HEAD_SIZE_A'] = '64'
 os.environ['RWKV_FLOAT_MODE'] = 'fp16' if PRECISION == '16' else 'bf16'
 
@@ -272,7 +273,7 @@ if __name__ == "__main__":
 
     os.environ['RWKV_T_MAX'] = str(args.ctx_len)
 
-    sys.path.insert(0, relpath('./../RWKV-LM/RWKV-v5/'))
+    sys.path.insert(0, relpath('./../RWKV-LM/RWKV-v5'))
     from src.model import RWKV 
     # from embed import VAE, HIDDEN_N, LATENT_DIM
 
@@ -321,6 +322,7 @@ if __name__ == "__main__":
         'dim_att': args.embed_num,
         'dim_ffn': args.embed_num*4,
         'dropout_p': DROPOUT,
+        'dropout': 0.01,
         'epoch_begin': args.epochs_first,
         'epoch_count': args.epochs_num,
         'epoch_save': 1,
@@ -332,8 +334,8 @@ if __name__ == "__main__":
         'lora': args.lora,
         # 'lora_params': LORA_CONFIG,
         'lr_decay': float(args.lr_decay),
-        'lr_init': float(args.lr_rate),
-        'lr_final': float(args.lr_rate)/100,
+        'lr_init': 6e-4,
+        'lr_final': 2e-5,
         'micro_bsz': args.batches_num,
         'my_pile_stage': 0,
         'my_pos_emb': 0,
@@ -361,7 +363,8 @@ if __name__ == "__main__":
         'warmup_steps': int(args.steps_num*.01),
         'head_size_a': 64,
         'HEAD_SIZE_A': 64,
-        'RWKV_HEAD_SIZE_A': 64
+        'RWKV_HEAD_SIZE_A': 64,
+        'weight_decay': 0.1,
     }
 
     logger.info(params)
@@ -443,7 +446,7 @@ if __name__ == "__main__":
         trainer_params['strategy'] = DeepSpeedStrategy(config=DEEPSPEED_CONFIG)
         trainer_pl = pl.Trainer(**trainer_params)
 
-        if params_obj.vae_emb['enabled'] and params_obj.vae_emb['training']:
+        if False:
             # train the VAE model (embeddings) alone
             logger.info('Setting up trainer for embeddings model...')
 
@@ -474,7 +477,7 @@ if __name__ == "__main__":
                 logger.info(
                     'LoRA Warning: Gradient Checkpointing requires JIT off, disabling it')
                 os.environ["RWKV_JIT_ON"] = "0"
-
+            torch.set_float32_matmul_precision('medium')
             model_base = RWKV(params_obj)
 
             logger.info('Setting up trainer for main model...')

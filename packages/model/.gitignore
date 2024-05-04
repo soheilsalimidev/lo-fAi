@@ -1,4 +1,7 @@
 # Temporary and binary files
+./src/midiData/
+./L20-D512-x052/
+./L20-D512-x060/
 *~
 *.py[cod]
 *.so

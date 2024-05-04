@@ -1,0 +1,7 @@
+N_LAYER = 29
+N_EMBD = 512
+LR_INIT = 6e-4
+LR_FINAL = 3e-5
+moreover augment your data to 10x size, and --weight_decay 0.1 --dropout 0.01 
+
+

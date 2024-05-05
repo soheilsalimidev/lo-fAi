@@ -6,3 +6,11 @@ packages/model/src/midiData/piano.jsonl
 packages/model/src/midiData/piano/irishman-midi.zip
 packages/model/L20-D512-x060/rwkv-0.pth
 packages/model/L20-D512-x060/rwkv-init.pth
+packages/model/L20-D512-x060/rwkv-3.pth
+packages/model/L20-D512-x060/rwkv-final.pth
+packages/model/L20-D512-x060/train_log.txt
+packages/model/L20-D512-x0601/rwkv-init.pth
+packages/model/L20-D512-x0601/train_log.txt
+packages/model/L20-D512-x060/train_log.txt
+packages/model/src/midiData/piano_temp.jsonl
+packages/model/src/midiData/piano/piano.jsonl

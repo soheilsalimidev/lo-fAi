@@ -17,3 +17,4 @@ packages/model/src/midiData/piano/piano.jsonl
 .conda
 packages/inference/__pycache__/
 packages/inference/soundFont/florestan-piano.sf2
+**/__pycache__

@@ -1,76 +1,54 @@
+from fileinput import filename
 import os
+
+import sys
+import sys
+sys.path.append('../model')
+
+from genMusic import GenMusic
+
+from src.tokenizer.midi_util import VocabConfig, convert_str_to_midi
 # set these before import RWKV
 os.environ['RWKV_JIT_ON'] = '1'
 os.environ["RWKV_CUDA_ON"] = '1' # '1' to compile CUDA kernel (10x faster), requires c++ compiler & cuda libraries
 
-########################################################################################################
-#
-# Use '/' in model path, instead of '\'. Use ctx4096 models if you need long ctx.
-#
-# fp16 = good for GPU (!!! DOES NOT support CPU !!!)
-# fp32 = good for CPU
-# bf16 = worse accuracy, supports CPU
-# xxxi8 (example: fp16i8, fp32i8) = xxx with int8 quantization to save 50% VRAM/RAM, slower, slightly less accuracy
-#
-# We consider [ln_out+head] to be an extra layer, so L12-D768 (169M) has "13" layers, L24-D2048 (1.5B) has "25" layers, etc.
-# Strategy Examples: (device = cpu/cuda/cuda:0/cuda:1/...)
-# 'cpu fp32' = all layers cpu fp32
-# 'cuda fp16' = all layers cuda fp16
-# 'cuda fp16i8' = all layers cuda fp16 with int8 quantization
-# 'cuda fp16i8 *10 -> cpu fp32' = first 10 layers cuda fp16i8, then cpu fp32 (increase 10 for better speed)
-# 'cuda:0 fp16 *10 -> cuda:1 fp16 *8 -> cpu fp32' = first 10 layers cuda:0 fp16, then 8 layers cuda:1 fp16, then cpu fp32
-#
-# Basic Strategy Guide: (fp16i8 works for any GPU)
-# 100% VRAM = 'cuda fp16'                   # all layers cuda fp16
-#  98% VRAM = 'cuda fp16i8 *1 -> cuda fp16' # first 1 layer  cuda fp16i8, then cuda fp16
-#  96% VRAM = 'cuda fp16i8 *2 -> cuda fp16' # first 2 layers cuda fp16i8, then cuda fp16
-#  94% VRAM = 'cuda fp16i8 *3 -> cuda fp16' # first 3 layers cuda fp16i8, then cuda fp16
-#  ...
-#  50% VRAM = 'cuda fp16i8'                 # all layers cuda fp16i8
-#  48% VRAM = 'cuda fp16i8 -> cpu fp32 *1'  # most layers cuda fp16i8, last 1 layer  cpu fp32
-#  46% VRAM = 'cuda fp16i8 -> cpu fp32 *2'  # most layers cuda fp16i8, last 2 layers cpu fp32
-#  44% VRAM = 'cuda fp16i8 -> cpu fp32 *3'  # most layers cuda fp16i8, last 3 layers cpu fp32
-#  ...
-#   0% VRAM = 'cpu fp32'                    # all layers cpu fp32
-#
-# Use '+' for STREAM mode, which can save VRAM too, and it is sometimes faster
-# 'cuda fp16i8 *10+' = first 10 layers cuda fp16i8, then fp16i8 stream the rest to it (increase 10 for better speed)
-#
-# Extreme STREAM: 3G VRAM is enough to run RWKV 14B (slow. will be faster in future)
-# 'cuda fp16i8 *0+ -> cpu fp32 *1' = stream all layers cuda fp16i8, last 1 layer [ln_out+head] cpu fp32
-#
-# ########################################################################################################
 
-from rwkv.model import RWKV
-from rwkv.utils import PIPELINE, PIPELINE_ARGS
+# from rwkv.model import RWKV
+# from rwkv.utils import PIPELINE, PIPELINE_ARGS
 
-# download models: https://huggingface.co/BlinkDL
-model = RWKV(model='./../model/L20-D512-x060/rwkv-3.pth', strategy='cuda fp16')
-pipeline = PIPELINE(model, "./../model/src/tokenizer/tokenizer-midi/tokenizer.json") # 220B_tokenizer0B_tokenizer.json is in https://github.com/BlinkDL/ChatRWKV
-# use pipeline = PIPELINE(model, "rwkv_vocab_v20230424") for rwkv "world" models
+# # download models: https://huggingface.co/BlinkDL
+# model = RWKV(model='./../model/L20-D512-x0601/rwkv-8.pth', strategy='cuda fp16')
+# pipeline = PIPELINE(model, "./../model/src/tokenizer/tokenizer-midi/tokenizer.json") # 220B_tokenizer0B_tokenizer.json is in https://github.com/BlinkDL/ChatRWKV
+# # use pipeline = PIPELINE(model, "rwkv_vocab_v20230424") for rwkv "world" models
 
-ctx = "40:c t62 40:0 40:a t31"
-print(ctx, end='')
+# ctx = "31:b 34:b 38:b t1 3d:b t5 3f:b 44:b t125 t56 49:b t31 47:b 49:0 t24 31:0 34:0 38:0 t2 3d:0 t5 31:b 33:b 3f:0 44:0 46:b 47:0 t7 36:b 3a:b t112 31:0 33:0 t7 33:b 36:0 3a:0 3f:b t7 36:b"
 
-def my_print(s):
-    print(s, end='', flush=True)
+# data = []
+
+# def my_print(s):
+#     data.append(s)
 
 
-args = PIPELINE_ARGS(temperature = 1.0, top_p = 0.7, top_k = 100, # top_k = 0 then ignore
-                     alpha_frequency = 0.25,
-                     alpha_presence = 0.25,
-                     alpha_decay = 0.996, # gradually decay the penalty
-                     token_ban = [0], # ban the generation of some tokens
-                     token_stop = [], # stop generation whenever you see any token here
-                     chunk_len = 256) # split input into chunks to save VRAM (shorter -> slower)
+# args = PIPELINE_ARGS(temperature = 1.0, top_p = 0.7, top_k = 100, # top_k = 0 then ignore
+#                      alpha_frequency = 0.25,
+#                      alpha_presence = 0.25,
+#                      alpha_decay = 0.996, # gradually decay the penalty
+#                      token_ban = [], # ban the generation of some tokens
+#                      token_stop = [], # stop generation whenever you see any token here
+#                      chunk_len = 256) # split input into chunks to save VRAM (shorter -> slower)
 
-pipeline.generate(ctx,  args=args, callback=my_print)
-print('\n')
+# pipeline.generate(ctx, args=args, callback=my_print)
 
-out, state = model.forward([187, 510, 1563, 310, 247], None)
-print(out.detach().cpu().numpy())                   # get logits
-out, state = model.forward([187, 510], None)
-out, state = model.forward([1563], state)           # RNN has state (use deepcopy to clone states)
-out, state = model.forward([310, 247], state)
-print(out.detach().cpu().numpy())                   # same result as above
+# print(data)
+p1 = GenMusic(data=['3f:0', '48:0', 't2', '3d:b', 't85', '3d:0', '3d:0', '3f:b', 't7', '38:b', '40:b', '42:0', 't7', '37:b', '3f:0', 't56', '37:0', '3f:a', 't1', '37:a', 't15', '36:b', '37:0', '3f:0', 't1', '3b:b', 't56', '36:0', '38:a', '3b:0', 't1', '36:a', 't15', '38:0', '38:c', '38:0', 't1', '38:c', 't110', '38:0', '38:0', '38:a', 't1', '38:a', 't15', '38:0', '38:0', '38:a', 't47',
+              '38:0', '3b:a', 't15', '3b:0', '3d:a', 't47', '3d:0', '3f:c', 't1', '37:c', 't31', '32:b', '33:0', '37:0', 't109', '32:0', '36:a', 't15', '36:0', '37:a', 't31', '37:0', '39:a', 't31', '39:0', '3b:c', 't1', '3e:c', 't37', '3b:0', '3e:0', '3e:a', 't2', '37:a', 't18', '37:0', '3e:0', '3e:a', 't2', '37:a', 't18', '37:0', '3e:0', '3e:b', 't1', '2b:b', 't37', '2b:0', '3e:0', '3e:a', 't2'])
+
+p1.mix_lines().export("./output.mp3", format="mp3")
+
+# out, state = model.forward([187, 510, 1563, 310, 247], None)
+# print(out.detach().cpu().numpy())                   # get logits
+# out, state = model.forward([187, 510], None)
+# out, state = model.forward([1563], state)           # RNN has state (use deepcopy to clone states)
+# out, state = model.forward([310, 247], state)
+# print(out.detach().cpu().numpy())                   # same result as above
 print('\n')

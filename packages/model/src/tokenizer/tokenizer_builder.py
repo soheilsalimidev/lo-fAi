@@ -1,3 +1,8 @@
+import os
+import sys
+
+sys.path.insert(1, os.getcwd())
+
 import argparse
 
 from tokenizers import Tokenizer

@@ -1,32 +1,54 @@
-import random
+import os
+import sys
 
+sys.path.insert(1, os.getcwd())
+
+import argparse
+from pathlib import Path
+
+from json2binidx_tool import preprocess_data
 from midi_to_jsonl import midi_to_jsonl
 from midi_util import FilterConfig, VocabConfig
-
 
 
 ######################
 # midi_to_jsonl
 ######################
-cfg = VocabConfig.from_json("./vocab_config.json")
-filter_config = FilterConfig.from_json("./filter_config.json")
-midi_to_jsonl( cfg,filter_config ,"./../midiData/piano/irishman-midi.zip" , "./../midiData/piano/piano.jsonl" , None , 8 )
+def makeData(path: str, out: str):
+    cfg = VocabConfig.from_json(Path("./vocab_config.json").absolute().__str__())
+    filter_config = FilterConfig.from_json(Path("./filter_config.json").absolute().__str__())
+    outPath = out + "out.jsonl"
+    # midi_to_jsonl(
+    #     cfg,
+    #     filter_config,
+    #     path,
+    #     outPath,
+    #     None,
+    #     8,
+    # )
 
-###############
-#shuffle data for 2 epoch
-###################
-N_EPOCH = 2
+    # with open(path, "r", encoding="utf-8") as file:
+    #     non_empty_lines = [line.strip() for line in file if line.strip()]
+    #
+    # print(f"### Found {len(non_empty_lines)} non-empty lines in {outPath}")
+    preprocess_data.startTheProsses(
+        outPath, path, Path("./tokenizer-midi/tokenizer.json").absolute().__str__()
+    )
 
-with open("./../midiData/piano.jsonl", "r", encoding="utf-8") as file:
-    non_empty_lines = [line.strip() for line in file if line.strip()]
 
-print(f"### Found {len(non_empty_lines)} non-empty lines in ./../midiData/piano.jsonl")
-
-file = open("./../midiData/piano_temp.jsonl", "w", encoding="utf-8")
-for i in range(N_EPOCH):
-    print(f"Shuffle: {i+1} out of {N_EPOCH}")
-    random.shuffle(non_empty_lines)
-    for entry in non_empty_lines:
-        file.write(entry + "\n")
-file.close()
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    group = parser.add_argument_group(title="input data")
+    group.add_argument(
+        "--input-f",
+        type=str,
+        help="input path",
+    )
+    group.add_argument(
+        "--out",
+        type=str,
+        help="out path",
+    )
+    args = parser.parse_args()
+    makeData(args.input_f , args.out)
 

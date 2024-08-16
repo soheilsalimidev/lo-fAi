@@ -19,3 +19,17 @@ packages/inference/__pycache__/
 packages/inference/soundFont/florestan-piano.sf2
 **/__pycache__
 packages/inference/soundFont/SGM-v2.01-NicePianosGuitarsBass-V1.2.sf2
+packages/model/piano-model/rwkv-0.pth
+packages/model/piano-model/rwkv-8.pth
+packages/model/piano-model/rwkv-final.pth
+packages/model/piano-model/rwkv-init.pth
+packages/model/piano-model/train_log.txt
+.gitignore
+packages/model/drumL20-D512-x0601/rwkv-0.pth
+packages/model/drumL20-D512-x0601/rwkv-final.pth
+packages/model/drumL20-D512-x0601/rwkv-init.pth
+packages/model/drumL20-D512-x0601/train_log.txt
+packages/model/src/midiData/drum_text_document.bin
+packages/model/src/midiData/drum_text_document.idx
+packages/model/src/midiData/drumout.jsonl
+packages/model/src/midiData/drum/drum.zip

@@ -33,3 +33,12 @@ packages/model/src/midiData/drum_text_document.bin
 packages/model/src/midiData/drum_text_document.idx
 packages/model/src/midiData/drumout.jsonl
 packages/model/src/midiData/drum/drum.zip
+packages/inference/genMusic.py
+packages/inference/soundFont/5b_Drums.sf2
+packages/inference/soundFont/29_01_2022_Acoustic_Rock_Kit.sf2
+packages/inference/soundFont/GiantSoundfontDrumkit2.1.sf2
+packages/inference/soundFont/mdiOutDrum.mid
+packages/inference/soundFont/mdiOut.mid
+packages/inference/soundFont/output.flac
+packages/inference/soundFont/outputp.flac
+packages/inference/output.mp3

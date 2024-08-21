@@ -38,7 +38,8 @@ class VocabConfig:
 
     def validate(self):
         if self.max_wait_time % self.wait_events != 0:
-            raise ValueError("max_wait_time must be exactly divisible by wait_events")
+            raise ValueError(
+                "max_wait_time must be exactly divisible by wait_events")
         if self.velocity_bins < 2:
             raise ValueError("velocity_bins must be at least 2")
         if self.velocity_bins_override:
@@ -312,7 +313,8 @@ def convert_midi_to_str(
 
     # filter out unknown meta messages before merge (https://github.com/mido/mido/pull/286)
     for i in range(len(mid.tracks)):
-        mid.tracks[i] = [msg for msg in mid.tracks[i] if msg.type != "unknown_meta"]
+        mid.tracks[i] = [msg for msg in mid.tracks[i]
+                         if msg.type != "unknown_meta"]
 
     if len(mid.tracks) > 1:
         mid.tracks = [mido.merge_tracks(mid.tracks)]
@@ -378,11 +380,13 @@ def convert_midi_to_str(
                 output_length_ms += delta_time_ms
                 output += wait_tokens
         delta_time_ms = 0.0
-        token_data_buffer.append((prog, chan, note, vel * augment.velocity_mod_factor))
+        token_data_buffer.append(
+            (prog, chan, note, vel * augment.velocity_mod_factor))
         started_flag = True
 
     for msg in mid.tracks[0]:
-        time_ms = mido.tick2second(msg.time, mid.ticks_per_beat, tempo) * 1000.0
+        time_ms = mido.tick2second(
+            msg.time, mid.ticks_per_beat, tempo) * 1000.0
         delta_time_ms += time_ms
         t = msg.type
 
@@ -403,7 +407,8 @@ def convert_midi_to_str(
             channel_program[msg.channel] = msg.program
         elif t == "note_on":
             if msg.velocity == 0:
-                handle_note_off(msg.channel, channel_program[msg.channel], msg.note)
+                handle_note_off(
+                    msg.channel, channel_program[msg.channel], msg.note)
             else:
                 if (msg.note, channel_program[msg.channel]) in channel_pedal_events[
                     msg.channel
@@ -423,7 +428,8 @@ def convert_midi_to_str(
                 )
                 channel_notes[msg.channel][msg.note] = True
         elif t == "note_off":
-            handle_note_off(msg.channel, channel_program[msg.channel], msg.note)
+            handle_note_off(
+                msg.channel, channel_program[msg.channel], msg.note)
         elif t == "control_change":
             if msg.control == 7 or msg.control == 39:  # volume
                 channel_volume[msg.channel] = msg.value
@@ -438,7 +444,8 @@ def convert_midi_to_str(
             elif msg.control == 123:  # all notes off
                 for channel in channel_notes.keys():
                     for note in list(channel_notes[channel]).copy():
-                        handle_note_off(channel, channel_program[channel], note)
+                        handle_note_off(
+                            channel, channel_program[channel], note)
         else:
             pass
 
@@ -449,37 +456,24 @@ def convert_midi_to_str(
         output_list.append(" ".join(output))
     return output_list
 
-
-def generate_program_change_messages(cfg: VocabConfig):
-    for bin_name, channel in cfg.bin_channel_map.items():
-        if channel == 9:
-            continue
-        program = cfg._instrument_names_str_to_int[
-            cfg.bin_name_to_program_name[bin_name]
-        ]
-        yield mido.Message("program_change", program=program, time=0, channel=channel)
-    yield mido.Message("program_change", program=0, time=0, channel=9)
-
-
 @dataclass
 class DecodeState:
     total_time: float  # milliseconds
     delta_accum: float  # milliseconds
     current_bin: int
     current_note: int
-    active_notes: Dict[Tuple[int, int], float]  # { (channel, note): time started, ... }
+    # { (channel, note): time started, ... }
+    active_notes: Dict[Tuple[int, int], float]
 
 
 def token_to_midi_message(
-    utils: VocabUtils, token: str, state: DecodeState, end_token_pause: float = 3.0
+    utils: VocabUtils, token: str, state: DecodeState | None, channel: int, end_token_pause: float = 3.0
 ) -> Iterator[Tuple[Optional[mido.Message], DecodeState]]:
     if state is None:
         state = DecodeState(
             total_time=0.0,
             delta_accum=0.0,
-            current_bin=utils.cfg._short_instrument_names_str_to_int[
-                utils.cfg.short_instr_bin_names[0]
-            ],
+            current_bin=114,
             current_note=0,
             active_notes={},
         )
@@ -494,7 +488,8 @@ def token_to_midi_message(
         if utils.cfg.decode_end_held_note_delay != 0.0:
             # end held notes
             for (channel, note), start_time in list(state.active_notes.items()).copy():
-                ticks = int(mido.second2tick(state.delta_accum / 1000.0, 480, 500000))
+                ticks = int(mido.second2tick(
+                    state.delta_accum / 1000.0, 480, 500000))
                 state.delta_accum = 0.0
                 del state.active_notes[(channel, note)]
                 yield mido.Message(
@@ -506,100 +501,67 @@ def token_to_midi_message(
         yield None, state
         return
 
-    if utils.cfg.unrolled_tokens:
-        if token[0] == "t":
-            d = utils.wait_token_to_delta(token)
-            state.delta_accum += d
-            state.total_time += d
-        elif token[0] == "n":
-            state.current_note = int(token[1:], base=16)
-        elif token[0] == "i":
-            state.current_bin = utils.cfg._short_instrument_names_str_to_int[token[1:]]
-        elif token[0] == "v":
-            current_velocity = utils.bin_to_velocity(int(token[1:], base=16))
-            channel = utils.cfg.bin_channel_map[
-                utils.cfg.bin_instrument_names[state.current_bin]
-            ]
-            ticks = int(mido.second2tick(state.delta_accum / 1000.0, 480, 500000))
-            state.delta_accum = 0.0
-            if current_velocity > 0:
-                yield mido.Message(
-                    "note_on",
-                    note=state.current_note,
-                    velocity=current_velocity,
-                    time=ticks,
-                    channel=channel,
-                ), state
-            else:
-                yield mido.Message(
-                    "note_off",
-                    note=state.current_note,
-                    velocity=0,
-                    time=ticks,
-                    channel=channel,
-                ), state
-    else:
-        if token[0] == "t" and token[1].isdigit():  # wait token
-            d = utils.wait_token_to_delta(token)
-            state.delta_accum += d
-            state.total_time += d
-            if utils.cfg.decode_end_held_note_delay != 0.0:
-                # remove notes that have been held for too long
-                for (channel, note), start_time in list(
-                    state.active_notes.items()
-                ).copy():
-                    if (
-                        state.total_time - start_time
-                        > utils.cfg.decode_end_held_note_delay * 1000.0
-                    ):
-                        ticks = int(
-                            mido.second2tick(state.delta_accum / 1000.0, 480, 500000)
-                        )
-                        state.delta_accum = 0.0
-                        del state.active_notes[(channel, note)]
-                        yield mido.Message(
-                            "note_off", note=note, time=ticks, channel=channel
-                        ), state
-                        return
-        else:  # note token
-            bin, note, velocity = utils.note_token_to_data(token)
-            channel = utils.cfg.bin_channel_map[utils.cfg.bin_instrument_names[bin]]
-            ticks = int(mido.second2tick(state.delta_accum / 1000.0, 480, 500000))
-            state.delta_accum = 0.0
-            if velocity > 0:
-                if utils.cfg.decode_fix_repeated_notes:
-                    if (channel, note) in state.active_notes:
-                        del state.active_notes[(channel, note)]
-                        yield mido.Message(
-                            "note_off", note=note, time=ticks, channel=channel
-                        ), state
-                        ticks = 0
-                state.active_notes[(channel, note)] = state.total_time
-                yield mido.Message(
-                    "note_on", note=note, velocity=velocity, time=ticks, channel=channel
-                ), state
-                return
-            else:
+    if token[0] == "t" and token[1].isdigit():  # wait token
+        d = utils.wait_token_to_delta(token)
+        state.delta_accum += d
+        state.total_time += d
+        if utils.cfg.decode_end_held_note_delay != 0.0:
+            # remove notes that have been held for too long
+            for (channel, note), start_time in list(
+                state.active_notes.items()
+            ).copy():
+                if (
+                    state.total_time - start_time
+                    > utils.cfg.decode_end_held_note_delay * 1000.0
+                ):
+                    ticks = int(
+                        mido.second2tick(state.delta_accum /
+                                         1000.0, 480, 500000)
+                    )
+                    state.delta_accum = 0.0
+                    del state.active_notes[(channel, note)]
+                    yield mido.Message(
+                        "note_off", note=note, time=ticks, channel=channel
+                    ), state
+                    return
+    else:  # note token
+        bin, note, velocity = utils.note_token_to_data(token)
+        ticks = int(mido.second2tick(state.delta_accum / 1000.0, 480, 500000))
+        state.delta_accum = 0.0
+        if velocity > 0:
+            if utils.cfg.decode_fix_repeated_notes:
                 if (channel, note) in state.active_notes:
                     del state.active_notes[(channel, note)]
-                yield mido.Message(
-                    "note_off", note=note, time=ticks, channel=channel
-                ), state
-                return
+                    yield mido.Message(
+                        "note_off", note=note, time=ticks, channel=channel
+                    ), state
+                    ticks = 0
+            state.active_notes[(channel, note)] = state.total_time
+            yield mido.Message(
+                "note_on", note=note, velocity=velocity, time=ticks, channel=channel
+            ), state
+            return
+        else:
+            if (channel, note) in state.active_notes:
+                del state.active_notes[(channel, note)]
+            yield mido.Message(
+                "note_off", note=note, time=ticks, channel=channel
+            ), state
+            return
     yield None, state
 
 
-def str_to_midi_messages(utils: VocabUtils, data: str) -> Iterator[mido.Message]:
+def str_to_midi_messages(utils: VocabUtils, data: str, channel: int) -> Iterator[mido.Message]:
     state = None
     for token in data.split(" "):
-        for msg, new_state in token_to_midi_message(utils, token, state):
+        for msg, new_state in token_to_midi_message(utils, token, state, channel):
             state = new_state
             if msg is not None:
                 yield msg
 
 
 def convert_str_to_midi(
-    cfg: VocabConfig, data: str, tempo: int, meta_text: str = "Generated by AITUNE"
+    cfg: VocabConfig, data: str, tempo: int, channel=0, meta_text: str = "Generated by AITUNE"
 ) -> mido.MidiFile:
     utils = VocabUtils(cfg)
     mid = mido.MidiFile()
@@ -610,11 +572,13 @@ def convert_str_to_midi(
     if meta_text:
         track.append(mido.MetaMessage("text", text=meta_text, time=0))
     track.append(mido.MetaMessage("set_tempo", tempo=tempo, time=0))
-    for msg in generate_program_change_messages(cfg):
-        track.append(msg)
+    track.append(mido.MetaMessage("instrument_name", name="Steel Drums", time=0))
+    # for msg in generate_program_change_messages(cfg):
+    #     track.append(msg)
 
-    data = data.replace("<start>", "").replace("<end>", "").replace("<pad>", "").strip()
-    for msg in str_to_midi_messages(utils, data):
+    data = data.replace("<start>", "").replace(
+        "<end>", "").replace("<pad>", "").strip()
+    for msg in str_to_midi_messages(utils, data, channel):
         track.append(msg)
 
     track.append(mido.MetaMessage("end_of_track", time=0))

@@ -12,7 +12,6 @@ from midi_util import AugmentConfig, VocabConfig, FilterConfig
 
 
 def convert_midi_bytes_to_str(cfg: VocabConfig, filter_cfg: FilterConfig, aug_cfg: AugmentConfig, data: Tuple[str, bytes]) -> Tuple[str, Union[str, List, None]]:
-    print("dsfjds")
     filename, filedata = data
     
     try:

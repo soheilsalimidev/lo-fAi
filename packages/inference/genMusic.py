@@ -1,41 +1,45 @@
+import random
+import os
+import math
+from midi2audio import FluidSynth
+from pydub import AudioSegment
+from src.tokenizer.midi_util import VocabConfig, convert_str_to_midi
 import sys
 sys.path.append("./../model")
-from src.tokenizer.midi_util import VocabConfig, convert_str_to_midi
-from pydub import AudioSegment
-from midi2audio import FluidSynth
-import math
-import os
-import random
 
 
 SECOND = 1000
 
 
+def relpath(p): return os.path.normpath(
+    os.path.join(os.path.dirname(__file__), p))
+
+
 class GenMusic:
     def __init__(self, data, dataDrum):
-        cfg = VocabConfig.from_json(
-            "./../model/src/tokenizer/vocab_config.json")
+      
         tempo = random.randint(14, 18) * 5
 
-        self.midi = convert_str_to_midi(cfg, " ".join(map(str, data)), tempo).save(
-            "./soundFont/mdiOut.mid"
+        self.midi = convert_str_to_midi(" ".join(map(str, data)), tempo).save(
+            relpath("./soundFont/mdiOut.mid")
         )
-        fs = FluidSynth("./soundFont/SGM-v2.01-NicePianosGuitarsBass-V1.2.sf2")
-        fs.midi_to_audio("./soundFont/mdiOut.mid", "./soundFont/output.flac")
-        self.pianoRoll = AudioSegment.from_file("./soundFont/output.flac")
+        fs = FluidSynth(relpath("./soundFont/SGM-v2.01-NicePianosGuitarsBass-V1.2.sf2"))
+        fs.midi_to_audio(relpath("./soundFont/mdiOut.mid"),
+                         relpath("./soundFont/output.flac"))
+        self.pianoRoll=AudioSegment.from_file(relpath("./soundFont/output.flac"))
 
         fillName = (
-            random.choice(os.listdir("./loops/vinyl"))
+            random.choice(os.listdir(relpath("./loops/vinyl")))
         )
-        self.fill = AudioSegment.from_file(f"./loops/vinyl/{fillName}")
+        self.fill = AudioSegment.from_file(relpath(f"./loops/vinyl/{fillName}"))
 
         # handel drum
-        convert_str_to_midi(cfg, " ".join(map(str, data)), 400, 9).save(
-            "./soundFont/mdiOutDrum.mid"
+        convert_str_to_midi(" ".join(map(str, data)), 400, 9).save(
+            relpath("./soundFont/mdiOutDrum.mid")
         )
-        fs.midi_to_audio("./soundFont/mdiOutDrum.mid",
-                         "./soundFont/output.flac")
-        self.drum = AudioSegment.from_file("./soundFont/output.flac")
+        fs.midi_to_audio(relpath("./soundFont/mdiOutDrum.mid"),
+                         relpath("./soundFont/output.flac"))
+        self.drum = AudioSegment.from_file(relpath("./soundFont/output.flac"))
 
         # self.drum = AudioSegment.from_file(f"./loops/drumloop{tempo}/{drum}")
 

@@ -1,6 +1,10 @@
 import argparse
 import io
 
+
+def relpath(p): return os.path.normpath(
+    os.path.join(os.path.dirname(__file__), p))
+
 import os
 from typing import Iterable, List, Optional, Tuple, Union
 
@@ -10,25 +14,26 @@ from tqdm import tqdm
 import midi_util
 from midi_util import AugmentConfig, VocabConfig, FilterConfig
 
+cfg = VocabConfig.from_json(
+    relpath("./vocab_config.json"))
+filter_config = FilterConfig.from_json(
+    relpath("./filter_config.json"))
 
-def convert_midi_bytes_to_str(cfg: VocabConfig, filter_cfg: FilterConfig, aug_cfg: AugmentConfig, data: Tuple[str, bytes]) -> Tuple[str, Union[str, List, None]]:
+def convert_midi_bytes_to_str(aug_cfg: AugmentConfig | None, data: Tuple[str, bytes]) -> Tuple[str, Union[str, List, None]]:
+  
     filename, filedata = data
     
     try:
         mid = mido.MidiFile(file=io.BytesIO(filedata))
     except:
-        print("dsfjds")
         return filename, filedata
     if mid.type not in (0, 1, 2):
-        print("dsfjds")
         return filename, None
     if len(mid.tracks) == 0:
-        
         return filename, filedata
 
     # if aug_cfg is not None:
     #     return filename, [*(midi_util.convert_midi_to_str(cfg, filter_cfg, mid, augment) for augment in aug_cfg.get_augment_values(filename))]
-    print(mid)
     return filename, midi_util.convert_midi_to_str(cfg, filter_cfg, mid)
 
 

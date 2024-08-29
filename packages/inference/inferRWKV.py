@@ -23,8 +23,8 @@ def genrateTheSong(ctx: str, lenOfOut: int, modelPath: str, temperature: float):
 
     args = PIPELINE_ARGS(
         temperature,
-        top_p=0.9,
-        top_k=100,
+        top_p=0.5,
+        top_k=0,
         alpha_frequency=0.25,
         alpha_presence=0.25,
         alpha_decay=0.996,  # gradually decay the penalty
@@ -41,7 +41,7 @@ def genrateTheSong(ctx: str, lenOfOut: int, modelPath: str, temperature: float):
     return data
 
 
-def mixTheSongs(song_len, ctx, out_len, te: float):
+def mixTheSongs(song_len, ctx, out_len, te = 1.0):
     pinio, drum = genrateTheSong(ctx, out_len,
                                  "/home/arthur/AItuneCraft/packages/model/piano-model/rwkv-final.pth", te), \
         genrateTheSong(

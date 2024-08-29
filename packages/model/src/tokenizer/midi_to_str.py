@@ -1,3 +1,9 @@
+import os
+from midi_util import AugmentConfig, VocabConfig, FilterConfig
+import midi_util
+from tqdm import tqdm
+import mido
+from typing import Iterable, List, Optional, Tuple, Union
 import argparse
 import io
 
@@ -5,24 +11,17 @@ import io
 def relpath(p): return os.path.normpath(
     os.path.join(os.path.dirname(__file__), p))
 
-import os
-from typing import Iterable, List, Optional, Tuple, Union
-
-import mido
-from tqdm import tqdm
-
-import midi_util
-from midi_util import AugmentConfig, VocabConfig, FilterConfig
 
 cfg = VocabConfig.from_json(
     relpath("./vocab_config.json"))
 filter_config = FilterConfig.from_json(
     relpath("./filter_config.json"))
 
+
+
 def convert_midi_bytes_to_str(aug_cfg: AugmentConfig | None, data: Tuple[str, bytes]) -> Tuple[str, Union[str, List, None]]:
-  
     filename, filedata = data
-    
+
     try:
         mid = mido.MidiFile(file=io.BytesIO(filedata))
     except:
@@ -34,7 +33,7 @@ def convert_midi_bytes_to_str(aug_cfg: AugmentConfig | None, data: Tuple[str, by
 
     # if aug_cfg is not None:
     #     return filename, [*(midi_util.convert_midi_to_str(cfg, filter_cfg, mid, augment) for augment in aug_cfg.get_augment_values(filename))]
-    return filename, midi_util.convert_midi_to_str(cfg, filter_cfg, mid)
+    return filename, midi_util.convert_midi_to_str(cfg, filter_config, mid)
 
 
 if __name__ == "__main__":
@@ -83,8 +82,8 @@ if __name__ == "__main__":
     augment_config = None
     if args.augment_config is not None:
         augment_config = AugmentConfig.from_json(args.augment_config, cfg)
-   
-    with open(args.path, "rb") as f: 
-     filebytes = f.read()
-     print(convert_midi_bytes_to_str(
-         cfg, filter_config, None, (os.path.basename(args.path), filebytes)))
+
+    with open(args.path, "rb") as f:
+        filebytes = f.read()
+        print(convert_midi_bytes_to_str(
+            cfg, filter_config, None, (os.path.basename(args.path), filebytes)))

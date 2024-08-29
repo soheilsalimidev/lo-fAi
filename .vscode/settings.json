@@ -2,5 +2,6 @@
   "python.analysis.typeCheckingMode": "basic",
   "python.analysis.extraPaths": [
     "./packages/model"
-  ]
+  ],
+  "latex-workshop.latex.build.forceRecipeUsage": false
 }

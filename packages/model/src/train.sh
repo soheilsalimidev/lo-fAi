@@ -1,40 +1,18 @@
 #!/bin/bash
-#
 cd ./RWKV-LM;
-#
-# MODEL_TYPE="x052" # x052 => rwkv-5.2 (rwkv-5 final)
-MODEL_TYPE="x060" # x060 => rwkv-6.0
-# MODEL_TYPE="mamba" # pip install mamba_ssm --upgrade
+MODEL_TYPE="x060" # x060 => rwkv-6.0e
 N_LAYER="20"
 N_EMBD="512"
-#
 CTX_LEN="512" # !!! change magic_prime if you change ctx_len !!!
-PROJ_DIR="/mnt/c/Users/sohei/OneDrive/Desktop/AItuneCraft/packages/model/drumL"$N_LAYER"-D"$N_EMBD"-"$MODEL_TYPE"1" # set output folder
-#
-#######################################################################################################################
-#
-# Note bsz & lr affects model & training performance
-# Small data => use smaller bsz & slightly smaller LR
-# Large data => use larger bsz & slightly larger LR
-# Larger model => use smaller LR
-# Finetuning => use very small LR, such as 1e-5
-#
+PROJ_DIR="/mnt/c/Users/sohei/OneDrive/Desktop/AItuneCraft/packages/model/drumL"$N_LAYER"-D"$N_EMBD"-"$MODEL_TYPE"1" # set
 M_BSZ="24" 
 LR_INIT="6e-4"
 LR_FINAL="6e-5"
 GRAD_CP=1 # 1 => slower, save VRAM; 0 => faster, more VRAM
 EPOCH_SAVE=10 # save every 10 "miniepochs" (1 miniepoch = 40320 * ctx_len tokens) => decrease if your GPU is weak
-#
-#######################################################################################################################
-#
-# magic_prime = the largest 3n+2 prime smaller than datalen/ctxlen-1 (= 1498226207/512-1 = 2926222.06 in this case) = 2926181 in this case
-# use https://www.dcode.fr/prime-numbers-search
-#
-N_NODE=1 # number of nodes
-GPU_PER_NODE=1 # number of GPUs per node
-#
-DS_BUCKET_MB=2 # set to 2 for consumer GPUs, set to 200 for A100 / H100 (affects speed & vram usage)
-
+N_NODE=1
+GPU_PER_NODE=1
+DS_BUCKET_MB=2
 VOCAB_SIZE=2176
 
 python train.py --wandb "aitune" --proj_dir $PROJ_DIR --my_testing $MODEL_TYPE \

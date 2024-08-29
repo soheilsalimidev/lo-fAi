@@ -7,7 +7,7 @@ import numpy as np
 import gc
 import os
 import torch
-import pytorch_lightning  as pl
+import pytorch_lightning as pl
 import deepspeed
 import sys
 from multiprocessing import cpu_count
@@ -18,12 +18,12 @@ from typing import Dict
 from pytorch_lightning.callbacks import Callback
 from pytorch_lightning.strategies import DeepSpeedStrategy
 from torch.utils.data import DataLoader
-from dataset import MIDIDataset, RegularDataset
+from dataset import RegularDataset
 import os
 
-relpath = lambda p: os.path.normpath(os.path.join(os.path.dirname(__file__), p))
 
-
+def relpath(p): return os.path.normpath(
+    os.path.join(os.path.dirname(__file__), p))
 
 """
 Some resets
@@ -165,7 +165,8 @@ class TrainCallback(Callback):
             trainer.my_epoch_loss = trainer.my_loss_sum / trainer.my_loss_count
 
             self.log('lr', trainer.my_lr, prog_bar=True, on_step=True)
-            self.log('loss', trainer.my_epoch_loss, prog_bar=True, on_step=True)
+            self.log('loss', trainer.my_epoch_loss,
+                     prog_bar=True, on_step=True)
 
             if len(args.wandb) > 0:
                 lll = {'loss': trainer.my_loss, 'lr': trainer.my_lr,
@@ -274,7 +275,7 @@ if __name__ == "__main__":
     os.environ['RWKV_T_MAX'] = str(args.ctx_len)
 
     sys.path.insert(0, relpath('./../RWKV-LM/RWKV-v5'))
-    from src.model import RWKV 
+    from src.model import RWKV
     # from embed import VAE, HIDDEN_N, LATENT_DIM
 
     # seed
@@ -288,14 +289,6 @@ if __name__ == "__main__":
     # construct dataset
     logger.info('Initializing dataset...')
 
-    # if not args.binidx:
-    #     midi_jsons = list(Path(args.dataset_path).glob('*.json'))
-    #     random.shuffle(midi_jsons)
-
-    #     # initialize tokenizer
-    #     TOKENIZER = get_tokenizer(params=f'{args.dataset_path}/{TOKEN_PARAMS_NAME}')
-    #     vocab_size = len(TOKENIZER)
-    # else:
     vocab_size = 2176
 
     # parse VAE params
@@ -350,14 +343,6 @@ if __name__ == "__main__":
         'strategy': 'deepspeed_stage_2_offload',
         'tiny_att_dim': -1 if not args.attention else args.ctx_len,
         'tiny_att_layer': -1 if not args.attention else int(args.layers_num) - 1,
-        # 'vae_emb': {
-        #     'enabled': VAE_MODE != None,
-        #     'training': VAE_MODE == 'train',
-        #     'embed_dim': args.embed_num,
-        #     'hidden_n': HIDDEN_N,
-        #     'latent_dim': LATENT_DIM,
-        #     'base_model': VAE_FILE,
-        # },
         'vocab_size': vocab_size,
         'wandb': '',
         'warmup_steps': int(args.steps_num*.01),
@@ -374,7 +359,6 @@ if __name__ == "__main__":
     params['data_file'] = args.dataset_path
     params_obj = namedtuple('RWKVParams', params.keys())(*params.values())
     DATASET = RegularDataset(params_obj)
-
 
     logger.info('Loading data...')
     data_loader = DataLoader(DATASET, shuffle=False, pin_memory=True,
@@ -446,95 +430,28 @@ if __name__ == "__main__":
         trainer_params['strategy'] = DeepSpeedStrategy(config=DEEPSPEED_CONFIG)
         trainer_pl = pl.Trainer(**trainer_params)
 
-        if False:
-            # train the VAE model (embeddings) alone
-            logger.info('Setting up trainer for embeddings model...')
+        torch.set_float32_matmul_precision('medium')
+        model_base = RWKV(params_obj)
 
-            if VAE_FILE != None:
-                logger.info(f'Preloading embeddings from {VAE_FILE}...')
+        logger.info('Setting up trainer for main model...')
 
-                emb_model = VAE.from_pretrained(
-                    VAE_FILE,
-                    params_obj.vae_emb['embed_dim'],
-                    params_obj.vae_emb['latent_dim'],
-                    params_obj.vae_emb['hidden_n'],
-                    params_obj.vae_emb['vocab_size'],
-                )
-            else:
-                emb_model = VAE(
-                    params_obj.vae_emb['embed_dim'],
-                    params_obj.vae_emb['latent_dim'],
-                    params_obj.vae_emb['hidden_n'],
-                    params_obj.vae_emb['vocab_size'],
-                )
+        if args.base_model != None and os.path.isfile(args.base_model):
+            try:
+                logger.info(f'Preloading {args.base_model}')
+                load_dict = torch.load(args.base_model, map_location='cpu')
+                load_keys = load_dict.keys()
 
-            # begin training
-            logger.info('Begin training the embeddings model...')
-            trainer_pl.fit(emb_model, data_loader)
-        else:
-            # train the main model
-            if args.lora and args.grad_cp:
-                logger.info(
-                    'LoRA Warning: Gradient Checkpointing requires JIT off, disabling it')
-                os.environ["RWKV_JIT_ON"] = "0"
-            torch.set_float32_matmul_precision('medium')
-            model_base = RWKV(params_obj)
+                for k in model_base.state_dict():
+                    if k not in load_keys:
+                        load_dict[k] = model_base.state_dict()[k]
+                model_base.load_state_dict(load_dict, strict=(not args.lora))
+            except Exception as error:
+                logger.error(error)
 
-            logger.info('Setting up trainer for main model...')
+        logger.info('Model initialized')
 
-            # LoRa customization
-            if params_obj.lora:
-                logger.info('LoRa enabled: preparing modules...')
-
-                enable_time_finetune = 'time' in params_obj.lora_params['parts']
-                enable_ln_finetune = 'ln' in params_obj.lora_params['parts']
-
-                model_base.requires_grad_(False)
-
-                for name, module in model_base.named_modules():
-                    # have to check param name since it may have been wrapped by torchscript
-                    if any(n.startswith("lora_") for n, _ in module.named_parameters()):
-                        logger.debug(f'LoRA training module {name}')
-                        for pname, param in module.named_parameters():
-                            param.requires_grad = 'lora_' in pname
-                    elif enable_ln_finetune and '.ln' in name:
-                        logger.debug(f'LoRA additionally training module {name}')
-                        for param in module.parameters():
-                            param.requires_grad = True
-                    elif enable_time_finetune and any(n.startswith("time") for n, _ in module.named_parameters()):
-                        for pname, param in module.named_parameters():
-                            if pname.startswith("time"):
-                                logger.debug(
-                                    f'LoRA additionally training parameter {pname}')
-                                param.requires_grad = True
-
-            # Checkpoint preload
-            if args.base_model != None and os.path.isfile(args.base_model):
-                try:
-                    logger.info(f'Preloading {args.base_model}')
-                    load_dict = torch.load(args.base_model, map_location='cpu')
-                    load_keys = load_dict.keys()
-
-                    for k in model_base.state_dict():
-                        if k not in load_keys:
-                            load_dict[k] = model_base.state_dict()[k]
-
-                    # If using LoRA, the LoRA keys might be missing in the original model
-                    model_base.load_state_dict(load_dict, strict=(not args.lora))
-
-                    if args.lora and args.lora_ckpt != None \
-                            and os.path.isfile(args.lora_ckpt):
-                        logger.info(f'Preloading LoRa checkpoint {args.lora_ckpt}')
-
-                        model_base.load_state_dict(torch.load(
-                            args.lora_ckpt, map_location='cpu'), strict=False)
-                except Exception as error:
-                    logger.error(error)
-
-            logger.info('Model initialized')
-
-            # begin training
-            logger.info('Begin training the main model...')
-            trainer_pl.fit(model_base, data_loader)
+        # begin training
+        logger.info('Begin training the main model...')
+        trainer_pl.fit(model_base, data_loader)
     except KeyboardInterrupt:
         sys.exit(1)

@@ -3,5 +3,6 @@
   "python.analysis.extraPaths": [
     "./packages/model"
   ],
-  "latex-workshop.latex.build.forceRecipeUsage": false
+  "latex-workshop.latex.build.forceRecipeUsage": false,
+  "latex-workshop.message.latexlog.exclude": ["\\w*Warning\\w*"]
 }

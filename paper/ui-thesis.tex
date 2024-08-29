@@ -53,6 +53,8 @@
 \usepackage{multirow}
 \usepackage{algorithm}
 \usepackage{algpseudocode}
+\usepackage{tikz}
+\usepackage{pgfplots}
 \usepackage{siunitx}
 \usepackage{xcolor} \pagecolor[rgb]{0,0,0} \color[rgb]{1,1,1}
 %-----------------------------
@@ -154,40 +156,43 @@
 \MakeTitlePage
 
 
+
 % ░░░░░░░▒▒▒▒▒▒▓▓▓▓ Dedication ▓▓▓▓▒▒▒▒▒▒░░░░░░░
 % \input{Chapters/Dedication}
 
 % ░░░░░░░▒▒▒▒▒▒▓▓▓▓ Abstract - Farsi ▓▓▓▓▒▒▒▒▒▒░░░░░░░
-\input{Chapters/AbstractFa}
-\MakeFarsiAbstract
+% \input{Chapters/AbstractFa}
+% \MakeFarsiAbstract
 
 % ░░░░░░░▒▒▒▒▒▒▓▓▓▓ Table of Contents/Figures/Tables ▓▓▓▓▒▒▒▒▒▒░░░░░░░
 \setcounter{page}{0}
 
-\MakeTableOfContents
-\MakeListOfFigures
-\MakeListOfTables
+% \MakeTableOfContents
+% \MakeListOfFigures
+% \MakeListOfTables
+% \MakeListOfAlgorithms
+
 
 % ----------------------------------------------------------------------------
 % \clearpage
-\pagestyle{myheadings}
-\pagenumbering{arabic}
-\setcounter{page}{1}
+% \pagestyle{myheadings}
+% \pagenumbering{arabic}
+% \setcounter{page}{1}
 
 % ░░░░░░░▒▒▒▒▒▒▓▓▓▓ Chapters ▓▓▓▓▒▒▒▒▒▒░░░░░░░
 \clearpage
 \baselineskip=0.9cm
 \setcounter{footnote}{0}
 
-\input{Chapters/Chapter1}
-\input{Chapters/Chapter2}
+% \input{Chapters/Chapter1}
+% \input{Chapters/Chapter2}
 \input{Chapters/Chapter3}
 % \input{Chapters/ChapterEnd}
 
 
 % ░░░░░░░▒▒▒▒▒▒▓▓▓▓ References ▓▓▓▓▒▒▒▒▒▒░░░░░░░
 % References.bib نام فایل حاوی رفرنس‌ها است.
-% \MakeReferences{References}
+\MakeReferences{References}
 
 % ----------------------------------------------------------------------------
 %\clearpage
@@ -196,11 +201,11 @@
 %\setcounter{page}{1}
 
 % ░░░░░░░▒▒▒▒▒▒▓▓▓▓ Chapters ▓▓▓▓▒▒▒▒▒▒░░░░░░░
-%\clearpage
-%\baselineskip=0.9cm
+\clearpage
+\baselineskip=0.9cm
 \linespread{1.0} % single-line spacing
-%\linespread{1.3} % one and a half line spacing
-%\linespread{1.6} % double-line spacing
+\linespread{1.3} % one and a half line spacing
+\linespread{1.6} % double-line spacing
 
 
 \settextfont[Scale=1.2, ItalicFont=*, ItalicFeatures={FakeSlant=0.32}, BoldItalicFont=* Bold, BoldItalicFeatures={FakeSlant=0.32}]{B Nazanin}
@@ -211,23 +216,25 @@
 \subsectionfont{\fontsize{13pt}{\baselineskip}\selectfont \bfseries \BNazaninScaleOne} % B Nazanin 13
 \subsubsectionfont{\fontsize{13pt}{\baselineskip}\selectfont \bfseries \BNazaninScaleOne} % B Nazanin 13
 
-%\titlespacing*{\chapter}{0pt}{3.5cm}{8cm}
+% \titlespacing*{\chapter}{0pt}{3.5cm}{8cm}
 \titlespacing*{\section}{0pt}{1.2\baselineskip}{0pt}
 \titlespacing*{\subsection}{0pt}{1.1\baselineskip}{0pt}
 \titlespacing*{\subsubsection}{0pt}{1\baselineskip}{0pt}
 
 \makeatletter
 \renewcommand\chapter{\if@openright\cleardoublepage\else\clearpage\fi
-  %\thispagestyle{empty}
+  \thispagestyle{empty}
   \global\@topnum\z@
   \@afterindentfalse
   \secdef\@chapter\@schapter}
 \makeatother
 
 % ░░░░░░░▒▒▒▒▒▒▓▓▓▓ Appendices ▓▓▓▓▒▒▒▒▒▒░░░░░░░
+\MakeAppendices
 %\addtocontents{lof}{\protect\setcounter{tocdepth}{0}} % ignore adding appendix figures to list of figures
 %\addtocontents{lot}{\protect\setcounter{tocdepth}{0}} % ignore adding appendix table to list of tables
 \captionsetup{list=no}
+\input{Chapters/Appendices}
 
 \end{document}
 

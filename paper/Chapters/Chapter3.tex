@@ -269,7 +269,95 @@
 \lr{embedding} برابر با 512 است. \lr{Context Length} \footnote{\lr{Context Length} بی‌نهایت فقط در هنگام اجرای مدل معنا می  دهد.} مدل برابر با
 512 است.
 مقدار نرخ یادگیری اولیه و نهایی برابر با \num{6e-4}   و \num{6e-5} است.
-\subsubsection{پیشرفت آموزش مدل}
+
+\subsection{نحویه آموزش مدل}
+\begin{LTR}
+
+      \begin{algorithm}
+            \caption{آموزش مدل}
+            \label{alg:Training}
+            \setmainfont{Times New Roman}
+            \begin{algorithmic}[1]
+                  \State \textbf{Function} save\_pth(dd, ff)
+                  \State torch.save(dd, ff)
+
+                  \State \textbf{Class} ResetValDataloader(Callback)
+                  \State \textbf{Function} on\_validation\_start(trainer, pl\_module)
+                  \State trainer.reset\_val\_dataloader(pl\_module)
+
+                  \State \textbf{Class} TrainCallback(Callback)
+                  \State \textbf{Function} \_\_init\_\_(self, args)
+                  \State self.args = args
+
+                  \State \textbf{Function} on\_train\_batch\_start(self, trainer, pl\_module, batch, batch\_idx)
+                  \State Adjust learning rate based on global step and schedule
+                  \For{param\_group \textbf{in} trainer.optimizers[0].param\_groups}
+                  \State param\_group['lr'] = lr * param\_group['my\_lr\_scale'] \textbf{if} args.layerwise\_lr > 0 \textbf{else} lr
+                  \EndFor
+                  \State trainer.my\_lr = lr
+
+                  \State \textbf{Function} on\_train\_batch\_end(self, trainer, pl\_module, outputs, batch, batch\_idx)
+                  \State Log metrics and update loss
+
+                  \State \textbf{Function} on\_train\_epoch\_start(self, trainer, pl\_module)
+                  \State Update dataset attributes
+
+                  \State \textbf{Function} on\_train\_epoch\_end(self, trainer, pl\_module)
+                  \If{trainer.is\_global\_zero \textbf{and} (args.epoch\_save > 0 \textbf{and} trainer.current\_epoch \% args.epoch\_save == 0) \textbf{or} (trainer.current\_epoch == args.epoch\_count - 1)}
+                  \State save\_pth(pl\_module.state\_dict(), f'{args.proj\_dir}/{self.prefix}\_{args.epoch\_begin + trainer.current\_epoch}.pth')
+                  \EndIf
+            \end{algorithmic}
+      \end{algorithm}
+\end{LTR}
+\xal{alg:Training}  برای مدیریت و بهینه‌سازی فرآیند آموزش  مدل
+با استفاده از \lr{PyTorch Lightning} \cite{Falcon_PyTorch_Lightning_2019}
+طراحی شده است.
+
+ابتدا، تابع \texttt{save\_pth}  که برای ذخیره دیکشنری حالت
+مدل در یک مسیر فایل مشخص استفاده می‌شود. این قابلیت برای ایجاد نقاط
+بازرسی در طول آموزش ضروری است و به مدل اجازه می‌دهد تا ذخیره و بعداً
+بارگذاری شود. این امر تضمین می‌کند که فرآیند آموزش می‌تواند از آخرین حالت
+ذخیره شده در صورت وقفه‌ها از سر گرفته شود و پیشرفت‌های حاصل شده در طول
+آموزش حفظ شود.
+
+کلاس \texttt{TrainCallback} با آرگومان‌های مختلفی که فرآیند آموزش را
+کنترل می‌کنند، مقداردهی اولیه می‌شود. این شامل تنظیم برنامه‌های نرخ
+یادگیری، لاگ‌گیری و سایر پارامترهای خاص آموزش است. در متد
+\texttt{on\_train\_batch\_start}، نرخ یادگیری به صورت پویا بر اساس مرحله
+فعلی آموزش تنظیم می‌شود. برنامه نرخ یادگیری به دو مرحله اصلی تقسیم می‌شود:
+مرحله گرم‌کردن \LTRfootnote{warm up} و مرحله کاهش. در مرحله گرم‌کردن، نرخ یادگیری به تدریج از یک
+مقدار کوچک به نرخ یادگیری اولیه افزایش می‌یابد. این کار به فرآیند
+آموزش در مراحل اولیه کمک زیادی می‌کند. در مرحله کاهش، نرخ یادگیری بر اساس کاهش
+خطی یا نمایی تنظیم می‌شود. این تنظیم پویا نرخ
+یادگیری به بهینه‌سازی فرآیند آموزش و بهبود همگرایی کمک می‌کند.
+
+لاگ‌گیری و نظارت گسترده بخش‌های جدایی‌ناپذیر این بخش هستند. متدهای
+\texttt{on\_train\_batch\_start} و \texttt{on\_train\_batch\_end} شامل
+مکانیزم‌های لاگ‌گیری دقیقی برای دیدن پیشرفت آموزش هستند. این شامل
+لاگ‌گیری نرخ یادگیری و \lr{Loss Function}، پیگیری تعداد توکن‌های پردازش شده در هر
+ثانیه و لاگ‌گیری به سرویس‌های مانند \lr{Weights \& Biases (wandb)} \cite{wandb} برای
+پیگیری آزمایش‌ها است.
+
+متدهای \texttt{on\_train\_epoch\_start} و \texttt{on\_train\_epoch\_end}
+وظایفی را که باید در ابتدای هر دوره آموزش و پایان آن انجام شوند، مدیریت
+می‌کنند. این شامل تنظیم پارامترهای مجموعه داده مانند رتبه جهانی و دوره
+واقعی و ذخیره نقاط بازرسی مدل در فواصل مشخص یا در پایان آموزش است. ذخیره
+منظم نقاط بازرسی مدل تضمین می‌کند که فرآیند آموزش می‌تواند از آخرین حالت
+ذخیره شده از سر گرفته شود و یک محافظت در برابر وقفه‌ها فراهم می‌کند.
+
+\subsubsection{کتابخانه‌ها استفاده شده}
+چندین کتابخانه در این روش برای ساده‌سازی فرآیند آموزش استفاده می‌شوند.
+کتابخانه \texttt{torch} \cite{paszke2017automatic}  قابلیت‌های اصلی برای ساخت و آموزش
+شبکه‌های عصبی را فراهم می‌کند. \lr{PyTorch Lightning} \cite{Falcon_PyTorch_Lightning_2019} فرآیند آموزش را با انتزاع
+کدهای تکراری ساده می‌کند، حلقه‌های آموزش، اعتبارسنجی و تست را از طریق کلاس
+\texttt{Trainer} مدیریت می‌کند و از کلاس‌های \texttt{Callback} برای افزودن
+رفتار سفارشی در مراحل مختلف آموزش استفاده می‌کند. کتابخانه \texttt{wandb}
+برای لاگ‌گیری و پیگیری آزمایش‌ها استفاده می‌شود.
+
+\section{ارزیابی عملکرد مدل}
+\subsection{ارزیابی مدل پیانو}
+
+با توجه به \xf{Fig:lrpi} می توان گفت که مدل سبز \footnote{در اینجا مدل سبز به مدل  \lr{ctx512 L20 D512} اشاره می‌کند. که مدل نهایی انتخاب شده برای ارزیابی است.} به دلیل شروع با مقدار اولیه کمتری از خطا، عملکرد بهتری دارد. این موضوع می‌تواند به دلیل پیش‌آموزش مؤثرتر یا وزن‌های اولیه بهتر باشد. برخلاف مدل‌های قرمز و آبی که کاهش سریعی در خطا نشان می‌دهند و سپس به یک سطح ثابت می‌رسند، مدل سبز به تدریج و به طور پیوسته کاهش می‌یابد. این نشان‌دهنده یک فرآیند یادگیری پایدارتر است که خطر بیش‌برازش را کاهش می‌دهد و اطمینان می‌دهد که مدل به داده‌های جدید بهتر تعمیم می‌یابد. مدل‌های قرمز و آبی، در حالی که بهبودهای اولیه سریعی نشان می‌دهند، تمایل دارند در کمینه‌های محلی گیر کنند که عملکرد بلندمدت آن‌ها را محدود می‌کند. برای تولید موسیقی لو-فای، که در آن ظرافت‌ها و ثبات اهمیت دارند، فرآیند یادگیری پایدار و پیوسته مدل سبز آن را به گزینه بهتری تبدیل می‌کند.
 
 \begin{figure}%
       \centering
@@ -280,11 +368,188 @@
       \label{Fig:lrpi}%
 \end{figure}
 
-\begin{figure}%
+
+\subsection{ارزیابی مدل درام}
+مطابق با نمودار \ref{Fig:lrdr} میتوان گفت که
+مدل بنفش\footnote{در اینجا مدل بنفش به مدل  \lr{ctx512 L20 D512} اشاره می‌کند. که مدل نهایی انتخاب شده برای ارزیابی است.} با مقدار خطای اولیه کمتری شروع می‌شود و به تدریج در طول زمان کاهش می‌یابد. این نشان‌دهنده یک فرآیند یادگیری پایدار است.
+کاهش تدریجی مقدار خطا نشان می‌دهد که مدل در حال یادگیری و تطبیق خوب است که این یک نشانه مثبت است. با تنظیمات بیشتر و دوره‌های آموزشی اضافی، مدل بنفش پتانسیل دستیابی به عملکرد حتی بهتر را دارد. ولی به احتمال زیاد ادامه آموزش این مدل باعث \lr{overfit} شدن خواهد شد زیرا حجم داده های دارم خیلی بالا نیست و ادامه بیش از این احتمالا باعث \lr{overfit} می شود.
+
+\begin{figure}
       \centering
-      \subfloat[تغییر مقدار تابع خطا]{{\includegraphics[width=8cm]{Figures/loss-dr.png} }}%
+      \subfloat[تغییر مقدار تابع خطا]{{\includegraphics[width=8cm]{Figures/loss-dr.png} }}
       \qquad
-      \subfloat[تغییر نرخ یادگیری]{\includegraphics[width=8cm]{Figures/lr-dr.png} }%
-      \caption{نمودار های پیشرفت یادگیری مدل درام}%
-      \label{Fig:lrdr}%
+      \subfloat[تغییر نرخ یادگیری]{\includegraphics[width=8cm]{Figures/lr-dr.png} }
+      \caption{نمودار های پیشرفت یادگیری مدل درام}
+      \label{Fig:lrdr}
 \end{figure}
+
+\subsection{ارزیابی عملکرد مدل با معیار های موسیقی}
+
+برای ارزیابی عملکرد مدل زبان کوچک ما در تولید موسیقی لو-فی، از مجموعه ای از معیارهای ارزیابی استفاده می شود که کیفیت های مختلف موسیقی مانند ریتم، ملودی و توالی را ارزیابی می کنند. بخش های زیر معیارهای مورد استفاده برای ارزیابی عملکرد مدل را به تصویر می‌کشند. اکثر این میعار ها در مقاله \lr{A Comprehensive Survey for Evaluation Methodologies of AI-Generated Music} \cite{xiong2023comprehensive} معرفی شده اند. و ما آن ها را با کتابخانه \lr{music21} \cite{conf/ismir/CuthbertA10} پیاده سازی کردیم.
+\subsubsection{هماهنگی ریتم \lr{(Rhythm Consistency)}}
+
+هماهنگی ریتم یک متریک است که به بررسی نوسان یا یکنواختی طول نت ها در یک قطعه موسیقی می پردازد. این متریک نشان می دهد که قطعه های موسیقی چه میزان یکنواختی و یا چه میزان نوسانی دارند.
+
+فرمول و محاسبه
+
+فرمول هماهنگی ریتم به صورت زیر است:
+\begin{math}
+      RC =  \frac{\mu}{\mu + SD}
+\end{math}
+
+در این فرمول:
+\begin{itemize}
+      \item  \lr{SD} معیار انحراف معیار طول نت ها است
+      \item  ${\mu}$ میانگین طول نت ها است
+\end{itemize}
+
+\xal{alg:analyze_rhythm_consistency} نشان دهنده نحویه انجام این کار برای یک فایل \lr{MIDI} است.\footnote{\label{acualCodeRef}کد پاینون این الگوریم را میتوانید در \url{} مشاهده کنید.}
+
+\begin{LTR}
+      \begin{algorithm}
+            \caption{هماهنگی ریتم}
+            \setmainfont{Times New Roman}
+            \label{alg:analyze_rhythm_consistency}
+            \begin{algorithmic}
+                  \Require {MIDI file}
+                  \Ensure {rhythm consistency measure}
+                  \State {Parse the MIDI file using a converter to obtain a score}
+                  \State {Extract notes from the score}
+                  \State {Extract durations of notes}
+                  \State {Calculate the mean duration of notes}
+                  \State {Calculate the variance of note durations}
+                  \State {Calculate the standard deviation of note durations as the square root of the variance}
+                  \State {Return the standard deviation of note durations}
+            \end{algorithmic}
+      \end{algorithm}
+\end{LTR}
+
+این فرمول برای نرمال سازی معیار نقطه کمره طول نت ها توسط میانگین، امکان مقایسه و تفسیر بهتر هماهنگی ریتم را فراهم می کند. نتیجه به صورت یک عدد بین 0 و 1 است:
+
+\begin{itemize}
+      \item هماهنگی ریتم = 1 نشان دهنده هماهنگی کامل (همه نت ها طول یکسانی دارند)
+      \item هماهنگی ریتم = 0 نشان دهنده عدم هماهنگی کامل (نت ها طول های بسیار متفاوت دارند)
+      \item هماهنگی ریتم = 0.5 نشان دهنده هماهنگی متوسط (نت ها طول هایی یکنواخت اما با کمی نوسان دارند)
+\end{itemize}
+
+\subsubsection{ شباهت ملودی \lr{(Melodic Similarity Metric)}}
+
+متحلیل شباهت ملودی، یک متد برای اندازه گیری شباهت بین دو ملودی بر اساس ترتیب نت‌هایشان است. این متد ساده و مستقیماً از نسبت نت‌های مشابه دو ملودی برای محاسبه شباهت استفاده می‌کند.
+
+فرمول:
+
+شباهت ملودی = (تعداد نت‌های مشابه) / (اندازه کوتاه‌ترین ملودی)
+
+در این فرمول:
+تعداد نت‌های مشابه، تعداد نت‌هایی است که در همان موقعیت در دو ملودی وجود دارند.
+اندازه کوتاه‌ترین ملودی، طول کوتاه‌ترین ملودی بین دو ملودی است.
+\xal{alg:analyze_melodic_similarity} نشان دهنده نحویه انجام این کار برای یک فایل \lr{MIDI} است. \footref{acualCodeRef}
+
+\begin{LTR}
+      \begin{algorithm}
+            \caption{شباهت ملودی }
+            \setmainfont{Times New Roman}
+            \label{alg:analyze_melodic_similarity}
+            \begin{algorithmic}
+                  \Require {MIDI file, Reference MIDI file}
+                  \Ensure {melodic similarity measure}
+                  \State {Parse the input MIDI file using a converter to obtain a score}
+                  \State {Parse the reference MIDI file using a converter to obtain a reference score}
+                  \State {Extract generated melody from the score}
+                  \State {Extract reference melody from the reference score}
+                  \State {Extract pitch sequences from the generated and reference melodies}
+                  \State {Calculate the number of matching pitches between the generated and reference pitch sequences}
+                  \State {Calculate the similarity as the ratio of matching pitches to the length of the shorter pitch sequence}
+                  \State {Return the melodic similarity measure}
+            \end{algorithmic}
+      \end{algorithm}
+\end{LTR}
+\subsubsection{ ثبات تونال \lr{(Tonal Stability Metric)}}
+
+متحلیل ثبات تونال، یک متد برای اندازه گیری ثبات تونال یک ملودی است. این متد از تعداد تغییرات کلید در یک ملودی برای محاسبه ثبات تونال استفاده می‌کند.
+
+فرمول:
+
+ثبات تونال = 1 - (تعداد تغییرات کلید)
+
+به عبارت دیگر، هرچه تعداد تغییرات کلید در یک ملودی کمتر باشد، ثبات تونال آن بیشتر است.
+\xal{alg:analyze_tonal_stability} نشان دهنده نحویه انجام این کار برای یک فایل \lr{MIDI} است.\footref{acualCodeRef}
+
+
+\begin{LTR}
+      \begin{algorithm}
+            \caption{ثبات تونال }
+            \setmainfont{Times New Roman}
+            \label{alg:analyze_tonal_stability}
+            \begin{algorithmic}
+                  \Require {MIDI file}
+                  \Ensure {tonal stability measure}
+                  \State {Parse the MIDI file using a converter to obtain a score}
+                  \State {Extract key changes from the score}
+                  \State {Count the number of key changes}
+                  \State {Return the number of key changes}
+            \end{algorithmic}
+      \end{algorithm}
+\end{LTR}
+
+\subsubsection{ هماهنگی هارمونیک \lr{(Harmonic Coherence Metric)} }
+
+هماهنگی هارمونیک یک متد برای اندازه گیری هماهنگی هارمونیک یک ملودی است. این متد از نسبت هارمونی سازگار (کنسانه) و غیرسازگار (دیسونانسه) در یک ملودی برای محاسبه هماهنگی هارمونیک استفاده می‌کند.
+
+فرمول:
+
+هماهنگی هارمونیک = (نسبت کنسانه + نسبت دیشنانسه)
+
+نسبت کنسانه: نسبت تعداد هارمونی‌های سازگار به کل تعداد هارمونی‌ها
+نسبت دیشنانسه: نسبت تعداد هارمونی‌های غیرسازگار به کل تعداد هارمونی‌ها
+
+به عبارت دیگر، هرچه نسبت کنسانه در یک ملودی بیشتر باشد، هماهنگی هارمونیک آن بیشتر است.
+\xal{alg:harmonicCoherence} نشان دهنده نحویه انجام این کار برای یک فایل \lr{MIDI} است.\footref{acualCodeRef}
+
+
+\begin{LTR}
+      \begin{algorithm}
+            \caption[هماهنگی هارمونیک]{هماهنگی هارمونیک}
+            \setmainfont{Times New Roman}
+            \label{alg:harmonicCoherence}
+            \begin{algorithmic}[1]
+                  \Procedure{analyzeHarmonicCoherence}{midi\_file}
+                  \State Parse MIDI file: $score \leftarrow converter.parse(midi\_file)$
+                  \State Analyze key: $key\_analysis \leftarrow score.analyze('key')$
+                  \State Chordify score: $chords \leftarrow score.chordify()$
+                  \State Get chord list: $chord\_list \leftarrow [ch \text{ for } ch \text{ in } chords.recurse().Chord]$
+                  \State Count consonant chords:
+                  \State $consonance\_count \leftarrow \sum_{ch \in chord\_list} 1 \text{ if } ch.isConsonant() \text{ else } 0$
+                  \State Calculate ratios: $dissonance\_count \leftarrow \text{len}(chord\_list) - consonance\_count$
+                  \State $total\_chords \leftarrow \text{len}(chord\_list)$
+                  \State $consonance\_ratio \leftarrow consonance\_count / total\_chords$
+                  \State $dissonance\_ratio \leftarrow dissonance\_count / total\_chords$
+                  \State \Return $consonance\_ratio, dissonance\_ratio$
+                  \EndProcedure
+            \end{algorithmic}
+      \end{algorithm}
+\end{LTR}
+
+\subsubsection{نتایج این معیار ها برای مدل پیانو}
+\begin{table}
+      \centering
+      \label{resultPi}
+      \caption{نتایج این معیار ها برای مدل پیانو}
+      \begin{tabular}{|l|l|}
+            \hline
+            متد                          & مقدار \\ \hline
+            هماهنگی ریتم                 & 0.34  \\ \hline
+            هماهنگی هارمونیک (کنسانه)    & 0.87  \\ \hline
+            هماهنگی هارمونیک (دیسونانسه) & 0.13  \\ \hline
+            تغییرات کلید                 & 0.2   \\ \hline
+      \end{tabular}
+\end{table}
+تحیل جدول \ref{resultPi} به صورت زیر است:
+\begin{itemize}
+      \item[هماهنگی ریتم] مقدار 0.34 نشان‌دهنده این است که ریتم ملودی دارای تناوب‌های نسبتاً مشابه است، اما همچنان دارای برخی از تغییرات و نوسانات است.
+      \item[هماهنگی هارمونیک] مقدار 0.87 نشان‌دهنده این است که هارمونی‌های ملودی در مجموع سازگار هستند و دارای هماهنگی بالایی هستند.
+      \item[تغییرات کلید] مقدار 0.2 نشان‌دهنده این است که ملودی تقریبا هیچ تغییراتی در کلید ندارد و در کلید ثابت باقی می‌ماند.
+
+\end{itemize}
+
+ملودی های ساخته شده توسط مدل دارای هماهنگی بالایی در هارمونی و ریتم است، اما هنوز دارای بعضی از ناهمسانی‌ها و عدم هماهنگی است که می تواند بهبود یابد.

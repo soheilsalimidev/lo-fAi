@@ -55,7 +55,7 @@
 % ░░░░░░░▒▒▒▒▒▒▓▓▓▓ Settings ▓▓▓▓▒▒▒▒▒▒░░░░░░░
 \settextfont[Scale=1.2, ItalicFont=*, ItalicFeatures={FakeSlant=0.32}, BoldItalicFont=* Bold, BoldItalicFeatures={FakeSlant=0.32}]{B Nazanin}
 \setlatintextfont[Scale=1]{Times New Roman} % 11pt
-%\setdigitfont{Parsi Digits}
+% \setdigitfont{Parsi Digits}
 
 \defpersianfont\BNazaninScaleOne[Scale=1]{B Nazanin}
 \defpersianfont\BTitrScaleOne[Scale=1]{B Titr}
@@ -66,27 +66,27 @@
 \def\abjad@zero{}
 \def\abj@num@i#1{%
   \ifcase#1\or الف\or ب\or ج\or د%
-           \or ه‍\or و\or ز\or ح\or ط\fi
+  \or ه‍\or و\or ز\or ح\or ط\fi
   \ifnum#1=\z@\abjad@zero\fi}
 \def\abj@num@ii#1{%
   \ifcase#1\or ی\or ک\or ل\or م\or ن%
-           \or س\or ع\or ف\or ص\fi
+  \or س\or ع\or ف\or ص\fi
   \ifnum#1=\z@\fi\abj@num@i}
 \def\abj@num@iii#1{%
   \ifcase#1\or ق\or ر\or ش\or ت\or ث%
-            \or خ\or ذ\or ض\or ظ\fi
+  \or خ\or ذ\or ض\or ظ\fi
   \ifnum#1=\z@\fi\abj@num@ii}
 \def\abj@num@iv#1{%
   \ifcase#1\or غ\fi
   \ifnum#1=\z@\fi\abj@num@iii}
-   \let\@latinalph\@alph%
-   \let\@latinAlph\@Alph%
+\let\@latinalph\@alph%
+\let\@latinAlph\@Alph%
 \def\PersianAlphs{%
-   \let\@alph\abjadnumeral%
-   \let\@Alph\abjadnumeral}
+  \let\@alph\abjadnumeral%
+  \let\@Alph\abjadnumeral}
 \def\LatinAlphs{%
-   \let\@alph\@latinalph%
-   \let\@Alph\@latinAlph}
+  \let\@alph\@latinalph%
+  \let\@Alph\@latinAlph}
 \PersianAlphs
 \makeatother
 
@@ -115,10 +115,10 @@
 %\setlength{\mathindent}{0.5cm}
 
 \AtBeginDocument{
-\abovedisplayskip=\baselineskip
-\belowdisplayskip=\baselineskip
-\abovedisplayshortskip=\baselineskip
-\belowdisplayshortskip=\baselineskip
+  \abovedisplayskip=\baselineskip
+  \belowdisplayskip=\baselineskip
+  \abovedisplayshortskip=\baselineskip
+  \belowdisplayshortskip=\baselineskip
 }
 
 \setlength\mathsurround{1pt}
@@ -147,14 +147,14 @@
 
 %%
 \newtheoremstyle{mystyle}%
-  {}%                                     
-  {}%                                    
-  {\itshape}%                             
-  {}%                                     
-  {\fontsize{12pt}{0}\selectfont \bfseries \BNazaninScaleOne} 
-  {.}%                                    
-  { }%                                    
-  {}%
+{}%                                     
+{}%                                    
+{\itshape}%                             
+{}%                                     
+{\fontsize{12pt}{0}\selectfont \bfseries \BNazaninScaleOne}
+{.}%                                    
+{ }%                                    
+{}%
 
 \theoremstyle{mystyle}
 \newtheorem{theorem}{قضیه}[chapter]
@@ -178,10 +178,10 @@
 
 \makeatletter
 \renewcommand\chapter{\if@openright\cleardoublepage\else\clearpage\fi
-	\thispagestyle{empty}%
-	\global\@topnum\z@
-	\@afterindentfalse
-	\secdef\@chapter\@schapter}
+  \thispagestyle{empty}%
+  \global\@topnum\z@
+  \@afterindentfalse
+  \secdef\@chapter\@schapter}
 \makeatother
 
 \setcounter{secnumdepth}{3}
@@ -195,7 +195,7 @@
 %\zmakeperpage{footnote}
 \MakePerPage{footnote}
 \setlength{\footnotesep}{0.4cm}
-\renewcommand{\footnotesize}{\fontsize{9pt}{0}\selectfont} 
+\renewcommand{\footnotesize}{\fontsize{9pt}{0}\selectfont}
 \renewcommand{\thefootnote}{\fontsize{6.5pt}{0}\selectfont\arabic{footnote}}
 \setlength{\footnotemargin}{0.2cm}
 
@@ -280,11 +280,11 @@
 \renewcommand\cftchapaftersnum{:}
 \makeatletter
 \bidi@patchcmd{\Hy@org@chapter}{%
-	\addcontentsline{toc}{chapter}%
-	{\protect\numberline{\thechapter}#1}%
+  \addcontentsline{toc}{chapter}%
+  {\protect\numberline{\thechapter}#1}%
 }{%
-\addcontentsline{toc}{chapter}%
-{\protect\numberline{\chaptername~\tartibi{chapter}}#1}%
+  \addcontentsline{toc}{chapter}%
+  {\protect\numberline{\chaptername~\tartibi{chapter}}#1}%
 }{}{}
 
 \makeatother
@@ -434,61 +434,61 @@
 % ░░░░░░░▒▒▒▒▒▒▓▓▓▓ Title Page ▓▓▓▓▒▒▒▒▒▒░░░░░░░
 \makeatletter
 \newcommand{\MakeTitlePage}{
-\clearpage
-\thispagestyle{empty}
-\newgeometry{left=3.5cm, right=3.5cm, top=3.5cm, bottom=3.5cm}
-{\BNazaninScaleOne
-\begin{center}
-\includegraphics[width = 2.5cm]{Settings/UI_Logo.pdf}
-\\[0.5cm]
-{\fontsize{13pt}{0}\selectfont % B Nazanin bold 13
-\textbf{
-دانشگاه اصفهان
-}}\\[0.35cm]
-{\fontsize{12pt}{0}\selectfont \textbf{\@DepartmentFa}}\\ [0.3cm] % B Nazanin bold 12
-{\fontsize{11pt}{0}\selectfont \textbf{\@GroupFa}}\\ % B Nazanin bold 11
-\vspace*{\fill}
-{\fontsize{18pt}{0}\selectfont \textbf{\@ThesisTypeFa~\@DegreeFa~رشته‌ی~\@FieldFa~گرایش~\@BranchFa}}\\[1.5cm] % B Nazanin bold 18
-{\fontsize{15pt}{0}\selectfont  \BTitrScaleOne \@TitleFa}\\ % B Titr 15
-\vspace*{\fill}
+  \clearpage
+  \thispagestyle{empty}
+  \newgeometry{left=3.5cm, right=3.5cm, top=3.5cm, bottom=3.5cm}
+  {\BNazaninScaleOne
+    \begin{center}
+      \includegraphics[width = 2.5cm]{Settings/UI_Logo.pdf}
+      \\[0.5cm]
+      {\fontsize{13pt}{0}\selectfont % B Nazanin bold 13
+      \textbf{
+        دانشگاه اصفهان
+      }}\\[0.35cm]
+      {\fontsize{12pt}{0}\selectfont \textbf{\@DepartmentFa}}\\ [0.3cm] % B Nazanin bold 12
+      {\fontsize{11pt}{0}\selectfont \textbf{\@GroupFa}}\\ % B Nazanin bold 11
+      \vspace*{\fill}
+      {\fontsize{18pt}{0}\selectfont \textbf{\@ThesisTypeFa~\@DegreeFa~رشته‌ی~\@FieldFa~گرایش~\@BranchFa}}\\[1.5cm] % B Nazanin bold 18
+      {\fontsize{15pt}{0}\selectfont  \BTitrScaleOne \@TitleFa}\\ % B Titr 15
+      \vspace*{\fill}
 
-\ifx\ST@SecondSupervisorFa\undefined
-{\fontsize{15pt}{0}\selectfont \textbf{
-استاد راهنما:
-}} \else {\fontsize{15pt}{0}\selectfont \textbf{
-استادان راهنما:
-}}\fi \\[0.4cm] % B Nazanin 15
-\ifx\ST@SecondSupervisorFa\undefined
-{\fontsize{13pt}{0}\selectfont \textbf{دکتر‍~\@FirstSupervisorFa}}
-\else {\fontsize{13pt}{0}\selectfont \textbf{دکتر‍~\@FirstSupervisorFa \\[0.4cm] دکتر‍~\ST@SecondSupervisorFa}} \fi \\% B Nazanin  bold 13
-\vspace*{\fill}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\ifx\ST@FirstAdvisorFa\undefined \else
-{
-\ifx\ST@SecondAdvisorFa\undefined
-{\fontsize{15pt}{0}\selectfont \textbf{
-استاد مشاور:
-}} \else {\fontsize{15pt}{0}\selectfont \textbf{
-استادان مشاور:
-}}\fi \\[0.4cm] % B Nazanin 15
-\ifx\ST@SecondAdvisorFa\undefined
-{\fontsize{13pt}{0}\selectfont \textbf{دکتر‍~\ST@FirstAdvisorFa}}
-\else {\fontsize{13pt}{0}\selectfont \textbf{دکتر‍~\ST@FirstAdvisorFa \\[0.4cm] دکتر‍~\ST@SecondAdvisorFa}} \fi \\% B Nazanin  bold 13
-\vspace*{\fill}
-} 
-\fi
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-{\fontsize{15pt}{0}\selectfont \textbf{
-دانشجو:
-}}  \\[0.4cm] % B Nazanin bold 15
+      \ifx\ST@SecondSupervisorFa\undefined
+        {\fontsize{15pt}{0}\selectfont \textbf{
+            استاد راهنما:
+          }} \else {\fontsize{15pt}{0}\selectfont \textbf{
+            استادان راهنما:
+          }}\fi \\[0.4cm] % B Nazanin 15
+      \ifx\ST@SecondSupervisorFa\undefined
+        {\fontsize{13pt}{0}\selectfont \textbf{دکتر‍~\@FirstSupervisorFa}}
+        \else {\fontsize{13pt}{0}\selectfont \textbf{دکتر‍~\@FirstSupervisorFa \\[0.4cm] دکتر‍~\ST@SecondSupervisorFa}} \fi \\% B Nazanin  bold 13
+      \vspace*{\fill}
+      %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+      \ifx\ST@FirstAdvisorFa\undefined \else
+      {
+        \ifx\ST@SecondAdvisorFa\undefined
+          {\fontsize{15pt}{0}\selectfont \textbf{
+              استاد مشاور:
+            }} \else {\fontsize{15pt}{0}\selectfont \textbf{
+              استادان مشاور:
+            }}\fi \\[0.4cm] % B Nazanin 15
+        \ifx\ST@SecondAdvisorFa\undefined
+          {\fontsize{13pt}{0}\selectfont \textbf{دکتر‍~\ST@FirstAdvisorFa}}
+          \else {\fontsize{13pt}{0}\selectfont \textbf{دکتر‍~\ST@FirstAdvisorFa \\[0.4cm] دکتر‍~\ST@SecondAdvisorFa}} \fi \\% B Nazanin  bold 13
+        \vspace*{\fill}
+      }
+      \fi
+      %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+      {\fontsize{15pt}{0}\selectfont \textbf{
+          دانشجو:
+        }}  \\[0.4cm] % B Nazanin bold 15
 
-{\fontsize{13pt}{0}\selectfont \textbf{\@YourFullnameFa}}\\ % ‌B Nazanin bold 13
-\vspace*{\fill}
+      {\fontsize{13pt}{0}\selectfont \textbf{\@YourFullnameFa}}\\ % ‌B Nazanin bold 13
+      \vspace*{\fill}
 
-{\fontsize{13pt}{0pt}\selectfont \textbf{\@YearFa}} % B Nazanin bold 13
-\end{center}
-}
-\restoregeometry
+      {\fontsize{13pt}{0pt}\selectfont \textbf{\@YearFa}} % B Nazanin bold 13
+    \end{center}
+  }
+  \restoregeometry
 }
 
 \makeatother
@@ -496,38 +496,38 @@
 % ░░░░░░░▒▒▒▒▒▒▓▓▓▓ CopyRight Page ▓▓▓▓▒▒▒▒▒▒░░░░░░░
 \makeatletter
 \newcommand{\MakeCopyRightPage}{
-\clearpage
-\thispagestyle{empty}
-\vspace*{\fill}
-\hspace*{\fill}
-\begin{minipage}{11cm}
-{\BNazaninScaleOne
-{\fontsize{13pt}{0.9cm}\selectfont  %‌ B Nazanin 13
-\noindent
-{
-\begin{center}
- \bfseries\fontsize{18pt}{0.9cm}\selectfont
- تعهد نامه اصالت اثر
-\end{center}
-اینجانب  \textbf{\@YourFullnameFa}\ دانشجوی مقطع \textbf{\@DegreeFa} \ رشته \textbf{\@FieldFa} \ گرایش  \textbf{\@BranchFa} \ متعهد می‌شوم که مطالب مندرج در این رساله و برون‌دادهای منتشره در این رابطه حاصل کار پژوهشی اینجانب است و به دستاوردهای پژوهشی دیگران که در این پژوهش از آن‌ها استفاده شده است، مطابق مقررات ارجاع و در فهرست منابع و مآخذ ذکر گردیده است. این رساله قبلاً برای احراز هیچ مدرک هم‌سطح یا بالاتر ارائه نشده است. لذا درصورت اثبات تخلف (در هر زمان) دانشگاه اصفهان حق دارد، مدرک تحصیلی صادر شده برای اینجانب را از اعتبار ساقط و ضمن درج عام موضوع در جراید کثیرالانتشار، کلیه‌ي امتیازات و حقوقی که به‌موجب آن در طی دوره تحصیل و مدت زمان بعد از فراغت از تحصیل تا اثبات تخلف به ذینفعان تعلق گرفته را مسترد گرداند.
+  \clearpage
+  \thispagestyle{empty}
+  \vspace*{\fill}
+  \hspace*{\fill}
+  \begin{minipage}{11cm}
+    {\BNazaninScaleOne
+      {\fontsize{13pt}{0.9cm}\selectfont  %‌ B Nazanin 13
+        \noindent
+        {
+          \begin{center}
+            \bfseries\fontsize{18pt}{0.9cm}\selectfont
+            تعهد نامه اصالت اثر
+          \end{center}
+          اینجانب  \textbf{\@YourFullnameFa}\ دانشجوی مقطع \textbf{\@DegreeFa} \ رشته \textbf{\@FieldFa} \ گرایش  \textbf{\@BranchFa} \ متعهد می‌شوم که مطالب مندرج در این رساله و برون‌دادهای منتشره در این رابطه حاصل کار پژوهشی اینجانب است و به دستاوردهای پژوهشی دیگران که در این پژوهش از آن‌ها استفاده شده است، مطابق مقررات ارجاع و در فهرست منابع و مآخذ ذکر گردیده است. این رساله قبلاً برای احراز هیچ مدرک هم‌سطح یا بالاتر ارائه نشده است. لذا درصورت اثبات تخلف (در هر زمان) دانشگاه اصفهان حق دارد، مدرک تحصیلی صادر شده برای اینجانب را از اعتبار ساقط و ضمن درج عام موضوع در جراید کثیرالانتشار، کلیه‌ي امتیازات و حقوقی که به‌موجب آن در طی دوره تحصیل و مدت زمان بعد از فراغت از تحصیل تا اثبات تخلف به ذینفعان تعلق گرفته را مسترد گرداند.
 
-کلیه حقوق مادی و معنوی این اثر متعلق به دانشگاه اصفهان است.
+          کلیه حقوق مادی و معنوی این اثر متعلق به دانشگاه اصفهان است.
 
-\vspace{10mm}
-نام و نام خانوادگی دانشجو: \textbf{\@YourFullnameFa} \hfill امضاء
-\\[1cm]
-\ifx\ST@SecondSupervisorFa\undefined
-تایید استاد راهنما: \textbf{دکتر~\@FirstSupervisorFa} \hfill امضاء
-\else
-تایید استاد راهنمای اول: \textbf{دکتر~\@FirstSupervisorFa} \hfill امضاء
-\\[1cm]
-تایید استاد راهنمای دوم: \textbf{دکتر~\ST@SecondSupervisorFa} \hfill امضاء
+          \vspace{10mm}
+          نام و نام خانوادگی دانشجو: \textbf{\@YourFullnameFa} \hfill امضاء
+          \\[1cm]
+          \ifx\ST@SecondSupervisorFa\undefined
+            تایید استاد راهنما: \textbf{دکتر~\@FirstSupervisorFa} \hfill امضاء
+          \else
+            تایید استاد راهنمای اول: \textbf{دکتر~\@FirstSupervisorFa} \hfill امضاء
+            \\[1cm]
+            تایید استاد راهنمای دوم: \textbf{دکتر~\ST@SecondSupervisorFa} \hfill امضاء
 
-\fi
-}}}
-\end{minipage}
-\hspace*{\fill}
-\vspace*{\fill}
+          \fi
+        }}}
+  \end{minipage}
+  \hspace*{\fill}
+  \vspace*{\fill}
 }
 \makeatother
 % ░░░░░░░▒▒▒▒▒▒▓▓▓▓ Signature Page - Farsi ▓▓▓▓▒▒▒▒▒▒░░░░░░░
@@ -541,21 +541,21 @@
 \newgeometry{left=3.5cm, right=3.5cm, top=3.5cm, bottom=3.5cm}
 {\BNazaninScaleOne
 \begin{center}
-\includegraphics[width = 2.5cm]{Settings/UI_Logo.pdf}
-\\ [0.5cm]
-{\fontsize{13pt}{0}\selectfont % B Nazanin bold 13
-\textbf{
-دانشگاه اصفهان
-}}\\[0.35cm]
-{\fontsize{12pt}{0}\selectfont \textbf{\@DepartmentFa}}\\ [0.3cm] % B Nazanin bold 12
-{\fontsize{11pt}{0}\selectfont \textbf{\@GroupFa}}\\ % B Nazanin bold 11
-\vspace{3cm}
+  \includegraphics[width = 2.5cm]{Settings/UI_Logo.pdf}
+  \\ [0.5cm]
+  {\fontsize{13pt}{0}\selectfont % B Nazanin bold 13
+  \textbf{
+    دانشگاه اصفهان
+  }}\\[0.35cm]
+  {\fontsize{12pt}{0}\selectfont \textbf{\@DepartmentFa}}\\ [0.3cm] % B Nazanin bold 12
+  {\fontsize{11pt}{0}\selectfont \textbf{\@GroupFa}}\\ % B Nazanin bold 11
+  \vspace{3cm}
 
-{\fontsize{18pt}{0}\selectfont \textbf{\@ThesisTypeFa~\@DegreeFa~رشته‌ی~\@FieldFa~گرایش~\@BranchFa\\ [0.4cm]~\@Prefix~\@YourFullnameFa}}\\ % B Nazanin bold 18
-[1cm]
+  {\fontsize{18pt}{0}\selectfont \textbf{\@ThesisTypeFa~\@DegreeFa~رشته‌ی~\@FieldFa~گرایش~\@BranchFa\\ [0.4cm]~\@Prefix~\@YourFullnameFa}}\\ % B Nazanin bold 18
+  [1cm]
 
-{\fontsize{15pt}{0}\selectfont  \BTitrScaleOne \textbf{\@TitleFa}} % B Titr 15
-\\ [1cm]
+  {\fontsize{15pt}{0}\selectfont  \BTitrScaleOne \textbf{\@TitleFa}} % B Titr 15
+  \\ [1cm]
 
 \end{center}
 {\fontsize{13pt}{0}\selectfont % B Nazanin 13
@@ -567,45 +567,45 @@
 
 \noindent
 \begin{tabular}{rrrrrr}
-\RowNumberFa - &
-استاد راهنمای~\@ThesisTypeFa & دکتر~\@FirstSupervisorFa & با مرتبه‌ی علمی~\textbf{\@FirstSupervisorAcademicRank} & امضاء
-\\[1cm]
-\ifx\ST@SecondSupervisorFa\undefined \else
-\RowNumberFa - &
-استاد راهنمای~\@ThesisTypeFa & دکتر~\ST@SecondSupervisorFa & با مرتبه‌ی علمی~\textbf{\@SecondSupervisorAcademicRank} &   امضاء
-\\[1cm]
-\fi
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\ifx\ST@FirstAdvisorFa\undefined \else
-\RowNumberFa - &
-استاد مشاور~\@ThesisTypeFa  & دکتر‍~\ST@FirstAdvisorFa & با مرتبه‌ی علمی~\textbf{\@FirstAdvisorAcademicRank} &   امضاء
-\\[1cm]
-\fi
-\ifx\ST@SecondAdvisorFa\undefined \else
-\RowNumberFa - &
-استاد مشاور~\@ThesisTypeFa  & دکتر‍~\ST@SecondAdvisorFa & با مرتبه‌ی علمی~\textbf{\@SecondAdvisorAcademicRank}   & امضاء
-\\[1cm]
-\fi
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\ifx\ST@FirstExaminerFa\undefined \else
-\RowNumberFa - &
-استاد داور داخل گروه  & دکتر‍~\ST@FirstExaminerFa & با مرتبه‌ی علمی~\textbf{\@FirstExaminerAcademicRank} & امضاء
-\\[1cm]
-\fi
-\ifx\ST@SecondExaminerFa\undefined \else
-\RowNumberFa - &
-استاد داور داخل گروه  & دکتر‍~\ST@SecondExaminerFa & با مرتبه‌ی علمی~\textbf{\@SecondExaminerAcademicRank} & امضاء
-\\[1cm]
-\fi
-\ifx\ST@ThirdExaminerFa\undefined \else
-\RowNumberFa - &
-استاد داور خارج از گروه  & دکتر‍~\ST@ThirdExaminerFa & با مرتبه‌ی علمی~\textbf{\@ThirdExaminerAcademicRank} & امضاء
-\\[1cm]
-\fi
-\ifx\ST@FourthExaminerFa\undefined \else
-\RowNumberFa - &
-استاد داور خارج از گروه  & دکتر‍~\ST@FourthExaminerFa & با مرتبه‌ی علمی~\textbf{\@FourthExaminerAcademicRank} & امضاء
-\fi
+  \RowNumberFa -               &
+  استاد راهنمای~\@ThesisTypeFa & دکتر~\@FirstSupervisorFa    & با مرتبه‌ی علمی~\textbf{\@FirstSupervisorAcademicRank}  & امضاء
+  \\[1cm]
+  \ifx\ST@SecondSupervisorFa\undefined \else
+  \RowNumberFa -               &
+  استاد راهنمای~\@ThesisTypeFa & دکتر~\ST@SecondSupervisorFa & با مرتبه‌ی علمی~\textbf{\@SecondSupervisorAcademicRank} & امضاء
+  \\[1cm]
+  \fi
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \ifx\ST@FirstAdvisorFa\undefined \else
+  \RowNumberFa -               &
+  استاد مشاور~\@ThesisTypeFa   & دکتر‍~\ST@FirstAdvisorFa     & با مرتبه‌ی علمی~\textbf{\@FirstAdvisorAcademicRank}     & امضاء
+  \\[1cm]
+  \fi
+  \ifx\ST@SecondAdvisorFa\undefined \else
+  \RowNumberFa -               &
+  استاد مشاور~\@ThesisTypeFa   & دکتر‍~\ST@SecondAdvisorFa    & با مرتبه‌ی علمی~\textbf{\@SecondAdvisorAcademicRank}    & امضاء
+  \\[1cm]
+  \fi
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \ifx\ST@FirstExaminerFa\undefined \else
+  \RowNumberFa -               &
+  استاد داور داخل گروه         & دکتر‍~\ST@FirstExaminerFa    & با مرتبه‌ی علمی~\textbf{\@FirstExaminerAcademicRank}    & امضاء
+  \\[1cm]
+  \fi
+  \ifx\ST@SecondExaminerFa\undefined \else
+  \RowNumberFa -               &
+  استاد داور داخل گروه         & دکتر‍~\ST@SecondExaminerFa   & با مرتبه‌ی علمی~\textbf{\@SecondExaminerAcademicRank}   & امضاء
+  \\[1cm]
+  \fi
+  \ifx\ST@ThirdExaminerFa\undefined \else
+  \RowNumberFa -               &
+  استاد داور خارج از گروه      & دکتر‍~\ST@ThirdExaminerFa    & با مرتبه‌ی علمی~\textbf{\@ThirdExaminerAcademicRank}    & امضاء
+  \\[1cm]
+  \fi
+  \ifx\ST@FourthExaminerFa\undefined \else
+  \RowNumberFa -               &
+  استاد داور خارج از گروه      & دکتر‍~\ST@FourthExaminerFa   & با مرتبه‌ی علمی~\textbf{\@FourthExaminerAcademicRank}   & امضاء
+  \fi
 \end{tabular}
 }
 }
@@ -666,40 +666,51 @@
 
 % ░░░░░░░▒▒▒▒▒▒▓▓▓▓ Table of Contents ▓▓▓▓▒▒▒▒▒▒░░░░░░░
 \newcommand{\MakeTableOfContents}{
-\clearpage
-\newgeometry{top=3.5cm, left=3.5cm, right=3.5cm, bottom=3.5cm, footskip=1cm}
-\baselineskip=0.6cm
-\phantomsection
-%\addcontentsline{toc}{section}{فهرست مطالب}‎
-\topskip=0pt
-\tableofcontents
-\restoregeometry
+  \clearpage
+  \newgeometry{top=3.5cm, left=3.5cm, right=3.5cm, bottom=3.5cm, footskip=1cm}
+  \baselineskip=0.6cm
+  \phantomsection
+  %\addcontentsline{toc}{section}{فهرست مطالب}‎
+  \topskip=0pt
+  \tableofcontents
+  \restoregeometry
 }
 
 % ░░░░░░░▒▒▒▒▒▒▓▓▓▓ List of Figures ▓▓▓▓▒▒▒▒▒▒░░░░░░░
 \newcommand{\MakeListOfFigures}{
-\clearpage
-\newgeometry{top=3.5cm, left=3.5cm, right=3.5cm, bottom=3.5cm, footskip=1cm}
-\baselineskip=0.6cm
-\phantomsection
-%\addcontentsline{toc}{section}{\listfigurename}‎
-\topskip=0pt
-\listoffigures
-\restoregeometry
+  \clearpage
+  \newgeometry{top=3.5cm, left=3.5cm, right=3.5cm, bottom=3.5cm, footskip=1cm}
+  \baselineskip=0.6cm
+  \phantomsection
+  %\addcontentsline{toc}{section}{\listfigurename}‎
+  \topskip=0pt
+  \listoffigures
+  \restoregeometry
 }
 
 % ░░░░░░░▒▒▒▒▒▒▓▓▓▓ List of Tables ▓▓▓▓▒▒▒▒▒▒░░░░░░░
 \newcommand{\MakeListOfTables}{
-\clearpage
-\newgeometry{top=3.5cm, left=3.5cm, right=3.5cm, bottom=3.5cm, footskip=1cm}
-\baselineskip=0.6cm
-\phantomsection
-%\addcontentsline{toc}{section}{\listtablename}‎
-\topskip=0pt
-\listoftables
-\restoregeometry
+  \clearpage
+  \newgeometry{top=3.5cm, left=3.5cm, right=3.5cm, bottom=3.5cm, footskip=1cm}
+  \baselineskip=0.6cm
+  \phantomsection
+  %\addcontentsline{toc}{section}{\listtablename}‎
+  \topskip=0pt
+  \listoftables
+  \restoregeometry
 }
 
+% ░░░░░░░▒▒▒▒▒▒▓▓▓▓ List of Algorithms ▓▓▓▓▒▒▒▒▒▒░░░░░░░
+\newcommand{\MakeListOfAlgorithms}{
+  \clearpage
+  \newgeometry{top=3.5cm, left=3.5cm, right=3.5cm, bottom=3.5cm, footskip=1cm}
+  \baselineskip=0.6cm
+  \phantomsection
+  %\addcontentsline{toc}{section}{\listalgorithmname}‎
+  \topskip=0pt
+  \listofalgorithms
+  \restoregeometry
+}
 
 \makeatother
 
@@ -712,13 +723,13 @@
 \def\@KeywordsEn{}
 
 \newcommand{\MakeEnglishAbstract}{
-\clearpage
-\thispagestyle{empty}
+  \clearpage
+  \thispagestyle{empty}
 
-\begin{latin}
-\baselineskip=18pt
-{\fontsize{12pt}{0}\selectfont \par\noindent \textbf{Abstract}\\ [0.4cm]\@AbstractEn \\ [0.4cm] \textbf{Keywords:} \@KeywordsEn} % TNR 12
-\end{latin}
+  \begin{latin}
+    \baselineskip=18pt
+    {\fontsize{12pt}{0}\selectfont \par\noindent \textbf{Abstract}\\ [0.4cm]\@AbstractEn \\ [0.4cm] \textbf{Keywords:} \@KeywordsEn} % TNR 12
+  \end{latin}
 }
 \makeatother
 
@@ -728,96 +739,96 @@
 
 \makeatletter
 \newcommand{\MakeEnglishSignaturePage}{
-\clearpage
-\thispagestyle{empty}
-\newgeometry{left=3.5cm, right=3.5cm, top=3.5cm, bottom=3.5cm}
-\begin{latin}
-{\TimesNewRomanScaleOne
-\begin{center}
-\includegraphics[width=2.5cm]{Settings/UI_Logo.pdf}
-\\ [0.5cm]
-{\fontsize{12pt}{0}\selectfont \textbf{University of Isfahan}}\\[0.2cm] % TNR 12
-{\fontsize{11pt}{0}\selectfont \textbf{{\@DepartmentEn}}}\\ [0.2cm] % TNR 11
-{\fontsize{10pt}{0}\selectfont \textbf{{\@GroupEn}}}\\ % TNR 10
-\vspace*{\fill}
-{\fontsize{16pt}{0}\selectfont \textbf{\@DegreeEn~Thesis}}\\ % TNR 16
-\vspace*{\fill}
+  \clearpage
+  \thispagestyle{empty}
+  \newgeometry{left=3.5cm, right=3.5cm, top=3.5cm, bottom=3.5cm}
+  \begin{latin}
+    {\TimesNewRomanScaleOne
+      \begin{center}
+        \includegraphics[width=2.5cm]{Settings/UI_Logo.pdf}
+        \\ [0.5cm]
+        {\fontsize{12pt}{0}\selectfont \textbf{University of Isfahan}}\\[0.2cm] % TNR 12
+        {\fontsize{11pt}{0}\selectfont \textbf{{\@DepartmentEn}}}\\ [0.2cm] % TNR 11
+        {\fontsize{10pt}{0}\selectfont \textbf{{\@GroupEn}}}\\ % TNR 10
+        \vspace*{\fill}
+        {\fontsize{16pt}{0}\selectfont \textbf{\@DegreeEn~Thesis}}\\ % TNR 16
+        \vspace*{\fill}
 
-{\fontsize{15pt}{0}\selectfont \textbf{\@TitleEn}} % TNR 15
-\vspace*{\fill}
-\ifx\ST@SecondSupervisorEn\undefined
-{\fontsize{14pt}{0}\selectfont \textbf{Supervisor:}} % TNR 14
-\else
-{\fontsize{14pt}{0}\selectfont \textbf{Supervisors:}} % TNR 14
-\fi
-\ifx\ST@SecondSupervisorEn\undefined
-{\fontsize{13pt}{0}\selectfont \textbf{\\[0.25cm] Dr.~\@FirstSupervisorEn}} % TNR 13
-\else
-{\fontsize{13pt}{0}\selectfont \textbf{\\[0.25cm] Dr.~\@FirstSupervisorEn}
-\textbf{\\[0.25cm] Dr.~\ST@SecondSupervisorEn}} % TNR 13
-\fi
-\vspace*{\fill}
+        {\fontsize{15pt}{0}\selectfont \textbf{\@TitleEn}} % TNR 15
+        \vspace*{\fill}
+        \ifx\ST@SecondSupervisorEn\undefined
+          {\fontsize{14pt}{0}\selectfont \textbf{Supervisor:}} % TNR 14
+          \else
+          {\fontsize{14pt}{0}\selectfont \textbf{Supervisors:}} % TNR 14
+        \fi
+        \ifx\ST@SecondSupervisorEn\undefined
+          {\fontsize{13pt}{0}\selectfont \textbf{\\[0.25cm] Dr.~\@FirstSupervisorEn}} % TNR 13
+          \else
+          {\fontsize{13pt}{0}\selectfont \textbf{\\[0.25cm] Dr.~\@FirstSupervisorEn}
+            \textbf{\\[0.25cm] Dr.~\ST@SecondSupervisorEn}} % TNR 13
+        \fi
+        \vspace*{\fill}
 
-{\fontsize{14pt}{0}\selectfont \textbf{By:\\[0.25cm]}} % TNR 14
-{\fontsize{13pt}{0}\selectfont \textbf{\@YourFullnameEn}} % TNR 13
-\vspace*{\fill}
+        {\fontsize{14pt}{0}\selectfont \textbf{By:\\[0.25cm]}} % TNR 14
+        {\fontsize{13pt}{0}\selectfont \textbf{\@YourFullnameEn}} % TNR 13
+        \vspace*{\fill}
 
-{\fontsize{13pt}{0}\selectfont \textbf{\@DateEn}} % TNR 13
-\vspace*{\fill}
+        {\fontsize{13pt}{0}\selectfont \textbf{\@DateEn}} % TNR 13
+        \vspace*{\fill}
 
-\end{center}
-}
-\end{latin}
-\restoregeometry
+      \end{center}
+    }
+  \end{latin}
+  \restoregeometry
 }
 \makeatother
 
 % ░░░░░░░▒▒▒▒▒▒▓▓▓▓ Appendices ▓▓▓▓▒▒▒▒▒▒░░░░░░░
 \newcommand{\MakeAppendices}{
-\clearpage
+  \clearpage
 
-\appendix
+  \appendix
 
-\setcounter{chapter}{3}
-\setcounter{table}{0}
-\setcounter{algorithm}{0}
-\setcounter{figure}{0}
-\setcounter{equation}{0}
-\setcounter{theorem}{0}
-\setcounter{remark}{0}
-\setcounter{reminder}{0}
+  \setcounter{chapter}{3}
+  \setcounter{table}{0}
+  \setcounter{algorithm}{0}
+  \setcounter{figure}{0}
+  \setcounter{equation}{0}
+  \setcounter{theorem}{0}
+  \setcounter{remark}{0}
+  \setcounter{reminder}{0}
 
-\phantomsection
+  \phantomsection
 
-\addtocontents{toc}{\protect\setcounter{tocdepth}{-1}}
-\chapter*{پیوست‌ها}
-\addtocontents{toc}{\protect\setcounter{tocdepth}{2}}
+  \addtocontents{toc}{\protect\setcounter{tocdepth}{-1}}
+  \chapter*{پیوست‌ها}
+  \addtocontents{toc}{\protect\setcounter{tocdepth}{2}}
 
-\addcontentsline{toc}{chapter}{پیوست‌ها}‎
+  \addcontentsline{toc}{chapter}{پیوست‌ها}‎
 }
 
 \makeatother
 % ░░░░░░░▒▒▒▒▒▒▓▓▓▓ References ▓▓▓▓▒▒▒▒▒▒░░░░░░░
 \newcommand{\MakeReferences}[1]{
-\clearpage
-\titlespacing*{\chapter}{0pt}{-\baselineskip}{0.5cm}
-\fontsize{11pt}{14.4} \selectfont \BNazaninScaleOne \renewcommand{\bibname}{{منابع و مآخذ}\hfill}
-\bibliographystyle{Settings/ieeetr-fa}
+  \clearpage
+  \titlespacing*{\chapter}{0pt}{-\baselineskip}{0.5cm}
+  \fontsize{11pt}{14.4} \selectfont \BNazaninScaleOne \renewcommand{\bibname}{{منابع و مآخذ}\hfill}
+  \bibliographystyle{Settings/ieeetr-fa}
 
-\addtocontents{toc}{\protect\vspace{10pt}}
-\addcontentsline{toc}{section}{منابع و مآخذ}
+  \addtocontents{toc}{\protect\vspace{10pt}}
+  \addcontentsline{toc}{section}{منابع و مآخذ}
 
-\let\oldaddcontentsline\addcontentsline% Store \addcontentsline
-\renewcommand{\addcontentsline}[3]{}% Make \addcontentsline a no-op
+  \let\oldaddcontentsline\addcontentsline% Store \addcontentsline
+  \renewcommand{\addcontentsline}[3]{}% Make \addcontentsline a no-op
 
-\bibliography{#1}
+  \bibliography{#1}
 
-\let\addcontentsline\oldaddcontentsline% Restore \addcontentsline
+  \let\addcontentsline\oldaddcontentsline% Restore \addcontentsline
 }
 
 \newcommand{\myaddcontentsline}[1]{
-\addtocontents{toc}{\protect\vspace{10pt}}
-\addcontentsline{toc}{section}{#1}
+  \addtocontents{toc}{\protect\vspace{10pt}}
+  \addcontentsline{toc}{section}{#1}
 }
 
 % دستوری برای تعریف واژه‌نامه انگلیسی به فارسی
@@ -829,7 +840,7 @@
 \makeatletter
 \@addtoreset{algorithm}{chapter}% algorithm counter resets every chapter
 \makeatother
-\renewcommand{\thealgorithm}{\arabic{chapter}-\arabic{algorithm}} 
+\renewcommand{\thealgorithm}{\arabic{chapter}-\arabic{algorithm}}
 
 % تنظیم کاراکتر مورد استفاده در لیست‌های غیرترتیبی Bullet list
 \renewcommand{\descriptionlabel}[1]%

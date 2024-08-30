@@ -5,7 +5,7 @@
     "velocity_events": 128,
     "velocity_bins": 16,
     "velocity_exp": 0.33,
-    "do_token_sorting": true,
+    "do_token_sorting": false,
     "unrolled_tokens": false,
     "decode_end_held_note_delay": 5.0,
     "decode_fix_repeated_notes": true

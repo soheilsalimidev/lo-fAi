@@ -57,6 +57,7 @@
 \usepackage{tikz}
 \usepackage{pgfplots}
 \usepackage{siunitx}
+\usepackage{enumitem}
 \usepackage{hyperref}
 \usepackage{xcolor} \pagecolor[rgb]{0,0,0} \color[rgb]{1,1,1}
 %-----------------------------
@@ -91,7 +92,37 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\algnewcommand\algorithmicforeach{\textbf{for each}}
+\algdef{S}[FOR]{ForEach}[1]{\algorithmicforeach\ #1\ \algorithmicdo}
+%
+%\algnewcommand{\IfThenElse}[3]{% \IfThenElse{<if>}{<then>}{<else>}
+%  \State \algorithmicif\ #1\ \algorithmicthen\ #2\ \algorithmicelse\ #3}
 
+%\algdef{SE}[FOR]{NoDoFor}{EndFor}[1]{\algorithmicfor\ #1}{\algorithmicend\ \algorithmicfor}%
+%\algdef{SE}[IF]{NoThenIf}{EndIf}[1]{\algorithmicif\ #1}{\algorithmicend\ \algorithmicif}%
+
+\newcommand*\diamondarrow{%
+  \stackengine{0pt}{\hspace{1.2ex}$\rightarrow$}{$\lozenge$}{O}{l}{F}{F}{L}}
+\newcommand*\fdiamondarrow{%
+  \stackengine{0pt}{\hspace{1.2ex}$\rightarrow$}{$\blacklozenge$}{O}{l}{F}{F}{L}}
+\newcommand*\dltriangle{%
+  \stackengine{0pt}{${-}{-}$}{\hspace{3.2ex}$\vartriangleright$}{O}{l}{F}{F}{L}}
+\newcommand*\ltriangle{%
+  \stackengine{0pt}{${-}$\hspace{-.5ex}${-}$}{\hspace{2.8ex}$\vartriangleright$}{O}{l}{F}{F}{L}}
+
+\makeatletter
+\providecommand*{\cupdot}{%
+  \mathbin{%
+    \mathpalette\@cupdot{}%
+  }%
+}
+\newcommand*{\@cupdot}[2]{%
+  \ooalign{%
+    $\m@th#1\cup$\cr
+    \hidewidth$\m@th#1\cdot$\hidewidth
+  }%
+}
+\makeatother
 
 %\DeclareMathSizes{9}{9}{9}{9}
 
@@ -157,10 +188,8 @@
 
 \MakeTitlePage
 
-
-
 % ░░░░░░░▒▒▒▒▒▒▓▓▓▓ Dedication ▓▓▓▓▒▒▒▒▒▒░░░░░░░
-% \input{Chapters/Dedication}
+\input{Chapters/Dedication}
 
 % ░░░░░░░▒▒▒▒▒▒▓▓▓▓ Abstract - Farsi ▓▓▓▓▒▒▒▒▒▒░░░░░░░
 \input{Chapters/AbstractFa}
@@ -199,7 +228,7 @@
 
 % ----------------------------------------------------------------------------
 %\clearpage
-% \pagestyle{myheadings}
+\pagestyle{myheadings}
 %\pagenumbering{arabic}
 %\setcounter{page}{1}
 
@@ -207,8 +236,8 @@
 \clearpage
 \baselineskip=0.9cm
 \linespread{1.0} % single-line spacing
-\linespread{1.3} % one and a half line spacing
-\linespread{1.6} % double-line spacing
+% \linespread{1.3} % one and a half line spacing
+% \linespread{1.6} % double-line spacing
 
 
 \settextfont[Scale=1.2, ItalicFont=*, ItalicFeatures={FakeSlant=0.32}, BoldItalicFont=* Bold, BoldItalicFeatures={FakeSlant=0.32}]{B Nazanin}
@@ -234,10 +263,27 @@
 
 % ░░░░░░░▒▒▒▒▒▒▓▓▓▓ Appendices ▓▓▓▓▒▒▒▒▒▒░░░░░░░
 \MakeAppendices
-%\addtocontents{lof}{\protect\setcounter{tocdepth}{0}} % ignore adding appendix figures to list of figures
-%\addtocontents{lot}{\protect\setcounter{tocdepth}{0}} % ignore adding appendix table to list of tables
+
 \captionsetup{list=no}
 \input{Chapters/Appendices}
+
+
+% ░░░░░░░▒▒▒▒▒▒▓▓▓▓ Abstract - English ▓▓▓▓▒▒▒▒▒▒░░░░░░░
+\input{Chapters/AbstractEn}
+\MakeEnglishAbstract
+
+\DepartmentEn{Faculty of Computer Engineering}
+\DegreeEn{BS} % Or \DegreeEn{M.Sc.)} 
+\YourFullnameEn{Soheil Salimi}
+\DateEn{August 2024} %
+\FirstSupervisorEn{Zahra Zojaji}
+\TitleEn{Train a small language model for generating lo-fi music} 
+%\\[0.2cm] second line (if any)} %% Break the title, if required
+% اگر عنوان رساله طولانی بود، در دو خط به صورت نشان داده شده تقسیم شود.
+\GroupEn{}
+\FirstAdvisorEn{}
+
+\MakeEnglishSignaturePage
 
 \end{document}
 

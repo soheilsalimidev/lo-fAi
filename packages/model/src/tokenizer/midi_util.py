@@ -75,12 +75,6 @@ class VocabUtils:
     def format_note_token(self, note: int, velocity_bin: int) -> str:
         return f"{note:x}:{velocity_bin:x}"
 
-    def format_unrolled_note(self, note: int) -> str:
-        return f"n{note:x}"
-
-    def format_unrolled_velocity(self, velocity_bin: int) -> str:
-        return f"v{velocity_bin:x}"
-
     def velocity_to_bin(self, velocity: float) -> int:
         velocity = max(0, min(velocity, self.cfg.velocity_events - 1))
         if self.cfg.velocity_bins_override:
@@ -163,14 +157,6 @@ class VocabUtils:
             if token_data is not None:
                 yield token_data
 
-    # def sort_token_data(
-    #     self, data: List[Tuple[int, int, int]]
-    # ) -> List[Tuple[int, int, int]]:
-    #     # ensure order is preserved for tokens with the same instrument, note
-    #     data = [(i, n, v, x) for x, (i, n, v) in enumerate(data)]
-    #     data.sort(key=lambda x: (x[0] != self.cfg._ch10_bin_int, x[0], x[1], x[3]))
-    #     return [(i, n, v) for i, n, v, _ in data]
-    #
     def data_to_wait_tokens(self, delta_ms: float) -> List[str]:
         if delta_ms == 0.0:
             return []
@@ -346,14 +332,7 @@ def convert_midi_to_str(
         token_data = [
             x for x in utils.prog_data_list_to_token_data_list(token_data_buffer)
         ]
-        if cfg.unrolled_tokens:
-            for t in token_data:
-                output += [
-                    utils.format_unrolled_note(t[0]),
-                    utils.format_unrolled_velocity(t[1]),
-                ]
-        else:
-            output += [utils.format_note_token(*t) for t in token_data]
+        output += [utils.format_note_token(*t) for t in token_data]
         token_data_buffer = []
 
     def consume_note_program_data(prog: int, chan: int, note: int, vel: float):

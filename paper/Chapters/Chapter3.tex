@@ -55,7 +55,7 @@
 است، تمام 43 کیت در بخش‌های آموزشی، آزمایشی و اعتبارسنجی وجود دارند. که به طور خلاصه در \ref{drumInfo} نشان داده شده است.
 
 
-\section{تبدیل \lr{MIDI} به متن}
+\section{تبدیل \lr{MIDI} به متن}\label{se:tokenizer}
 
 \section{رویکرد برای توکن‌سازی فایل‌های
   \lr{MIDI}}
@@ -506,7 +506,6 @@
 به عبارت دیگر، هرچه نسبت ملایمت در یک ملودی بیشتر باشد، هماهنگی هارمونیک آن بیشتر است.
 \xal{alg:harmonicCoherence} نشان دهنده نحویه انجام این کار برای یک فایل \lr{MIDI} است.\footref{acualCodeRef}
 
-
 \begin{LTR}
       \begin{algorithm}
             \caption[هماهنگی هارمونیک]{هماهنگی هارمونیک}
@@ -555,11 +554,11 @@
 ملودی های ساخته شده توسط مدل دارای هماهنگی بالایی در هارمونی و ریتم است، اما هنوز دارای بعضی از ناهمسانی‌ها و عدم هماهنگی است که می تواند بهبود یابد.
 
 \section{ساخت موسیقی نهایی}
-در کد ما برای تولید موسیقی لو-فای، چندین روش به کار گرفته شده است
+در کد ما که در \xal{algo:lofi_music} نشان داده شده است، برای تولید موسیقی لو-فای، چندین روش به کار گرفته شده است
 تا یک قطعه موسیقی منحصر به فرد و هماهنگ ایجاد شود. این فرآیند با تولید
 یک تمپوی تصادفی آغاز می‌شود که به هر قطعه موسیقی تنوع و یگانگی می‌بخشد.
 هسته اصلی تولید موسیقی شامل تبدیل خروجی مدل به فایل‌های \lr{MIDI} با استفاده
-از تابع \texttt{convert\_str\_to\_midi} است. این فایل‌های \lr{MIDI} سپس با
+از تابع \texttt{convert\_str\_to\_midi} است که مربوط به بخش \ref{se:tokenizer} است که در \xal{al:tokenMidi} و \xal{al:strMidi} نشان داده شده است. این فایل‌های \lr{MIDI} سپس با
 استفاده از \lr{FluidSynth}، یک نرم‌افزار سینتی‌سایزر که برای تولید صدا به
 فونت‌های صوتی متکی است، به فایل‌های صوتی تبدیل می‌شوند. فونت‌های صوتی، مانند
 فونت مشخص شده در کد ما
@@ -567,6 +566,94 @@
 نمونه‌های صوتی هستند که صدای سازهای واقعی و با کیفیت بالا را فراهم
 می‌کنند. این امر برای موسیقی لو-فای بسیار مهم است، زیرا بافت و طنین سازها
 به طور قابل توجهی به زیبایی کلی موسیقی کمک می‌کند.
+
+\begin{LTR}
+      \begin{algorithm}
+            \caption{تبدیل توکن به \lr{MIDI}}
+            \label{al:tokenMidi}
+            \setmainfont{Times New Roman}
+            \begin{algorithmic}[1]
+                  \State \textbf{Input:} utils, token, state, channel, end\_token\_pause
+                  \State \textbf{Output:} Iterator of (Optional MIDI Message, DecodeState)
+
+                  \If{state is None}
+                  \State Initialize state
+                  \EndIf
+
+                  \State token $\leftarrow$ token.strip()
+
+                  \If{token is empty or starts with "<"}
+                  \State yield (None, state)
+                  \Return
+                  \EndIf
+
+                  \If{token is "<end>"}
+                  \State Update state with end\_token\_pause
+                  \If{utils.cfg.decode\_end\_held\_note\_delay $\neq$ 0.0}
+                  \For{(channel, note), start\_time in state.active\_notes}
+                  \State Convert delta\_accum to ticks
+                  \State Remove (channel, note) from active\_notes
+                  \State yield (note\_off message, state)
+                  \EndFor
+                  \EndIf
+                  \State yield (None, state)
+                  \Return
+                  \EndIf
+
+                  \If{token is a wait token}
+                  \State Update state with wait token delta
+                  \If{utils.cfg.decode\_end\_held\_note\_delay $\neq$ 0.0}
+                  \For{(channel, note), start\_time in state.active\_notes}
+                  \If{note held too long}
+                  \State Convert delta\_accum to ticks
+                  \State Remove (channel, note) from active\_notes
+                  \State yield (note\_off message, state)
+                  \Return
+                  \EndIf
+                  \EndFor
+                  \EndIf
+                  \Else
+                  \State (bin, note, velocity) $\leftarrow$ utils.note\_token\_to\_data(token)
+                  \State Convert delta\_accum to ticks
+                  \If{velocity $>$ 0}
+                  \If{utils.cfg.decode\_fix\_repeated\_notes and (channel, note) in active\_notes}
+                  \State Remove (channel, note) from active\_notes
+                  \State yield (note\_off message, state)
+                  \EndIf
+                  \State Add (channel, note) to active\_notes
+                  \State yield (note\_on message, state)
+                  \Else
+                  \State Remove (channel, note) from active\_notes
+                  \State yield (note\_off message, state)
+                  \EndIf
+                  \EndIf
+
+                  \State yield (None, state)
+            \end{algorithmic}
+      \end{algorithm}
+
+      \begin{algorithm}
+            \setmainfont{Times New Roman}
+            \caption{متن به \lr{MIDI message}}
+            \label{al:strMidi}
+            \begin{algorithmic}[1]
+                  \State \textbf{Input:} utils, data, channel
+                  \State \textbf{Output:} Iterator of MIDI Messages
+
+                  \State state $\leftarrow$ None
+
+                  \For{token in data.split(" ")}
+                  \For{msg, new\_state in token\_to\_midi\_message(utils, token, state, channel)}
+                  \State state $\leftarrow$ new\_state
+                  \If{msg is not None}
+                  \State yield msg
+                  \EndIf
+                  \EndFor
+                  \EndFor
+
+            \end{algorithmic}
+      \end{algorithm}
+\end{LTR}
 
 استفاده از فونت‌های صوتی چندین مزیت دارد. آن‌ها صدای سازهای واقعی را فراهم
 می‌کنند که اصالت موسیقی تولید شده را افزایش می‌دهد. همچنین امکان
@@ -587,3 +674,35 @@
 مدت زمان رول پیانو تکرار می‌شوند. قطعه موسیقی نهایی با تکرار قطعات مخلوط
 شده به طول مورد نظر گسترش می‌یابد و با یک افکت محو شدن در پایان، یک پایان
 نرم ایجاد می‌شود. برای دسترسی به کد ها و اجرا آنها به \ref{ap:codes} مراجعه کنید.
+
+\begin{LTR}
+      \begin{algorithm}[H]
+            \caption{نحویه ساخت موسیقي نهایی}
+            \label{algo:lofi_music}
+            \setmainfont{Times New Roman}
+            \begin{algorithmic}[1]
+                  \Procedure{GenMusic}{data, dataDrum}
+                  \State $tempo \gets \text{random.randint(14, 18) \* 5}$ \Comment{Set tempo}
+                  \State $\text{convert\_str\_to\_midi}(\text{\_\_join}(data), tempo) \gets \text{save}(\text{relpath}(\text{./soundFont/mdiOut.mid}))$ \Comment{Generate MIDI file}
+                  \State $\text{fs} \gets \text{FluidSynth}(\text{relpath}(\text{./soundFont/SGM-v2.01-NicePianosGuitarsBass-V1.2.sf2}))$ \Comment{Load sound font}
+                  \State $\text{fs.midi\_to\_audio}(\text{relpath}(\text{./soundFont/mdiOut.mid}), \text{relpath}(\text{./soundFont/output.flac}))$ \Comment{Convert MIDI to audio}
+                  \State $\text{pianoRoll} \gets \text{AudioSegment.from\_file}(\text{relpath}(\text{./soundFont/output.flac}))$ \Comment{Load piano roll}
+                  \State $\text{fillName} \gets \text{random.choice}(\text{os.listdir}(\text{relpath}(\text{./loops/vinyl})))$ \Comment{Select fill name}
+                  \State $\text{fill} \gets \text{AudioSegment.from\_file}(\text{relpath}(\text{./loops/vinyl/}\text{fillName}))$ \Comment{Load fill}
+                  \State $\text{convert\_str\_to\_midi}(\text{\_\_join}(data), 400, 9) \gets \text{save}(\text{relpath}(\text{./soundFont/mdiOutDrum.mid}))$ \Comment{Generate drum MIDI file}
+                  \State $\text{fs.midi\_to\_audio}(\text{relpath}(\text{./soundFont/mdiOutDrum.mid}), \text{relpath}(\text{./soundFont/output.flac}))$ \Comment{Convert drum MIDI to audio}
+                  \State $\text{drum} \gets \text{AudioSegment.from\_file}(\text{relpath}(\text{./soundFont/output.flac}))$ \Comment{Load drum}
+                  \EndProcedure
+
+                  \Procedure{mix\_lines}{music\_len}
+                  \State $\text{pianoRoll} \gets \text{pianoRoll} + 10$ \Comment{Adjust piano roll}
+                  \State $\text{fill} \gets \text{fill} \* \text{math.ceil}(\text{pianoRoll.duration\_seconds} / \text{fill.duration\_seconds})$ \Comment{Repeat fill}
+                  \State $\text{drum} \gets \text{drum} \* \text{math.ceil}(\text{pianoRoll.duration\_seconds} / \text{drum.duration\_seconds})$ \Comment{Repeat drum}
+                  \State $\text{music} \gets \text{pianoRoll}\text{.overlay}(\text{fill} - 10)\text{.overlay}(\text{drum} + 3)$ \Comment{Mix audio}
+                  \State $\text{music} \gets \text{music} \* \text{math.ceil}(\text{music\_len} / \text{music.duration\_seconds})$ \Comment{Repeat music}
+                  \State $\text{music} \gets \text{music.fade\_out}(2 \* \text{SECOND})$ \Comment{Fade out music}
+                  \State \Return $\text{music}$
+                  \EndProcedure
+            \end{algorithmic}
+      \end{algorithm}
+\end{LTR}

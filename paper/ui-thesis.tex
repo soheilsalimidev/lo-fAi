@@ -44,6 +44,7 @@
 % در این قالب سعی شده است که از تمامی بخش‌های موجود در پایان‌نامه‌ها نمونه‌ای آورده شود.
 
 \documentclass[a4paper,fleqn,11pt,oneside]{book}
+\usepackage{tabularx,ragged2e}
 \usepackage{tikz}
 \usetikzlibrary{arrows,shapes}
 \usepackage{tabulary}
@@ -162,33 +163,34 @@
 % \input{Chapters/Dedication}
 
 % ░░░░░░░▒▒▒▒▒▒▓▓▓▓ Abstract - Farsi ▓▓▓▓▒▒▒▒▒▒░░░░░░░
-% \input{Chapters/AbstractFa}
-% \MakeFarsiAbstract
+\input{Chapters/AbstractFa}
+\MakeFarsiAbstract
 
 % ░░░░░░░▒▒▒▒▒▒▓▓▓▓ Table of Contents/Figures/Tables ▓▓▓▓▒▒▒▒▒▒░░░░░░░
 \setcounter{page}{0}
 
-% \MakeTableOfContents
-% \MakeListOfFigures
-% \MakeListOfTables
-% \MakeListOfAlgorithms
+\MakeTableOfContents
+\MakeListOfFigures
+\MakeListOfTables
+\MakeListOfAlgorithms
 
 
 % ----------------------------------------------------------------------------
-% \clearpage
-% \pagestyle{myheadings}
-% \pagenumbering{arabic}
-% \setcounter{page}{1}
+\clearpage
+\pagestyle{myheadings}
+\pagenumbering{arabic}
+\setcounter{page}{1}
 
 % ░░░░░░░▒▒▒▒▒▒▓▓▓▓ Chapters ▓▓▓▓▒▒▒▒▒▒░░░░░░░
 \clearpage
 \baselineskip=0.9cm
 \setcounter{footnote}{0}
 
-% \input{Chapters/Chapter1}
-% \input{Chapters/Chapter2}
+\input{Chapters/Chapter1}
+\input{Chapters/Chapter2}
 \input{Chapters/Chapter3}
-% \input{Chapters/ChapterEnd}
+\input{Chapters/Chapter4}
+\input{Chapters/ChapterEnd}
 
 
 % ░░░░░░░▒▒▒▒▒▒▓▓▓▓ References ▓▓▓▓▒▒▒▒▒▒░░░░░░░

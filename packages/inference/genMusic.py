@@ -1,12 +1,18 @@
-import random
-import os
-import math
-from midi2audio import FluidSynth
-from pydub import AudioSegment
 from src.tokenizer.midi_util import VocabConfig, convert_str_to_midi
+from pydub import AudioSegment
+from pydub.effects import speedup
+import math
+import os
+import random
+import wave
+import time
+import tinysoundfont
+import pyaudio
+import numpy as np
+import fluidsynth
 import sys
 sys.path.append("./../model")
-
+# from midi2audio import FluidSynth
 
 SECOND = 1000
 
@@ -15,31 +21,65 @@ def relpath(p): return os.path.normpath(
     os.path.join(os.path.dirname(__file__), p))
 
 
+def midiToWav(font: str, midi: str, prS):
+    synth = tinysoundfont.Synth()
+
+    sfid = synth.sfload(font)
+    synth.program_select(prS[0], sfid, prS[1], prS[2], prS[3])
+    seq = tinysoundfont.Sequencer(synth)
+    seq.midi_load(midi)
+
+    s = []
+    while not seq.is_empty():
+        buffer = synth.generate(44100)
+        s = np.append(s, np.frombuffer(bytes(buffer), dtype=np.float32))
+
+    with wave.open("sound1.wav", "w") as f:
+        # 2 Channels.
+        f.setnchannels(1)
+        # 2 bytes per sample.
+        f.setsampwidth(2)
+        f.setframerate(44100)
+        f.writeframes((s * 32767).astype(np.int16).tobytes())
+
+    return (s * 32767).astype(np.int16).tobytes()
+
+
 class GenMusic:
     def __init__(self, data, dataDrum):
-      
-        tempo = random.randint(14, 18) * 5
 
-        self.midi = convert_str_to_midi(" ".join(map(str, data)), tempo).save(
+        tempo = random.randint(14, 18) * 4 * 5
+
+        self.midi = convert_str_to_midi(" ".join(map(str, data)), tempo, 0).save(
             relpath("./soundFont/mdiOut.mid")
         )
-        fs = FluidSynth(relpath("./soundFont/SGM-v2.01-NicePianosGuitarsBass-V1.2.sf2"))
-        fs.midi_to_audio(relpath("./soundFont/mdiOut.mid"),
-                         relpath("./soundFont/output.flac"))
-        self.pianoRoll=AudioSegment.from_file(relpath("./soundFont/output.flac"))
+
+        self.pianoRoll = AudioSegment(
+            midiToWav(relpath("./soundFont/OmegaGMGS2.sf2"),
+                      relpath("./soundFont/mdiOut.mid"),
+                      random.choice([[0, 0, 2, False], [0, 0, 0, False], [0, 0, 24, False]])),
+            frame_rate=44100,
+            sample_width=2,
+            channels=1)
 
         fillName = (
             random.choice(os.listdir(relpath("./loops/vinyl")))
         )
-        self.fill = AudioSegment.from_file(relpath(f"./loops/vinyl/{fillName}"))
+        self.fill = AudioSegment.from_file(
+            relpath(f"./loops/vinyl/{fillName}"))
 
         # handel drum
-        convert_str_to_midi(" ".join(map(str, data)), 400, 9).save(
+        convert_str_to_midi(" ".join(map(str, data)), 300, 9).save(
             relpath("./soundFont/mdiOutDrum.mid")
         )
-        fs.midi_to_audio(relpath("./soundFont/mdiOutDrum.mid"),
-                         relpath("./soundFont/output.flac"))
-        self.drum = AudioSegment.from_file(relpath("./soundFont/output.flac"))
+
+        self.drum = AudioSegment(
+            midiToWav(relpath("./soundFont/FluidR3_GM.sf2"),
+                      relpath("./soundFont/mdiOutDrum.mid"), [9, 0, 0, True]),
+            frame_rate=44100,
+            sample_width=2,
+            channels=1
+        )
 
         # self.drum = AudioSegment.from_file(f"./loops/drumloop{tempo}/{drum}")
 
@@ -53,9 +93,9 @@ class GenMusic:
             math.ceil(self.pianoRoll.duration_seconds /
                       self.drum.duration_seconds)
         music = self.pianoRoll.overlay(
-            self.fill - 10,
+            self.fill,
         ).overlay(
-            self.drum + 3,
+            self.drum + 10,
         )
         music = music * math.ceil(music_len / music.duration_seconds)
 

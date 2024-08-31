@@ -559,9 +559,6 @@ def convert_str_to_midi(
     if meta_text:
         track.append(mido.MetaMessage("text", text=meta_text, time=0))
     track.append(mido.MetaMessage("set_tempo", tempo=tempo, time=0))
-    track.append(mido.MetaMessage("instrument_name", name="Steel Drums", time=0))
-    # for msg in generate_program_change_messages(cfg):
-    #     track.append(msg)
 
     data = data.replace("<start>", "").replace(
         "<end>", "").replace("<pad>", "").strip()

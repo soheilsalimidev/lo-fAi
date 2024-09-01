@@ -65,9 +65,12 @@ def mixTheSongs(song_len, ctx, out_len, te=1.0):
 
     music = GenMusic(pinio, drum)
 
-    music.mix_lines(song_len).export("./output.mp3", format="mp3")
+    piano , randRoll = music.mix_lines(song_len)
+    piano.export("./output.mp3", format="mp3")
+    randRoll.export("./outputRandom_instrument.mp3", format="mp3")
+   
     print('output saved')
-    return relpath('./output.mp3')
+    return relpath('./output.mp3'), relpath('./outputRandom_instrument.mp3')
 
 
 if __name__ == "__main__":

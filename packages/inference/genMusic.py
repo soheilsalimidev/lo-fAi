@@ -10,7 +10,7 @@ SECOND = 1000
 
 
 def relpath(p): return os.path.normpath(
-    os.path.join(os.path.dirname(__file__), p) if os.environ["LOCAL"] == '1' else p)
+    os.path.join(os.path.dirname(__file__), p))
 
 
 def midiToWav(font: str, midi: str, prS):
@@ -38,10 +38,18 @@ class GenMusic:
             relpath("./mdiOut.mid")
         )
 
-        self.pianoRoll = AudioSegment(
-            midiToWav(relpath(os.path.join(os.environ["SOUND_FONT"],  "./OmegaGMGS2.sf2")),
+        self.RandRoll = AudioSegment(
+            midiToWav(os.path.join(os.environ["SOUND_FONT"],  "./OmegaGMGS2.sf2"),
                       relpath("./mdiOut.mid"),
                       random.choice([[0, 0, i, False] for i in range(0, 127)])),
+            frame_rate=44100,
+            sample_width=2,
+            channels=1)
+
+        self.pianoRoll = AudioSegment(
+            midiToWav(os.path.join(os.environ["SOUND_FONT"],  "./OmegaGMGS2.sf2"),
+                      relpath("./mdiOut.mid"),
+                      [0, 0, 0, False]),
             frame_rate=44100,
             sample_width=2,
             channels=1)
@@ -58,7 +66,7 @@ class GenMusic:
         )
 
         self.drum = AudioSegment(
-            midiToWav(relpath(os.path.join(os.environ["SOUND_FONT"],  "./FluidR3_GM.sf2")),
+            midiToWav(os.path.join(os.environ["SOUND_FONT"],  "./FluidR3_GM.sf2"),
                       relpath("./mdiOutDrum.mid"), [9, 0, 0, True]),
             frame_rate=44100,
             sample_width=2,
@@ -85,4 +93,22 @@ class GenMusic:
 
         music = music.fade_out(2 * SECOND)
 
-        return music
+        self.RandRoll = self.RandRoll + 10
+
+        self.fill = self.fill * \
+            math.ceil(self.RandRoll.duration_seconds /
+                      self.fill.duration_seconds)
+        self.drum = self.drum * \
+            math.ceil(self.RandRoll.duration_seconds /
+                      self.drum.duration_seconds)
+        musicRand = self.RandRoll.overlay(
+            self.fill + 5,
+        ).overlay(
+            self.drum - 5,
+        )
+        musicRand = musicRand * \
+            math.ceil(music_len / musicRand.duration_seconds)
+
+        musicRand = musicRand.fade_out(2 * SECOND)
+
+        return music, musicRand

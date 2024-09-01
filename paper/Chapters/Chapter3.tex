@@ -185,6 +185,77 @@ $ (Note * velocity) + Wait  time + pad + start + end =(128 * 16) + 125 + 3 = 217
 بیشتری از توکن‌ها و روابط بین آن‌ها را یاد بگیرد که می‌تواند منجر به
 بیش‌برازش و کاهش قابلیت تعمیم‌دهی شود.
 
+در تولید موسیقی، مقادیر سرعت \LTRfootnote{velocity} اغلب پیوسته هستند، اما
+در تولید صدا که در  \xs{finalMusic} توضیح داده شده است، تنها می‌تواند مقادیر گسسته تولید کند. با کوانتایز کردن
+مقادیر سرعت به تعداد ثابتی از بین‌ها \LTRfootnote{bins}، سیستم می‌تواند خروجی‌ای
+سازگارتر و قابل پیش‌بینی‌تر تولید کند. این روش به‌ویژه در موسیقی لو-فای
+مفید است، جایی که هدف ایجاد صدایی سازگار است. کد یک تابع
+کوانتایز کردن سرعت را پیاده‌سازی می‌کند که می‌تواند خطی یا نمایی باشد. این
+تابع یک مقدار سرعت پیوسته را به یک بین گسسته نگاشت می‌کند، که یک تکنیک
+رایج در تولید موسیقی، به‌ویژه در موسیقی لو-فای است.
+
+\subsubsection{کوانتایز کردن
+      خطی}
+
+در کوانتایز کردن خطی، مقدار سرعت پیوسته به تعداد ثابتی از بین‌های گسسته
+تقسیم می‌شود. اندازه بین با تقسیم حداکثر مقدار سرعت بر تعداد بین‌ها تعیین
+می‌شود. شاخص بین با تقسیم مقدار سرعت بر اندازه بین و گرد کردن به
+نزدیک‌ترین عدد صحیح محاسبه می‌شود.
+
+\subsubsection{کوانتایز کردن
+      نمایی}
+در کوانتایز کردن نمایی، مقدار سرعت پیوسته با استفاده از یک تابع نمایی به
+یک بین گسسته نگاشت می‌شود. تابع نمایی توسط پارامتر \lr{velocity\_exp} کنترل
+می‌شود که شکل منحنی را تعیین می‌کند. مقدار بالاتر \lr{velocity\_exp} منجر به
+منحنی نمایی‌تر می‌شود، در حالی که مقدار پایین‌تر منجر به منحنی خطی‌تر می‌شود.
+
+\subsubsection{ریاضیات پشت کوانتایز کردن
+      نمایی}
+
+فرمول کوانتایز کردن نمایی به صورت زیر است:
+\begin{LTR}
+      \setmainfont{Times New Roman}
+      $
+            \text{bin\_index} = \lceil \frac{\text{velocity\_events} \cdot (\exp(\frac{\text{velocity}}{\text{velocity\_events}}) - 1)}{\exp(1) - 1} \rceil
+      $
+\end{LTR}
+که در آن \lr{velocity\_events} حداکثر مقدار سرعت، \lr{velocity} مقدار سرعت ورودی و
+\lr{exp} تابع نمایی است.
+
+\subsubsection{چرا کوانتایز کردن
+      نمایی؟}
+کوانتایز کردن نمایی در تولید موسیقی بهتر است زیرا اجازه می‌دهد صدایی
+ظریف‌تر و دقیق‌تر ایجاد شود. در این پروژه ما مقدار پارامتر \lr{velocity\_exp} را برابر $0.33$ قرار دادیم.
+
+\begin{LTR}
+      \begin{algorithm}
+            \caption{کوانتایز کردن سرعت}
+            \label{alg:velocity_quantization}
+            \begin{algorithmic}
+                  \setmainfont{Times New Roman}
+                  \Procedure{velocity\_to\_bin}{velocity}
+                  \State $bin\_size \gets \frac{\text{velocity\_events}}{\text{velocity\_bins} - 1}$
+                  \If{$\text{velocity\_exp} == 1.0$}
+                  \State $bin \gets \lceil \frac{\text{velocity}}{bin\_size} \rceil$
+                  \Else
+                  \State $bin \gets \lceil \left( \text{velocity\_events} \cdot \left( \left( \text{velocity\_exp}^{ \frac{\text{velocity}}{\text{velocity\_events}} } - 1 \right) \right) / (\text{velocity\_exp} - 1) \right) / bin\_size \rceil$
+                  \EndIf
+                  \State \Return $bin$
+                  \EndProcedure
+
+                  \Procedure{bin\_to\_velocity}{bin}
+                  \State $bin\_size \gets \frac{\text{velocity\_events}}{\text{velocity\_bins} - 1}$
+                  \If{$\text{velocity\_exp} == 1.0$}
+                  \State $velocity \gets \max(0, \lceil bin \cdot bin\_size - 1 \rceil)$
+                  \Else
+                  \State $velocity \gets \max(0, \lceil \text{velocity\_events} \cdot \log \left( \frac{(\text{velocity\_exp} - 1) \cdot bin \cdot bin\_size}{\text{velocity\_events}} + 1, \text{velocity\_exp} \right) - 1 \rceil)$
+                  \EndIf
+                  \State \Return $velocity$
+                  \EndProcedure
+            \end{algorithmic}
+      \end{algorithm}
+\end{LTR}
+
 
 توضیحات \xal{alg:token} که به تبدیل داده ها به متن می‌کند به صورت زیر است:
 \begin{itemize}
@@ -271,10 +342,6 @@ $ (Note * velocity) + Wait  time + pad + start + end =(128 * 16) + 125 + 3 = 217
             \label{alg:token}
             \setmainfont{Times New Roman}
             \begin{algorithmic}[1]
-                  \Function{mix\_volume}{velocity, volume, expression}
-                  \State \Return $velocity \times \left(\frac{volume}{127.0}\right) \times \left(\frac{expression}{127.0}\right)$
-                  \EndFunction
-
                   \Function{convert\_midi\_to\_str}{cfg, filter\_cfg, mid, augment=None}
                   \State Initialize state variables
 
@@ -676,7 +743,7 @@ $ (Note * velocity) + Wait  time + pad + start + end =(128 * 16) + 125 + 3 = 217
 
 ملودی های ساخته شده توسط مدل دارای هماهنگی بالایی در هارمونی و ریتم است، اما هنوز دارای بعضی از ناهمسانی‌ها و عدم هماهنگی است که می تواند بهبود یابد.
 
-\section{ساخت موسیقی نهایی}
+\section{ساخت موسیقی نهایی}\label{finalMusic}
 در کد ما که در \xal{algo:lofi_music} نشان داده شده است، برای تولید موسیقی لو-فای، چندین روش به کار گرفته شده است
 تا یک قطعه موسیقی منحصر به فرد و هماهنگ ایجاد شود. این فرآیند با تولید
 یک تمپوی تصادفی آغاز می‌شود که به هر قطعه موسیقی تنوع و یگانگی می‌بخشد.

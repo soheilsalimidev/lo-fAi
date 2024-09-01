@@ -1,18 +1,11 @@
-from src.tokenizer.midi_util import VocabConfig, convert_str_to_midi
+from src.tokenizer.midi_util import convert_str_to_midi
 from pydub import AudioSegment
 from pydub.effects import speedup
 import math
 import os
 import random
-import wave
-import time
 import tinysoundfont
-import pyaudio
 import numpy as np
-import fluidsynth
-import sys
-sys.path.append("./../model")
-# from midi2audio import FluidSynth
 
 SECOND = 1000
 

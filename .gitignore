@@ -18,6 +18,7 @@ packages/model/src/midiData/piano/piano.jsonl
 packages/inference/__pycache__/
 packages/inference/soundFont/florestan-piano.sf2
 **/__pycache__
+**/*.sf2
 packages/inference/soundFont/SGM-v2.01-NicePianosGuitarsBass-V1.2.sf2
 packages/model/piano-model/rwkv-0.pth
 packages/model/piano-model/rwkv-8.pth

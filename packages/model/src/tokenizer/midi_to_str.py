@@ -1,9 +1,8 @@
 import os
 from midi_util import AugmentConfig, VocabConfig, FilterConfig
 import midi_util
-from tqdm import tqdm
 import mido
-from typing import Iterable, List, Optional, Tuple, Union
+from typing import List, Tuple, Union
 import argparse
 import io
 

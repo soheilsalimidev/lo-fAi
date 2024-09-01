@@ -26,9 +26,8 @@ from genMusic import GenMusic
 from src.tokenizer.midi_to_str import convert_midi_bytes_to_str
 
 
-def generateTheSong(ctx: str, lenOfOut: int, modelPath: str, temperature: float,):
-    strategy = "cuda fp16" if torch.cuda.is_available() else "cpu fp32"
-    model = RWKV(model=modelPath, strategy=strategy)
+def generateTheSong(ctx: str, lenOfOut: int, modelPath: str, temperature: float):
+    model = RWKV(model=modelPath, strategy="cpu fp32")
     pipeline = PIPELINE(
         model, os.environ["tokenizer"])
 

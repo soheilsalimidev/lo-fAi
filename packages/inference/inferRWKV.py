@@ -7,7 +7,6 @@ import os
 import torch
 print(os.environ)
 if os.environ["LOCAL"] == '1':
-    print('here')
     import sys
     sys.path.append("./../model")
     sys.path.append("./../model/src/tokenizer")

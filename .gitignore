@@ -49,3 +49,5 @@ paper/ui-thesis.fls
 paper/ui-thesis.log
 rwkv-pinao.pth
 rwkv-drum.pth
+packages/inference/output.mp3
+packages/inference/outputRandom_instrument.mp3

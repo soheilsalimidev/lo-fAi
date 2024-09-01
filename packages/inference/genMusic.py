@@ -76,7 +76,7 @@ class GenMusic:
         # self.drum = AudioSegment.from_file(f"./loops/drumloop{tempo}/{drum}")
 
     def mix_lines(self, music_len=60):
-        self.pianoRoll = self.pianoRoll + 10
+        self.pianoRoll = self.pianoRoll + 20
 
         self.fill = self.fill * \
             math.ceil(self.pianoRoll.duration_seconds /
@@ -87,13 +87,13 @@ class GenMusic:
         music = self.pianoRoll.overlay(
             self.fill + 5,
         ).overlay(
-            self.drum - 5,
+            self.drum - 10,
         )
         music = music * math.ceil(music_len / music.duration_seconds)
 
         music = music.fade_out(2 * SECOND)
 
-        self.RandRoll = self.RandRoll + 10
+        self.RandRoll = self.RandRoll + 30
 
         self.fill = self.fill * \
             math.ceil(self.RandRoll.duration_seconds /

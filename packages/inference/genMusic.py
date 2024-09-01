@@ -34,21 +34,13 @@ def midiToWav(font: str, midi: str, prS):
         buffer = synth.generate(44100)
         s = np.append(s, np.frombuffer(bytes(buffer), dtype=np.float32))
 
-    with wave.open("sound1.wav", "w") as f:
-        # 2 Channels.
-        f.setnchannels(1)
-        # 2 bytes per sample.
-        f.setsampwidth(2)
-        f.setframerate(44100)
-        f.writeframes((s * 32767).astype(np.int16).tobytes())
-
     return (s * 32767).astype(np.int16).tobytes()
 
 
 class GenMusic:
     def __init__(self, data, dataDrum):
 
-        tempo = random.randint(14, 18) * 4 * 5
+        tempo = random.randint(14, 18) * 4 * 3
 
         self.midi = convert_str_to_midi(" ".join(map(str, data)), tempo, 0).save(
             relpath("./soundFont/mdiOut.mid")
@@ -57,7 +49,7 @@ class GenMusic:
         self.pianoRoll = AudioSegment(
             midiToWav(relpath("./soundFont/OmegaGMGS2.sf2"),
                       relpath("./soundFont/mdiOut.mid"),
-                      random.choice([[0, 0, 2, False], [0, 0, 0, False], [0, 0, 24, False]])),
+                      random.choice([[0, 0, i, False] for i in range(0, 127)])),
             frame_rate=44100,
             sample_width=2,
             channels=1)
@@ -69,7 +61,7 @@ class GenMusic:
             relpath(f"./loops/vinyl/{fillName}"))
 
         # handel drum
-        convert_str_to_midi(" ".join(map(str, data)), 300, 9).save(
+        convert_str_to_midi(" ".join(map(str, dataDrum)), 130, 9).save(
             relpath("./soundFont/mdiOutDrum.mid")
         )
 
@@ -93,9 +85,9 @@ class GenMusic:
             math.ceil(self.pianoRoll.duration_seconds /
                       self.drum.duration_seconds)
         music = self.pianoRoll.overlay(
-            self.fill,
+            self.fill + 5,
         ).overlay(
-            self.drum + 10,
+            self.drum - 5,
         )
         music = music * math.ceil(music_len / music.duration_seconds)
 

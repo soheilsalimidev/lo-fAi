@@ -5,7 +5,6 @@ from dataclasses import dataclass
 from functools import lru_cache
 from math import ceil, floor, log
 from typing import Dict, Iterator, List, Optional, Tuple
-
 import mido
 
 
@@ -27,16 +26,10 @@ class VocabConfig:
     velocity_bins: int
     # Exponential scaling factor for velocity bin sizes. 1.0 = linear scaling.
     velocity_exp: float
-    # Whether to sort tokens by instrument, note. This should improve data reducibility.
-    do_token_sorting: bool
-    # Whether tokens should be represented as combined instrument/note/velocity tokens, or separate tokens for each.
-    unrolled_tokens: bool
     # If non-zero, notes held for this many seconds will be automatically released during str->midi decoding.
     decode_end_held_note_delay: float
     # If true, repeated notes will be automatically released before playing again during str->midi decoding.
     decode_fix_repeated_notes: bool
-    # Manual override for velocity bins. Each element is the max velocity value for that bin by index.
-    velocity_bins_override: Optional[List[int]] = None
 
     def __post_init__(self):
         self.validate()
@@ -47,12 +40,6 @@ class VocabConfig:
                 "max_wait_time must be exactly divisible by wait_events")
         if self.velocity_bins < 2:
             raise ValueError("velocity_bins must be at least 2")
-        if self.velocity_bins_override:
-            print("VocabConfig is using velocity_bins_override. Ignoring velocity_exp.")
-            if len(self.velocity_bins_override) != self.velocity_bins:
-                raise ValueError(
-                    "velocity_bins_override must have same length as velocity_bins"
-                )
         if self.velocity_exp <= 0:
             raise ValueError("velocity_exp must be greater than 0")
 
@@ -77,11 +64,6 @@ class VocabUtils:
 
     def velocity_to_bin(self, velocity: float) -> int:
         velocity = max(0, min(velocity, self.cfg.velocity_events - 1))
-        if self.cfg.velocity_bins_override:
-            for i, v in enumerate(self.cfg.velocity_bins_override):
-                if velocity <= v:
-                    return i
-            return 0
         binsize = self.cfg.velocity_events / (self.cfg.velocity_bins - 1)
         if self.cfg.velocity_exp == 1.0:
             return ceil(velocity / binsize)
@@ -102,8 +84,6 @@ class VocabUtils:
             )
 
     def bin_to_velocity(self, bin: int) -> int:
-        if self.cfg.velocity_bins_override:
-            return self.cfg.velocity_bins_override[bin]
         binsize = self.cfg.velocity_events / (self.cfg.velocity_bins - 1)
         if self.cfg.velocity_exp == 1.0:
             return max(0, ceil(bin * binsize - 1))
@@ -143,10 +123,6 @@ class VocabUtils:
     def prog_data_to_token_data(
         self, program: int, channel: int, note: int, velocity: float
     ) -> Optional[Tuple[int, int]]:
-        # if channel == 9:
-        #     if self.cfg._ch10_bin_int == -1:
-        #         return None
-        #     return self.cfg._ch10_bin_int, note, self.velocity_to_bin(velocity)
         return note, self.velocity_to_bin(velocity)
 
     def prog_data_list_to_token_data_list(
@@ -165,17 +141,15 @@ class VocabUtils:
     def wait_token_to_delta(self, token: str) -> float:
         return self.cfg.max_wait_time / self.cfg.wait_events * int(token[1:])
 
-    def note_token_to_data(self, token: str) -> Tuple[int, int, int]:
+    def note_token_to_data(self, token: str) -> Tuple[int, int]:
         note_str, velocity_str = token.strip().split(":")
-        instr_bin = 0
         note = int(note_str, base=16)
         velocity = self.bin_to_velocity(int(velocity_str, base=16))
-        return instr_bin, note, velocity
+        return  note, velocity
 
 
 @dataclass
 class AugmentValues:
-    instrument_bin_remap: Dict[int, int]
     velocity_mod_factor: float
     transpose_semitones: int
     time_stretch_factor: float
@@ -183,7 +157,6 @@ class AugmentValues:
     @classmethod
     def default(cls) -> "AugmentValues":
         return cls(
-            instrument_bin_remap={},
             velocity_mod_factor=1.0,
             transpose_semitones=0,
             time_stretch_factor=1.0,
@@ -194,8 +167,6 @@ class AugmentValues:
 class AugmentConfig:
     # The number of times to augment each MIDI file. The dataset size will be multiplied by this number.
     augment_data_factor: int
-    # A list of instrument names to randomly swap with each other.
-    instrument_mixups: List[List[str]]
     # A list of percentages to change the note velocity by. 0.0 = no change. 0 is included by default.
     velocity_mod_pct: List[float]
     # A list of semitones to transpose by. 0 is included by default.
@@ -216,28 +187,11 @@ class AugmentConfig:
         if len(self.time_stretch_pct) == 0:
             self.time_stretch_pct = [0.0]
 
-        self._instrument_mixups_int = [
-            l for l in self._instrument_mixups_int if len(l) > 0
-        ]  # remove empty lists
-        self._instrument_pool_assignments = {}
-        self._mixup_pools = []
-        for pool_i, mixup_list in enumerate(self._instrument_mixups_int):
-            pool = set()
-            for i in mixup_list:
-                pool.add(i)
-                self._instrument_pool_assignments[i] = pool_i
-            self._mixup_pools.append(pool)
-
     def validate(self):
         if self.augment_data_factor < 1:
             raise ValueError("augment_data_factor must be at least 1")
         used_instruments = set()
-        for mixup_list in self.instrument_mixups:
-            for n in mixup_list:
-                if n in used_instruments:
-                    raise ValueError(f"Duplicate instrument name: {n}")
-                used_instruments.add(n)
-
+      
     @classmethod
     def from_json(cls, path: str, cfg: VocabConfig):
         with open(path, "r") as f:
@@ -253,17 +207,7 @@ class AugmentConfig:
 
         rng = random.Random(self.seed + hash(filename))
         for _ in range(int(self.augment_data_factor - 1)):
-            # randomize order for each pool
-            randomized_pools = [list(pool) for pool in self._mixup_pools]
-            for pool in randomized_pools:
-                rng.shuffle(pool)
-            # distribute reassignments
-            instrument_bin_remap = {}
-            for i, pool in enumerate(randomized_pools):
-                for j, instrument in enumerate(pool):
-                    instrument_bin_remap[instrument] = randomized_pools[i - 1][j]
             yield AugmentValues(
-                instrument_bin_remap=instrument_bin_remap,
                 velocity_mod_factor=1.0 + rng.choice(self.velocity_mod_pct),
                 transpose_semitones=rng.choice(self.transpose_semitones),
                 time_stretch_factor=1.0 + rng.choice(self.time_stretch_pct),
@@ -388,7 +332,7 @@ def convert_midi_to_str(
                     del channel_notes[ch][n]
 
         if t == "program_change":
-            channel_program[msg.channel] = msg.program
+            pass
         elif t == "note_on":
             if msg.velocity == 0:
                 handle_note_off(
@@ -508,8 +452,8 @@ def token_to_midi_message(
                         "note_off", note=note, time=ticks, channel=channel
                     ), state
                     return
-    else:  # note token
-        bin, note, velocity = utils.note_token_to_data(token)
+    else: 
+        note, velocity = utils.note_token_to_data(token)
         ticks = int(mido.second2tick(state.delta_accum / 1000.0, 480, 500000))
         state.delta_accum = 0.0
         if velocity > 0:

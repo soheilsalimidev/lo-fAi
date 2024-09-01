@@ -1,6 +1,6 @@
 
 def relpath(p): return os.path.normpath(
-    os.path.join(os.path.dirname(__file__), p))
+    os.path.join(os.path.dirname(__file__), p) if os.environ["LOCAL"] == '1' else p)
 
 import os
 

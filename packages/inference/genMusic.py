@@ -10,7 +10,7 @@ SECOND = 1000
 
 
 def relpath(p): return os.path.normpath(
-    os.path.join(os.path.dirname(__file__), p))
+    os.path.join(os.path.dirname(__file__), p) if os.environ["LOCAL"] == '1' else p)
 
 
 def midiToWav(font: str, midi: str, prS):

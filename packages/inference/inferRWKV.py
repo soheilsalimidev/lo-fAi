@@ -14,6 +14,8 @@ if os.environ["LOCAL"] == '1':
     os.environ["PIANO_MODEL_PATH"] = relpath('./../../rwkv-pinao.pth')
     os.environ["DRUM_MODEL_PATH"] = relpath('./../../rwkv-drum.pth')
     os.environ["SOUND_FONT"] = relpath('./../../')
+    os.environ["tokenizer"] = relpath(
+        './../model/src/tokenizer/tokenizer-midi/tokenizer.json')
 
 import random
 from rwkv.utils import PIPELINE, PIPELINE_ARGS
@@ -28,7 +30,7 @@ def generateTheSong(ctx: str, lenOfOut: int, modelPath: str, temperature: float,
     strategy = "cuda fp16" if torch.cuda.is_available() else "cpu fp32"
     model = RWKV(model=modelPath, strategy=strategy)
     pipeline = PIPELINE(
-        model, relpath("./../model/src/tokenizer/tokenizer-midi/tokenizer.json"))
+        model, os.environ["tokenizer"])
 
     data = []
 

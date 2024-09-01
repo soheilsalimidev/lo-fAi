@@ -1,26 +1,31 @@
 
-import os
-from src.tokenizer.midi_to_str import convert_midi_bytes_to_str
-from genMusic import GenMusic
-import argparse
-from rwkv.model import RWKV
-from rwkv.utils import PIPELINE, PIPELINE_ARGS
-import random
-
-
 def relpath(p): return os.path.normpath(
     os.path.join(os.path.dirname(__file__), p))
 
+import os
 
-if os.environ["LOCAL"] == 1:
+import torch
+print(os.environ)
+if os.environ["LOCAL"] == '1':
+    print('here')
     import sys
     sys.path.append("./../model")
     sys.path.append("./../model/src/tokenizer")
-    os.environ["PIANO_MODEL_PATH"] = relpath('./models/rwkv-piano.pth')
-    os.environ["DRUM_MODEL_PATH"] = relpath('./models/ rwkv-drum.pth')
+    os.environ["PIANO_MODEL_PATH"] = relpath('./../../rwkv-pinao.pth')
+    os.environ["DRUM_MODEL_PATH"] = relpath('./../../rwkv-drum.pth')
+    os.environ["SOUND_FONT"] = relpath('./../../')
+
+import random
+from rwkv.utils import PIPELINE, PIPELINE_ARGS
+from rwkv.model import RWKV
+import argparse
+
+from genMusic import GenMusic
+from src.tokenizer.midi_to_str import convert_midi_bytes_to_str
 
 
-def generateTheSong(ctx: str, lenOfOut: int, modelPath: str, temperature: float, strategy="cpu fp32"):
+def generateTheSong(ctx: str, lenOfOut: int, modelPath: str, temperature: float,):
+    strategy = "cuda fp16" if torch.cuda.is_available() else "cpu fp32"
     model = RWKV(model=modelPath, strategy=strategy)
     pipeline = PIPELINE(
         model, relpath("./../model/src/tokenizer/tokenizer-midi/tokenizer.json"))

@@ -1,6 +1,5 @@
 from src.tokenizer.midi_util import convert_str_to_midi
 from pydub import AudioSegment
-from pydub.effects import speedup
 import math
 import os
 import random
@@ -36,12 +35,12 @@ class GenMusic:
         tempo = random.randint(14, 18) * 4 * 3
 
         self.midi = convert_str_to_midi(" ".join(map(str, data)), tempo, 0).save(
-            relpath("./soundFont/mdiOut.mid")
+            relpath("./mdiOut.mid")
         )
 
         self.pianoRoll = AudioSegment(
-            midiToWav(relpath("./soundFont/OmegaGMGS2.sf2"),
-                      relpath("./soundFont/mdiOut.mid"),
+            midiToWav(relpath(os.path.join(os.environ["SOUND_FONT"],  "./OmegaGMGS2.sf2")),
+                      relpath("./mdiOut.mid"),
                       random.choice([[0, 0, i, False] for i in range(0, 127)])),
             frame_rate=44100,
             sample_width=2,
@@ -55,12 +54,12 @@ class GenMusic:
 
         # handel drum
         convert_str_to_midi(" ".join(map(str, dataDrum)), 130, 9).save(
-            relpath("./soundFont/mdiOutDrum.mid")
+            relpath("./mdiOutDrum.mid")
         )
 
         self.drum = AudioSegment(
-            midiToWav(relpath("./soundFont/FluidR3_GM.sf2"),
-                      relpath("./soundFont/mdiOutDrum.mid"), [9, 0, 0, True]),
+            midiToWav(relpath(os.path.join(os.environ["SOUND_FONT"],  "./FluidR3_GM.sf2")),
+                      relpath("./mdiOutDrum.mid"), [9, 0, 0, True]),
             frame_rate=44100,
             sample_width=2,
             channels=1

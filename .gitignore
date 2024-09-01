@@ -42,3 +42,10 @@ packages/inference/soundFont/mdiOut.mid
 packages/inference/soundFont/output.flac
 packages/inference/soundFont/outputp.flac
 packages/inference/output.mp3
+paper/ui-thesis.aux
+paper/ui-thesis.bbl
+paper/ui-thesis.fdb_latexmk
+paper/ui-thesis.fls
+paper/ui-thesis.log
+rwkv-pinao.pth
+rwkv-drum.pth

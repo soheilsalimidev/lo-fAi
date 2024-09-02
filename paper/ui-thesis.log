@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (MiKTeX 23.10) (preloaded format=xelatex 2024.1.18)  2 SEP 2024 01:08
+This is XeTeX, Version 3.141592653-2.6-0.999995 (MiKTeX 23.10) (preloaded format=xelatex 2024.1.18)  2 SEP 2024 19:40
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -2209,12 +2209,8 @@ LaTeX Font Info:    Font shape `TU/BNazanin(1)/b/n' will be
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-LaTeX Font Info:    Font shape `TU/BNazanin(1)/m/n' will be
-(Font)              scaled to size 16.0pt on input line 9.
-LaTeX Font Info:    Font shape `TU/BNazanin(1)/b/n' will be
-(Font)              scaled to size 16.0pt on input line 9.
 LaTeX Font Info:    Font shape `TU/TimesNewRoman(0)/b/n' will be
-(Font)              scaled to size 16.0pt on input line 15.
+(Font)              scaled to size 15.0pt on input line 15.
 
 [3
 
@@ -2224,9 +2220,9 @@ LaTeX Font Info:    Font shape `TU/TimesNewRoman(0)/b/n' will be
 LaTeX Font Info:    Font shape `TU/TimesNewRoman(0)/m/n' will be
 (Font)              scaled to size 13.0pt on input line 196.
 
-Overfull \hbox (5.40907pt too wide) in paragraph at lines 196--197
-[]\TU/BNazanin(1)/m/n/13 استفاده در محتوای چندرسانه‌ای شده است. موسیقی لوفای، ب
-ا ویژگی‌های آرامش‌بخش و تسکین‌دهنده‌اش،[]
+Overfull \hbox (10.27773pt too wide) in paragraph at lines 196--197
+[]\TU/BNazanin(1)/m/n/13 استفاده در محتوای چندرسانه‌ای شده است. موسیقی ﻟﻮ-ﻓﺎﻱ، 
+با ویژگی‌های آرامش‌بخش و تسکین‌دهنده‌اش،[]
  []
 
 [0
@@ -2283,7 +2279,7 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 7.
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Font shape `TU/TimesNewRoman(0)/b/n' will be
-(Font)              scaled to size 13.0pt on input line 47.
+(Font)              scaled to size 13.0pt on input line 48.
 
 [1
 
@@ -2463,7 +2459,9 @@ LaTeX Font Info:    Font shape `TU/BNazanin(0)/b/n' will be
 (Font)              scaled to size 14.39996pt on input line 6.
 [3
 
-] [4]
+]
+LaTeX Font Info:    Font shape `TU/BNazanin(0)/m/n' will be
+(Font)              scaled to size 7.19998pt on input line 13.
 File: Figures/RWKV-arch.png Graphic file (type bmp)
 <Figures/RWKV-arch.png>
 LaTeX Font Info:    Font shape `TU/TimesNewRoman(0)/b/n' will be
@@ -2474,25 +2472,24 @@ File: Figures/x2.png Graphic file (type bmp)
 <Figures/x2.png>
 
 
-LaTeX Warning: Reference `Fig:RWKVB' on page 5 undefined on input line 40.
+LaTeX Warning: Reference `Fig:RWKVB' on page 4 undefined on input line 41.
 
-[5] [6]
+
+LaTeX Warning: Reference `Fig:RWKVC' on page 4 undefined on input line 41.
+
+
+Overfull \vbox (2.9753pt too high) has occurred while \output is active []
+
+
+[4] [5] [6]
 File: Figures/Screenshot 2024-08-29 021655.png Graphic file (type bmp)
 <Figures/Screenshot 2024-08-29 021655.png>
 
-Overfull \hbox (45.1288pt too wide) in paragraph at lines 73--75
+Overfull \hbox (45.1288pt too wide) in paragraph at lines 84--86
  [][][][][][] 
  []
 
-[7]
-Missing character: There is no ¹ in font B Nazanin/OT:language=dflt;script=arab
-;mapping=persian-tex-text;!
-[8]
-Missing character: There is no ⁴ in font B Nazanin/OT:language=dflt;script=arab
-;mapping=persian-tex-text;!
-Missing character: There is no ⁴ in font B Nazanin/OT:language=dflt;script=arab
-;mapping=persian-tex-text;!
-[9]) (Chapters/Chapter3.tex [10]
+[7] [8] [9]) (Chapters/Chapter3.tex [10]
 فصل 3.
 File: Figures/pipe.png Graphic file (type bmp)
 <Figures/pipe.png>
@@ -2512,17 +2509,12 @@ Package hyperref Warning: Difference (2) between bookmark levels is greater
 LaTeX Font Info:    Font shape `TU/TimesNewRoman(0)/b/n' will be
 (Font)              scaled to size 10.95pt on input line 32.
 LaTeX Font Info:    Font shape `TU/TimesNewRoman(0)/b/n' will be
-(Font)              scaled to size 14.0pt on input line 58.
- [13]
+(Font)              scaled to size 14.0pt on input line 56.
+ [13] [14] [15]
+Overfull \vbox (2.99881pt too high) has occurred while \output is active []
 
-LaTeX Warning: Reference `noteMap' on page 14 undefined on input line 91.
 
-LaTeX Font Info:    Font shape `TU/BNazanin(0)/m/n' will be
-(Font)              scaled to size 7.19998pt on input line 92.
-
-LaTeX Warning: Reference `velSpeed' on page 14 undefined on input line 93.
-
-[14] [15] [16]
+[16]
 
 Package fontspec Info: Font family 'TimesNewRoman(1)' created for font 'Times
 (fontspec)             New Roman' with options [Ligatures=TeX].
@@ -2544,24 +2536,26 @@ Package fontspec Info: Font family 'TimesNewRoman(1)' created for font 'Times
 (fontspec)             - 'bold italic small caps'  (b/scit) with NFSS spec.: 
 
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
-put line 232.
+put line 230.
 
 
 LaTeX Font Warning: Font shape `TU/TimesNewRoman(1)/m/sc' undefined
-(Font)              using `TU/TimesNewRoman(1)/m/n' instead on input line 236.
+(Font)              using `TU/TimesNewRoman(1)/m/n' instead on input line 234.
 
 
-Overfull \hbox (75.31218pt too wide) in paragraph at lines 241--242
+Overfull \hbox (75.31218pt too wide) in paragraph at lines 239--240
 [][] $\OML/cmm/m/it/10.95 bin \OMS/cmsy/m/n/10.95   d[] \OML/cmm/m/it/10.95 =bi
 n[]size\OMS/cmsy/m/n/10.95 e$ []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 251--252
+Underfull \hbox (badness 10000) in paragraph at lines 249--250
 [][] $\OML/cmm/m/it/10.95 velocity \OMS/cmsy/m/n/10.95   []\OT1/cmr/m/n/10.95 (
 0\OML/cmm/m/it/10.95 ; \OMS/cmsy/m/n/10.95 d[] ^^A$[]
  []
 
+Missing character: There is no – in font B Nazanin Bold/OT:language=dflt;script
+=arab;mapping=persian-tex-text;!
 Missing character: There is no – in font B Nazanin Bold/OT:language=dflt;script
 =arab;mapping=persian-tex-text;!
 Missing character: There is no – in font B Nazanin Bold/OT:language=dflt;script
@@ -2579,18 +2573,22 @@ Missing character: There is no – in font B Nazanin Bold/OT:language=dflt;scrip
 =arab;mapping=persian-tex-text;!
 Missing character: There is no – in font B Nazanin Bold/OT:language=dflt;script
 =arab;mapping=persian-tex-text;!
-[18]
-Missing character: There is no – in font B Nazanin Bold/OT:language=dflt;script
-=arab;mapping=persian-tex-text;!
-Missing character: There is no – in font B Nazanin Bold/OT:language=dflt;script
-=arab;mapping=persian-tex-text;!
-Missing character: There is no – in font B Nazanin Bold/OT:language=dflt;script
-=arab;mapping=persian-tex-text;!
-[19] [20]
-Missing character: There is no ‏ in font [lmmono10-regular]:!
-Missing character: There is no ‏ in font [lmmono10-regular]:!
+[18] [19] [20]
+LaTeX Font Info:    Font shape `TU/TimesNewRoman(0)/m/n' will be
+(Font)              scaled to size 8.0pt on input line 439.
+
+Overfull \hbox (1.2627pt too wide) in paragraph at lines 446--447
+[][]\TU/BNazanin(0)/m/n/10.95 در این پروژه ما از کتابخانه []\TU/TimesNewRoman(1
+)/m/sc/10.95 DeepSpeed[] \TU/BNazanin(0)/m/n/10.95 نیز استفاده کردیم توضیحاتی د
+رباره پارامترهای []\TU/TimesNewRoman(1)/m/sc/10.95 DeepSpeed[][]
+ []
+
 [21]
-Underfull \hbox (badness 2103) in paragraph at lines 497--498
+
+LaTeX Warning: Reference `ا' on page 22 undefined on input line 451.
+
+
+Underfull \hbox (badness 2103) in paragraph at lines 487--488
 [][]\TU/TimesNewRoman(1)/b/n/10.95 if \TU/TimesNewRoman(1)/m/sc/10.95 trainer.i
 s_global_zero \TU/TimesNewRoman(1)/b/n/10.95 and \TU/TimesNewRoman(1)/m/sc/10.9
 5 (args.epoch_save > 0 \TU/TimesNewRoman(1)/b/n/10.95 and \TU/TimesNewRoman(1)/
@@ -2598,13 +2596,13 @@ m/sc/10.95 trainer.current_epoch %[]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 498--499
+Underfull \hbox (badness 10000) in paragraph at lines 488--489
 [][] \TU/TimesNewRoman(1)/m/sc/10.95 save_pth(pl_module.state_dict(), f’args.pr
 oj_dir/self.prefix_args.epoch_begin +[]
  []
 
 [22]
-Overfull \hbox (35.12277pt too wide) in paragraph at lines 525--531
+Overfull \hbox (35.12277pt too wide) in paragraph at lines 515--521
 [][]\TU/BNazanin(0)/m/n/10.95 لاگ‌گیری و نظارت گسترده بخش‌های جدایی‌ناپذیر این 
 بخش هستند. متدهای \TU/lmtt/m/n/10.95 on_train_batch_start[]
  []
@@ -2620,54 +2618,53 @@ File: Figures/loss-dr.png Graphic file (type bmp)
 File: Figures/lr-dr.png Graphic file (type bmp)
 <Figures/lr-dr.png>
  [25] [26] [27] [28] [29]
-Missing character: There is no ‏ in font [lmmono10-regular]:!
-Missing character: There is no ‏ in font [lmmono10-regular]:!
-[30] [31]
-Underfull \hbox (badness 10000) in paragraph at lines 876--877
+Underfull \hbox (badness 10000) in paragraph at lines 867--868
 [][] $[]\OT1/cmr/m/n/10.95 ([](\OML/cmm/m/it/10.95 data\OT1/cmr/m/n/10.95 )\OML
 /cmm/m/it/10.95 ; tempo\OT1/cmr/m/n/10.95 ) \OMS/cmsy/m/n/10.95  $[]
  []
 
 
-Overfull \hbox (13.64526pt too wide) in paragraph at lines 877--878
+Overfull \hbox (13.64526pt too wide) in paragraph at lines 868--869
 [][] $[] \OMS/cmsy/m/n/10.95   []\OT1/cmr/m/n/10.95 ([]([]))$[]
  []
 
 
-Overfull \hbox (13.93053pt too wide) in paragraph at lines 878--879
+Overfull \hbox (13.93053pt too wide) in paragraph at lines 869--870
 [][] $[]\OT1/cmr/m/n/10.95 ([]([])\OML/cmm/m/it/10.95 ; []\OT1/cmr/m/n/10.95 ([
 ]))$[]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 882--883
+Underfull \hbox (badness 10000) in paragraph at lines 873--874
 [][] $[]\OT1/cmr/m/n/10.95 ([](\OML/cmm/m/it/10.95 data\OT1/cmr/m/n/10.95 )\OML
 /cmm/m/it/10.95 ; \OT1/cmr/m/n/10.95 400\OML/cmm/m/it/10.95 ; \OT1/cmr/m/n/10.9
 5 9) \OMS/cmsy/m/n/10.95  $[]
  []
 
 
-Overfull \hbox (39.47696pt too wide) in paragraph at lines 883--884
+Overfull \hbox (39.47696pt too wide) in paragraph at lines 874--875
 [][] $[]\OT1/cmr/m/n/10.95 ([]([])\OML/cmm/m/it/10.95 ; []\OT1/cmr/m/n/10.95 ([
 ]))$[]
  []
 
-[32]) (Chapters/Chapter4.tex [33]
+[30] [31]) (Chapters/Chapter4.tex [32]
 فصل 4.
-LaTeX Font Info:    Font shape `TU/TimesNewRoman(0)/b/n' will be
-(Font)              scaled to size 15.0pt on input line 4.
-[34
+[33
 
-] [35]
-Underfull \hbox (badness 10000) in alignment at lines 101--101
+] [34]
+Underfull \hbox (badness 10000) in alignment at lines 92--92
 [][] 
  []
 
-[36]) (Chapters/ChapterEnd.tex [37]
+[35]) (Chapters/ChapterEnd.tex [36]
 فصل 5.
-[38
+[37
 
-]) [39]
+]
+
+LaTeX Warning: Citation `cai2024survey' on page 38 undefined on input line 18.
+
+) [38]
 LaTeX Font Info:    Font shape `TU/BNazanin(0)/m/n' will be
 (Font)              scaled to size 13.19997pt on input line 227.
  (ui-thesis.bbl
@@ -2675,20 +2672,40 @@ LaTeX Font Info:    Font shape `TU/TimesNewRoman(0)/m/n' will be
 (Font)              scaled to size 11.0pt on input line 7.
 LaTeX Font Info:    Font shape `TU/TimesNewRoman(0)/m/it' will be
 (Font)              scaled to size 11.0pt on input line 45.
- [40
+ [39
 
 
-]) [41]
+]) [40]
 LaTeX Info: Redefining \persianfont on input line 244.
- (Chapters/Appendices.tex)
-(Chapters/AbstractEn.tex) [42
+ (Chapters/Appendices.tex
+Missing character: There is no ‏ in font [lmmono12-regular]:!
+Missing character: There is no ‏ in font [lmmono12-regular]:!
+Missing character: There is no ‏ in font [lmmono12-regular]:!
+Missing character: There is no ‏ in font [lmmono12-regular]:!
+
+Overfull \hbox (43.53131pt too wide) in paragraph at lines 46--46
+[][]    \TU/lmtt/m/n/11 python train.py --wandb "li-fAi" --proj_dir $PROJ_DIR -
+-type $MODEL_TYPE \[] []
+ []
+
+
+Overfull \hbox (54.83934pt too wide) in paragraph at lines 46--46
+[][]     \TU/lmtt/m/n/11 --data_file "text_document" --my_exit_tokens 34234278 
+--magic_prime 66851 \[] []
+ []
+
+Missing character: There is no ‏ in font [lmmono12-regular]:!
+Missing character: There is no ‏ in font [lmmono12-regular]:!
+Missing character: There is no ‏ in font [lmmono12-regular]:!
+Missing character: There is no ‏ in font [lmmono12-regular]:!
+) (Chapters/AbstractEn.tex) [41
 
 
 
 ]
 LaTeX Font Info:    Font shape `TU/TimesNewRoman(0)/m/n' will be
 (Font)              scaled to size 12.0pt on input line 273.
- [43
+ [42
 
 ]
 *geometry* verbose mode - [ newgeometry ] result:
@@ -2733,9 +2750,11 @@ LaTeX Font Info:    Font shape `TU/TimesNewRoman(0)/b/n' will be
 (Font)              scaled to size 10.0pt on input line 286.
 LaTeX Font Info:    Font shape `TU/TimesNewRoman(0)/m/n' will be
 (Font)              scaled to size 16.0pt on input line 286.
+LaTeX Font Info:    Font shape `TU/TimesNewRoman(0)/b/n' will be
+(Font)              scaled to size 16.0pt on input line 286.
 LaTeX Font Info:    Font shape `TU/TimesNewRoman(0)/m/n' will be
 (Font)              scaled to size 14.0pt on input line 286.
- [44
+ [43
 
 
 ] (ui-thesis.aux)
@@ -2751,15 +2770,15 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 LaTeX Warning: There were undefined references.
 
 Package rerunfilecheck Info: File `ui-thesis.out' has not changed.
-(rerunfilecheck)             Checksum: E0C75DCA36B5E17E2D5FC4F5BACA9BEA;11066.
+(rerunfilecheck)             Checksum: A9FB54B4E7EC02158DF15BB6F8155ABC;11344.
  ) 
 Here is how much of TeX's memory you used:
- 50203 strings out of 410379
- 1177923 string characters out of 5788051
- 1934416 words of memory out of 5000000
- 70557 multiletter control sequences out of 15000+600000
- 565995 words of font info for 155 fonts, out of 8000000 for 9000
+ 50238 strings out of 410379
+ 1178290 string characters out of 5788051
+ 1939416 words of memory out of 5000000
+ 70594 multiletter control sequences out of 15000+600000
+ 565979 words of font info for 153 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 102i,14n,107p,1390b,1078s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 102i,14n,107p,1390b,1080s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on ui-thesis.pdf (57 pages).
+Output written on ui-thesis.pdf (56 pages).

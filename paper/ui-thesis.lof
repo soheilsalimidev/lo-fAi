@@ -3,8 +3,8 @@
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {2-1}{\ignorespaces معماری \lr {RWKV} برای مدل های زبان }}{5}{figure.caption.8}%
 \contentsline {figure}{\numberline {2-2}{\ignorespaces عناصر موجود در یک بلوک \lr {RWKV}}}{6}{figure.caption.9}%
-\contentsline {subfigure}{\numberline {(الف)}{\ignorespaces {\centering \lr {Residual block}}}}{6}{subfigure.2.1}%
-\contentsline {subfigure}{\numberline {(ب)}{\ignorespaces {\centering \lr {Final head of language model}}}}{6}{subfigure.2.2}%
+\contentsline {subfigure}{\numberline {(الف)}{\ignorespaces {\centering \lr {Residual block} }}}{6}{subfigure.2.1}%
+\contentsline {subfigure}{\numberline {(ب)}{\ignorespaces {\centering \lr {Final head of language model} }}}{6}{subfigure.2.2}%
 \contentsline {figure}{\numberline {2-3}{\ignorespaces ساختار فایل \lr {MIDI} }}{7}{figure.caption.10}%
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {3-1}{\ignorespaces ساختار \lr {pipeline} }}{12}{figure.caption.11}%

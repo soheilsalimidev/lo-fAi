@@ -1,34 +1,11 @@
 #!/bin/bash
 cd ./RWKV-LM
-
-#######################################################################################################################
-#
-# This will generate the initial model, and save it to the output folder
-#
-#######################################################################################################################
-#
-# Please firstly create data folder & Download minipile (1498226207 tokens, around 3GB)
-# mkdir -p data
-# wget --continue -O data/minipile.idx https://huggingface.co/datasets/BlinkDL/minipile-tokenized/resolve/main/rwkv_vocab_v20230424/minipile.idx
-# wget --continue -O data/minipile.bin https://huggingface.co/datasets/BlinkDL/minipile-tokenized/resolve/main/rwkv_vocab_v20230424/minipile.bin
-#
-#######################################################################################################################
-#
-# MODEL_TYPE="x052" # x052 => rwkv-5.2 (rwkv-5 final)
-MODEL_TYPE="x060" # x060 => rwkv-6.0
-# MODEL_TYPE="mamba" # pip install mamba_ssm --upgrade
-#
+MODEL_TYPE="x060"
 N_LAYER="20"
 N_EMBD="512"
-#
+
 CTX_LEN="512" # !!! change magic_prime if you change ctx_len !!!
-PROJ_DIR="/mnt/c/Users/sohei/OneDrive/Desktop/AItuneCraft/packages/model/drumL"$N_LAYER"-D"$N_EMBD"-"$MODEL_TYPE"1" # set output folder
-#
-#######################################################################################################################
-#
-# magic_prime = the largest 3n+2 prime smaller than datalen/ctxlen-1 (= 1498226207/512-1 = 2926222.06 in this case) = 2926181 in this case
-# use https://www.dcode.fr/prime-numbers-search
-#
+PROJ_DIR="/mnt/c/Users/sohei/OneDrive/Desktop/AItuneCraft/packages/model/drumL"$N_LAYER"-D"$N_EMBD"-"$MODEL_TYPE"1"
 VOCAB_SIZE=2176
 
 python train.py --wandb "" --proj_dir $PROJ_DIR \

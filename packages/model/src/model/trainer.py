@@ -25,6 +25,7 @@ import os
 def relpath(p): return os.path.normpath(
     os.path.join(os.path.dirname(__file__), p))
 
+
 """
 Some resets
 """
@@ -235,8 +236,6 @@ if __name__ == "__main__":
                             help='The output path were model binaries will be saved', type=str)
     arg_parser.add_argument('-m', '--base_model', default=None,
                             help='Full path for base model/checkpoint', type=str)
-    arg_parser.add_argument('-r', '--lora_ckpt', default=None,
-                            help='Full path for LoRa checkpoint', type=str)
     arg_parser.add_argument('-v', '--vae_emb', default=None, nargs='*',
                             help='The pre-trained VAE embeddings. Possible options: "train" for training alone, \
                                 from scratch. "true" for training from scratch together with the main model (slow). \
@@ -260,8 +259,6 @@ if __name__ == "__main__":
     arg_parser.add_argument(
         '-d', '--lr_decay', default=str(LR_DECAY), help='Learning rate decay thru steps', type=str)
     arg_parser.add_argument('-a', '--attention', help='Enable tiny attention',
-                            action='store_true', default=False)
-    arg_parser.add_argument('-l', '--lora', help='Activate LoRa (Low-Rank Adaptation)',
                             action='store_true', default=False)
     arg_parser.add_argument('-u', '--offload', help='DeepSpeed offload',
                             action='store_true', default=False)
@@ -324,8 +321,7 @@ if __name__ == "__main__":
         'gradient_clip_val': 1.0,
         'head_qk': 0 if not args.head_qk else int(args.embed_num*2),
         'layerwise_lr': 0,
-        'lora': args.lora,
-        # 'lora_params': LORA_CONFIG,
+        'lora': None,
         'lr_decay': float(args.lr_decay),
         'lr_init': 6e-4,
         'lr_final': 2e-5,

@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (MiKTeX 23.10) (preloaded format=xelatex 2024.1.18)  2 SEP 2024 19:40
+This is XeTeX, Version 3.141592653-2.6-0.999995 (MiKTeX 23.10) (preloaded format=xelatex 2024.1.18)  3 SEP 2024 02:29
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -2678,18 +2678,46 @@ LaTeX Font Info:    Font shape `TU/TimesNewRoman(0)/m/it' will be
 ]) [40]
 LaTeX Info: Redefining \persianfont on input line 244.
  (Chapters/Appendices.tex
+LaTeX Font Info:    Calculating math sizes for size <11> on input line 7.
+
+
+LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <5.5> not available
+(Font)              size <5> substituted on input line 7.
+
+
+LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <5.5> not available
+(Font)              size <5> substituted on input line 7.
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <5.5> not available
+(Font)              size <5> substituted on input line 7.
+
+
+Overfull \hbox (35.08629pt too wide) in paragraph at lines 11--12
+[][][][][][][][]$[][][][][] [] [] [] [][][][][] [] [][][][][][][][] [] [][][][]
+[][] [] [][][] [] [][][][][] [] [][][][][][][][][][][][][][][][][][][][][][][][
+][][][][][][][][][] []$[][][][][]
+ []
+
+
+Overfull \hbox (18.6023pt too wide) in paragraph at lines 15--16
+[][][][][][][][]$[][][][][] [] [] [] [][][][][][] [] [][][] [] [][][][][][][][]
+[][][][][][][] [] [][][][][][][] [] [][][][] [] [][][][] [] [][][][][][][][] []
+ [][][][] [] [][][][] []$[][][][][]
+ []
+
 Missing character: There is no ‏ in font [lmmono12-regular]:!
 Missing character: There is no ‏ in font [lmmono12-regular]:!
 Missing character: There is no ‏ in font [lmmono12-regular]:!
 Missing character: There is no ‏ in font [lmmono12-regular]:!
 
-Overfull \hbox (43.53131pt too wide) in paragraph at lines 46--46
+Overfull \hbox (43.53131pt too wide) in paragraph at lines 49--49
 [][]    \TU/lmtt/m/n/11 python train.py --wandb "li-fAi" --proj_dir $PROJ_DIR -
 -type $MODEL_TYPE \[] []
  []
 
 
-Overfull \hbox (54.83934pt too wide) in paragraph at lines 46--46
+Overfull \hbox (54.83934pt too wide) in paragraph at lines 49--49
 [][]     \TU/lmtt/m/n/11 --data_file "text_document" --my_exit_tokens 34234278 
 --magic_prime 66851 \[] []
  []
@@ -2698,14 +2726,14 @@ Missing character: There is no ‏ in font [lmmono12-regular]:!
 Missing character: There is no ‏ in font [lmmono12-regular]:!
 Missing character: There is no ‏ in font [lmmono12-regular]:!
 Missing character: There is no ‏ in font [lmmono12-regular]:!
-) (Chapters/AbstractEn.tex) [41
+[41
 
 
 
-]
+]) (Chapters/AbstractEn.tex) [42]
 LaTeX Font Info:    Font shape `TU/TimesNewRoman(0)/m/n' will be
 (Font)              scaled to size 12.0pt on input line 273.
- [42
+ [43
 
 ]
 *geometry* verbose mode - [ newgeometry ] result:
@@ -2754,7 +2782,7 @@ LaTeX Font Info:    Font shape `TU/TimesNewRoman(0)/b/n' will be
 (Font)              scaled to size 16.0pt on input line 286.
 LaTeX Font Info:    Font shape `TU/TimesNewRoman(0)/m/n' will be
 (Font)              scaled to size 14.0pt on input line 286.
- [43
+ [44
 
 
 ] (ui-thesis.aux)
@@ -2762,6 +2790,10 @@ LaTeX Font Info:    Font shape `TU/TimesNewRoman(0)/m/n' will be
 LaTeX2e <2023-06-01> patch level 1
 L3 programming layer <2023-08-29>
  ***********
+
+
+LaTeX Font Warning: Size substitutions with differences
+(Font)              up to 0.5pt have occurred.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
@@ -2773,12 +2805,12 @@ Package rerunfilecheck Info: File `ui-thesis.out' has not changed.
 (rerunfilecheck)             Checksum: A9FB54B4E7EC02158DF15BB6F8155ABC;11344.
  ) 
 Here is how much of TeX's memory you used:
- 50238 strings out of 410379
- 1178290 string characters out of 5788051
+ 50260 strings out of 410379
+ 1178619 string characters out of 5788051
  1939416 words of memory out of 5000000
- 70594 multiletter control sequences out of 15000+600000
- 565979 words of font info for 153 fonts, out of 8000000 for 9000
+ 70614 multiletter control sequences out of 15000+600000
+ 567906 words of font info for 163 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  102i,14n,107p,1390b,1080s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on ui-thesis.pdf (56 pages).
+Output written on ui-thesis.pdf (57 pages).

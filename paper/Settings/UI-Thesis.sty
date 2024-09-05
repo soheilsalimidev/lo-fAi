@@ -260,9 +260,9 @@
 \addtocontents{toc}{~\textbf{\fontsize{13pt}{0}\selectfont {\BNazaninScaleOne عنوان}}\hfill\textbf{\fontsize{13pt}{0}\selectfont {\BNazaninScaleOne صفحه}}\vspace{-0.3cm}\protect\par} % B Nazanin 13
 \addtocontents{toc}{\protect\vspace*{10pt}}
 \addtocontents{toc}{\protect\afterpage{\hspace*{-1.7em}\bfseries عنوان \hfill صفحه}}
-\addtocontents{toc}{\protect\afterpage{\vspace*{10pt}}}
-\addtocontents{toc}{\protect\afterpage{\protect\afterpage{\hspace*{-1.1em}\bfseries عنوان \hfill صفحه}}}
-\addtocontents{toc}{\protect\afterpage{\protect\afterpage{\vspace*{10pt}}}}
+% \addtocontents{toc}{\protect\afterpage{\vspace*{10pt}}}
+% \addtocontents{toc}{\protect\afterpage{\protect\afterpage{\hspace*{-1.1em}\bfseries عنوان \hfill صفحه}}}
+% \addtocontents{toc}{\protect\afterpage{\protect\afterpage{\vspace*{10pt}}}}
 
 \addtocontents{lof}{~\textbf{\fontsize{13pt}{0}\selectfont {\BNazaninScaleOne عنوان}}\hfill\textbf{\fontsize{13pt}{0}\selectfont {\BNazaninScaleOne صفحه}}\vspace{-0.1cm}\protect\par} % B Nazanin 13
 %\addtocontents{lof}{\protect\vspace*{10pt}}
@@ -656,13 +656,13 @@
 \thispagestyle{empty}
 \phantomsection
 %\vspace*{\fill}
-%\addcontentsline{toc}{section}{چکیده}‎
+%\addcontentsline{toc}{section}{چکیده}
 \baselineskip=0.7cm
 {\BNazaninScaleOne
 {\fontsize{13pt}{0}\selectfont \par\noindent \textbf{چکیده} \baselineskip=0.7cm \\ \@AbstractFa \\ \textbf{کلیدواژه‌ها:} \baselineskip=0.7cm \@KeywordsFa} % B Nazanin 13
 }
 }
-\makeatother
+% \makeatother
 
 % ░░░░░░░▒▒▒▒▒▒▓▓▓▓ Table of Contents ▓▓▓▓▒▒▒▒▒▒░░░░░░░
 \newcommand{\MakeTableOfContents}{
@@ -670,20 +670,19 @@
   \newgeometry{top=3.5cm, left=3.5cm, right=3.5cm, bottom=3.5cm, footskip=1cm}
   \baselineskip=0.6cm
   \phantomsection
-  %\addcontentsline{toc}{section}{فهرست مطالب}‎
-  \topskip=0pt
+  % \addcontentsline{toc}{section}{فهرست مطالب}
   \tableofcontents
   \restoregeometry
 }
 
 % ░░░░░░░▒▒▒▒▒▒▓▓▓▓ List of Figures ▓▓▓▓▒▒▒▒▒▒░░░░░░░
 \newcommand{\MakeListOfFigures}{
-  \clearpage
+  % \clearpage
   \newgeometry{top=3.5cm, left=3.5cm, right=3.5cm, bottom=3.5cm, footskip=1cm}
   \baselineskip=0.6cm
   \phantomsection
-  %\addcontentsline{toc}{section}{\listfigurename}‎
-  \topskip=0pt
+  %\addcontentsline{toc}{section}{\listfigurename}
+  % \topskip=0pt
   \listoffigures
   \restoregeometry
 }
@@ -694,8 +693,8 @@
   \newgeometry{top=3.5cm, left=3.5cm, right=3.5cm, bottom=3.5cm, footskip=1cm}
   \baselineskip=0.6cm
   \phantomsection
-  %\addcontentsline{toc}{section}{\listtablename}‎
-  \topskip=0pt
+  %\addcontentsline{toc}{section}{\listtablename}
+  % \topskip=0pt
   \listoftables
   \restoregeometry
 }
@@ -706,13 +705,13 @@
   \newgeometry{top=3.5cm, left=3.5cm, right=3.5cm, bottom=3.5cm, footskip=1cm}
   \baselineskip=0.6cm
   \phantomsection
-  %\addcontentsline{toc}{section}{\listalgorithmname}‎
-  \topskip=0pt
+  %\addcontentsline{toc}{section}{\listalgorithmname}
+  % \topskip=0pt
   \listofalgorithms
   \restoregeometry
 }
 
-\makeatother
+% \makeatother
 
 % ░░░░░░░▒▒▒▒▒▒▓▓▓▓ English Abstract Page ▓▓▓▓▒▒▒▒▒▒░░░░░░░
 \makeatletter

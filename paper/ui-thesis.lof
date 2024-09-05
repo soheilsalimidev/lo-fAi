@@ -1,18 +1,18 @@
 \nobreakspace {}\textbf {\fontsize {13pt}{0}\selectfont {\BNazaninScaleOne عنوان}}\hfill \textbf {\fontsize {13pt}{0}\selectfont {\BNazaninScaleOne صفحه}}\vspace {-0.1cm}\par 
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {2-1}{\ignorespaces معماری \lr {RWKV} برای مدل های زبان }}{5}{figure.caption.8}%
-\contentsline {figure}{\numberline {2-2}{\ignorespaces عناصر موجود در یک بلوک \lr {RWKV}}}{6}{figure.caption.9}%
-\contentsline {subfigure}{\numberline {(الف)}{\ignorespaces {\centering \lr {Residual block} }}}{6}{subfigure.2.1}%
-\contentsline {subfigure}{\numberline {(ب)}{\ignorespaces {\centering \lr {Final head of language model} }}}{6}{subfigure.2.2}%
-\contentsline {figure}{\numberline {2-3}{\ignorespaces ساختار فایل \lr {MIDI} }}{7}{figure.caption.10}%
+\contentsline {figure}{\numberline {2-1}{\ignorespaces معماری \lr {RWKV} برای مدل های زبانی}}{6}{figure.caption.9}%
+\contentsline {figure}{\numberline {2-2}{\ignorespaces عناصر موجود در یک بلوک \lr {RWKV}}}{7}{figure.caption.10}%
+\contentsline {subfigure}{\numberline {(الف)}{\ignorespaces {\centering \lr {Residual block} }}}{7}{subfigure.2.1}%
+\contentsline {subfigure}{\numberline {(ب)}{\ignorespaces {\centering \lr {Final head of language model} }}}{7}{subfigure.2.2}%
+\contentsline {figure}{\numberline {2-3}{\ignorespaces ساختار فایل \lr {MIDI} }}{8}{figure.caption.11}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3-1}{\ignorespaces ساختار \lr {pipeline} }}{12}{figure.caption.11}%
-\contentsline {figure}{\numberline {3-2}{\ignorespaces نمودار های پیشرفت یادگیری مدل پیانو}}{24}{figure.caption.14}%
-\contentsline {subfigure}{\numberline {(الف)}{\ignorespaces {تغییر مقدار تابع خطا}}}{24}{subfigure.2.1}%
-\contentsline {subfigure}{\numberline {(ب)}{\ignorespaces {تغییر نرخ یادگیری}}}{24}{subfigure.2.2}%
-\contentsline {figure}{\numberline {3-3}{\ignorespaces نمودار های پیشرفت یادگیری مدل درام}}{25}{figure.caption.15}%
-\contentsline {subfigure}{\numberline {(الف)}{\ignorespaces {تغییر مقدار تابع خطا}}}{25}{subfigure.3.1}%
-\contentsline {subfigure}{\numberline {(ب)}{\ignorespaces {تغییر نرخ یادگیری}}}{25}{subfigure.3.2}%
+\contentsline {figure}{\numberline {3-1}{\ignorespaces ساختار \lr {pipeline} }}{13}{figure.caption.12}%
+\contentsline {figure}{\numberline {3-2}{\ignorespaces نمودار های پیشرفت یادگیری مدل پیانو}}{27}{figure.caption.15}%
+\contentsline {subfigure}{\numberline {(الف)}{\ignorespaces {تغییر مقدار تابع خطا}}}{27}{subfigure.2.1}%
+\contentsline {subfigure}{\numberline {(ب)}{\ignorespaces {تغییر نرخ یادگیری}}}{27}{subfigure.2.2}%
+\contentsline {figure}{\numberline {3-3}{\ignorespaces نمودار های پیشرفت یادگیری مدل درام}}{27}{figure.caption.16}%
+\contentsline {subfigure}{\numberline {(الف)}{\ignorespaces {تغییر مقدار تابع خطا}}}{27}{subfigure.3.1}%
+\contentsline {subfigure}{\numberline {(ب)}{\ignorespaces {تغییر نرخ یادگیری}}}{27}{subfigure.3.2}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }

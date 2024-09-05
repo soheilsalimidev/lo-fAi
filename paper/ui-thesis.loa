@@ -1,12 +1,12 @@
 \nobreakspace {}\textbf {\fontsize {13pt}{0}\selectfont {\BNazaninScaleOne عنوان}}\hfill \textbf {\fontsize {13pt}{0}\selectfont {\BNazaninScaleOne صفحه}}\vspace {-0.1cm}\par 
 \vspace *{10pt}
-\contentsline {algorithm}{\numberline {3-1}{\ignorespaces کوانتایز کردن سرعت}}{18}{algorithm.3.1}%
-\contentsline {algorithm}{\numberline {3-2}{\ignorespaces توکن کردن فایل های \lr {MIDI}}}{20}{algorithm.3.2}%
-\contentsline {algorithm}{\numberline {3-3}{\ignorespaces آموزش مدل}}{22}{algorithm.3.3}%
-\contentsline {algorithm}{\numberline {3-4}{\ignorespaces هماهنگی ریتم}}{26}{algorithm.3.4}%
-\contentsline {algorithm}{\numberline {3-5}{\ignorespaces شباهت ملودی }}{27}{algorithm.3.5}%
-\contentsline {algorithm}{\numberline {3-6}{\ignorespaces ثبات صدا }}{28}{algorithm.3.6}%
-\contentsline {algorithm}{\numberline {3-7}{\ignorespaces هماهنگی هارمونیک}}{28}{algorithm.3.7}%
-\contentsline {algorithm}{\numberline {3-8}{\ignorespaces تبدیل توکن به \lr {MIDI}}}{31}{algorithm.3.8}%
-\contentsline {algorithm}{\numberline {3-9}{\ignorespaces متن به \lr {MIDI message}}}{32}{algorithm.3.9}%
-\contentsline {algorithm}{\numberline {3-10}{\ignorespaces نحویه ساخت موسیقي نهایی}}{32}{algorithm.3.10}%
+\contentsline {algorithm}{\numberline {3-1}{\ignorespaces کوانتایز کردن سرعت}}{19}{algorithm.3.1}%
+\contentsline {algorithm}{\numberline {3-2}{\ignorespaces توکن کردن فایل های \lr {MIDI}}}{21}{algorithm.3.2}%
+\contentsline {algorithm}{\numberline {3-3}{\ignorespaces آموزش مدل}}{24}{algorithm.3.3}%
+\contentsline {algorithm}{\numberline {3-4}{\ignorespaces هماهنگی ریتم}}{29}{algorithm.3.4}%
+\contentsline {algorithm}{\numberline {3-5}{\ignorespaces شباهت ملودی }}{30}{algorithm.3.5}%
+\contentsline {algorithm}{\numberline {3-6}{\ignorespaces ثبات صدا }}{30}{algorithm.3.6}%
+\contentsline {algorithm}{\numberline {3-7}{\ignorespaces هماهنگی هارمونیک}}{31}{algorithm.3.7}%
+\contentsline {algorithm}{\numberline {3-8}{\ignorespaces تبدیل توکن به \lr {MIDI}}}{33}{algorithm.3.8}%
+\contentsline {algorithm}{\numberline {3-9}{\ignorespaces متن به \lr {MIDI message}}}{34}{algorithm.3.9}%
+\contentsline {algorithm}{\numberline {3-10}{\ignorespaces نحویه ساخت موسیقي نهایی}}{35}{algorithm.3.10}%

@@ -6,56 +6,60 @@
 \afterpage {\afterpage {\vspace *{10pt}}}
 \contentsline {chapter}{\numberline {1}مقدمه}{1}{chapter.1}%
 \contentsline {section}{\numberline {1-1}پیش‌گفتار}{1}{section.1.1}%
+\contentsline {section}{\numberline {1-2}ساختار گزارش}{2}{section.1.2}%
 \contentsline {chapter}{\numberline {2}بررسی پیشینه و ادبیات}{3}{chapter.2}%
 \contentsline {section}{\numberline {2-1}ادبیات موضوع}{3}{section.2.1}%
-\contentsline {subsection}{\numberline {2-1-1} معماری \lr {RWKV}:}{3}{subsection.2.1.1}%
+\contentsline {subsection}{\numberline {2-1-1}معماری \lr {RWKV}}{4}{subsection.2.1.1}%
 \contentsline {subsubsection}{\numberline {2-1-1-1}\lr {RWKV} در مقایسه با \lr {Transformer}}{4}{subsubsection.2.1.1.1}%
-\contentsline {subsection}{\numberline {2-1-2}فرمت فایل \lr {MIDI}}{5}{subsection.2.1.2}%
-\contentsline {section}{\numberline {2-2}روشهای پيشين}{8}{section.2.2}%
-\contentsline {subsection}{\numberline {2-2-1}استفاده از معماری \lr {VAE}}{8}{subsection.2.2.1}%
-\contentsline {subsubsection}{\numberline {2-2-1-1}محدودیت‌های پروژه \lr {jacbz/Lofi}}{9}{subsubsection.2.2.1.1}%
-\contentsline {subsection}{\numberline {2-2-2}استفاده از معماری \lr {RNN LSTM}}{9}{subsection.2.2.2}%
-\contentsline {chapter}{\numberline {3}آموزش مدل و معماری}{11}{chapter.3}%
-\contentsline {section}{\numberline {3-1}معماری کلی پروژه}{11}{section.3.1}%
-\contentsline {section}{\numberline {3-2}دیتاسیت ها}{12}{section.3.2}%
-\contentsline {subsubsection}{\numberline {3-2-0-1}مدل پیانو}{12}{subsubsection.3.2.0.1}%
-\contentsline {subsubsection}{\numberline {3-2-0-2}مدل درام}{13}{subsubsection.3.2.0.2}%
-\contentsline {section}{\numberline {3-3}تبدیل \lr {MIDI} به متن}{13}{section.3.3}%
-\contentsline {subsection}{\numberline {3-3-1}روش های موجود برای توکن‌سازی فایل‌های \lr {MIDI}}{13}{subsection.3.3.1}%
-\contentsline {subsection}{\numberline {3-3-2}کوانتایز کردن سرعت}{16}{subsection.3.3.2}%
-\contentsline {subsubsection}{\numberline {3-3-2-1}کوانتایز کردن خطی}{16}{subsubsection.3.3.2.1}%
-\contentsline {subsubsection}{\numberline {3-3-2-2}کوانتایز کردن نمایی}{17}{subsubsection.3.3.2.2}%
-\contentsline {subsubsection}{\numberline {3-3-2-3}چرا کوانتایز کردن نمایی؟}{17}{subsubsection.3.3.2.3}%
-\contentsline {subsection}{\numberline {3-3-3}تبدیل فایل های \lr {MIDI} به متن}{17}{subsection.3.3.3}%
-\contentsline {subsection}{\numberline {3-3-4}توکن سازی}{19}{subsection.3.3.4}%
-\contentsline {subsubsection}{\numberline {3-3-4-1}توکن‌سازی سریع با کتابخانه \lr {Tokenizer}}{19}{subsubsection.3.3.4.1}%
-\contentsline {subsubsection}{\numberline {3-3-4-2}تبدیل به فرمت \lr {JSONL}}{19}{subsubsection.3.3.4.2}%
-\contentsline {subsubsection}{\numberline {3-3-4-3}تبدیل به فرمت \lr {binidx} برای آموزش سریع}{19}{subsubsection.3.3.4.3}%
-\contentsline {section}{\numberline {3-4}آموزش مدل}{21}{section.3.4}%
-\contentsline {subsection}{\numberline {3-4-1}پارامترهای آموزش مدل}{21}{subsection.3.4.1}%
-\contentsline {subsection}{\numberline {3-4-2}نحویه آموزش مدل}{22}{subsection.3.4.2}%
-\contentsline {subsubsection}{\numberline {3-4-2-1}کتابخانه‌ها استفاده شده}{23}{subsubsection.3.4.2.1}%
-\contentsline {section}{\numberline {3-5}ارزیابی عملکرد مدل}{24}{section.3.5}%
-\contentsline {subsection}{\numberline {3-5-1}ارزیابی مدل پیانو}{24}{subsection.3.5.1}%
-\contentsline {subsection}{\numberline {3-5-2}ارزیابی مدل درام}{24}{subsection.3.5.2}%
-\contentsline {subsection}{\numberline {3-5-3}ارزیابی عملکرد مدل با معیار های موسیقی}{25}{subsection.3.5.3}%
-\contentsline {subsubsection}{\numberline {3-5-3-1}هماهنگی ریتم \lr {(Rhythm Consistency)}}{26}{subsubsection.3.5.3.1}%
-\contentsline {subsubsection}{\numberline {3-5-3-2} شباهت ملودی \lr {(Melodic Similarity Metric)}}{27}{subsubsection.3.5.3.2}%
-\contentsline {subsubsection}{\numberline {3-5-3-3} ثبات صدا \lr {(Tonal Stability Metric)}}{27}{subsubsection.3.5.3.3}%
-\contentsline {subsubsection}{\numberline {3-5-3-4} هماهنگی هارمونیک \lr {(Harmonic Coherence Metric)} }{28}{subsubsection.3.5.3.4}%
-\contentsline {subsubsection}{\numberline {3-5-3-5}نتایج این معیار ها برای مدل پیانو}{29}{subsubsection.3.5.3.5}%
-\contentsline {section}{\numberline {3-6}ساخت موسیقی نهایی}{29}{section.3.6}%
-\contentsline {chapter}{\numberline {4}ساخت خط لوله متن به \lr {lo-fi}}{33}{chapter.4}%
-\contentsline {section}{\numberline {4-1}معماری خط‌ لوله}{33}{section.4.1}%
-\contentsline {subsection}{\numberline {4-1-1}کمبودهای استفاده مستقیم از مدل \lr {MusicGen} برای تولید موسیقی}{34}{subsection.4.1.1}%
-\contentsline {section}{\numberline {4-2}ارزیابی خط لوله}{35}{section.4.2}%
-\contentsline {chapter}{\numberline {5}نتیجه‌گیری و پیشنهادها}{37}{chapter.5}%
-\contentsline {section}{\numberline {5-1}‌نتیجه‌گیری}{37}{section.5.1}%
-\contentsline {section}{\numberline {5-2}پیشنهادها}{38}{section.5.2}%
+\contentsline {subsection}{\numberline {2-1-2}فرمت فایل \lr {MIDI}}{6}{subsection.2.1.2}%
+\contentsline {section}{\numberline {2-2}روشهای پيشين}{9}{section.2.2}%
+\contentsline {subsection}{\numberline {2-2-1}استفاده از معماری \lr {VAE}}{9}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2-2-2}استفاده از شبکه‌های حافظه طولانی کوتاه مدت}{10}{subsection.2.2.2}%
+\contentsline {subsection}{\numberline {2-2-3}جمع بندی}{11}{subsection.2.2.3}%
+\contentsline {chapter}{\numberline {3}آموزش مدل و معماری}{12}{chapter.3}%
+\contentsline {section}{\numberline {3-1}مقدمه}{12}{section.3.1}%
+\contentsline {section}{\numberline {3-2}معماری کلی پروژه}{12}{section.3.2}%
+\contentsline {section}{\numberline {3-3}مجموعه داده ها}{14}{section.3.3}%
+\contentsline {subsection}{\numberline {3-3-1}مدل پیانو}{14}{subsection.3.3.1}%
+\contentsline {subsection}{\numberline {3-3-2}مدل درام}{14}{subsection.3.3.2}%
+\contentsline {section}{\numberline {3-4}تبدیل \lr {MIDI} به متن}{15}{section.3.4}%
+\contentsline {subsection}{\numberline {3-4-1}روش های موجود برای توکن‌سازی فایل‌های \lr {MIDI}}{15}{subsection.3.4.1}%
+\contentsline {subsubsection}{\numberline {3-4-1-1}فرمت \lr {MIDICompact}}{15}{subsubsection.3.4.1.1}%
+\contentsline {subsection}{\numberline {3-4-2}کوانتایز کردن سرعت}{16}{subsection.3.4.2}%
+\contentsline {subsubsection}{\numberline {3-4-2-1}کوانتایز کردن خطی}{18}{subsubsection.3.4.2.1}%
+\contentsline {subsubsection}{\numberline {3-4-2-2}کوانتایز کردن نمایی}{18}{subsubsection.3.4.2.2}%
+\contentsline {subsubsection}{\numberline {3-4-2-3}چرا کوانتایز کردن نمایی؟}{18}{subsubsection.3.4.2.3}%
+\contentsline {subsection}{\numberline {3-4-3}تبدیل فایل های \lr {MIDI} به متن}{19}{subsection.3.4.3}%
+\contentsline {subsection}{\numberline {3-4-4}توکن سازی}{20}{subsection.3.4.4}%
+\contentsline {subsubsection}{\numberline {3-4-4-1}توکن‌سازی سریع با کتابخانه \lr {Tokenizer}}{20}{subsubsection.3.4.4.1}%
+\contentsline {subsubsection}{\numberline {3-4-4-2}تبدیل به فرمت \lr {JSONL}}{22}{subsubsection.3.4.4.2}%
+\contentsline {subsubsection}{\numberline {3-4-4-3}تبدیل به فرمت \lr {binidx} برای آموزش سریع}{22}{subsubsection.3.4.4.3}%
+\contentsline {section}{\numberline {3-5}آموزش مدل}{22}{section.3.5}%
+\contentsline {subsection}{\numberline {3-5-1}پارامترهای آموزش مدل}{22}{subsection.3.5.1}%
+\contentsline {subsection}{\numberline {3-5-2}نحویه آموزش مدل}{23}{subsection.3.5.2}%
+\contentsline {subsubsection}{\numberline {3-5-2-1}کتابخانه‌ها استفاده شده}{26}{subsubsection.3.5.2.1}%
+\contentsline {section}{\numberline {3-6}ارزیابی عملکرد مدل}{26}{section.3.6}%
+\contentsline {subsection}{\numberline {3-6-1}ارزیابی مدل پیانو}{26}{subsection.3.6.1}%
+\contentsline {subsection}{\numberline {3-6-2}ارزیابی مدل درام}{26}{subsection.3.6.2}%
+\contentsline {subsection}{\numberline {3-6-3}ارزیابی عملکرد مدل با معیار های موسیقی}{28}{subsection.3.6.3}%
+\contentsline {subsubsection}{\numberline {3-6-3-1}هماهنگی ریتم \lr {(Rhythm Consistency)}}{28}{subsubsection.3.6.3.1}%
+\contentsline {subsubsection}{\numberline {3-6-3-2} شباهت ملودی \lr {(Melodic Similarity Metric)}}{29}{subsubsection.3.6.3.2}%
+\contentsline {subsubsection}{\numberline {3-6-3-3} ثبات صدا \lr {(Tonal Stability Metric)}}{29}{subsubsection.3.6.3.3}%
+\contentsline {subsubsection}{\numberline {3-6-3-4} هماهنگی هارمونیک \lr {(Harmonic Coherence Metric)} }{30}{subsubsection.3.6.3.4}%
+\contentsline {subsubsection}{\numberline {3-6-3-5}نتایج این معیار ها برای مدل پیانو}{31}{subsubsection.3.6.3.5}%
+\contentsline {section}{\numberline {3-7}ساخت موسیقی نهایی}{32}{section.3.7}%
+\contentsline {subsection}{\numberline {3-7-1}جمع بندی}{35}{subsection.3.7.1}%
+\contentsline {chapter}{\numberline {4}ساخت خط لوله متن به لو-فای}{37}{chapter.4}%
+\contentsline {section}{\numberline {4-1}معماری خط‌ لوله}{37}{section.4.1}%
+\contentsline {subsection}{\numberline {4-1-1}کمبودهای استفاده مستقیم از مدل \lr {MusicGen} برای تولید موسیقی}{38}{subsection.4.1.1}%
+\contentsline {section}{\numberline {4-2}ارزیابی خط لوله}{39}{section.4.2}%
+\contentsline {chapter}{\numberline {5}نتیجه‌گیری و پیشنهادها}{41}{chapter.5}%
+\contentsline {section}{\numberline {5-1}‌نتیجه‌گیری}{41}{section.5.1}%
+\contentsline {section}{\numberline {5-2}پیشنهادها}{42}{section.5.2}%
 \vspace {10pt}
-\contentsline {section}{منابع و مآخذ}{39}{section.5.2}%
+\contentsline {section}{منابع و مآخذ}{43}{section.5.2}%
 \setcounter {tocdepth}{-1}
 \setcounter {tocdepth}{2}
-\contentsline {chapter}{پیوست‌ها}{41}{appendix*.20}%
-\contentsline {section}{\numberline {پ-1}دسترسی به کد ها}{41}{section.Alph3.1}%
-\contentsline {section}{\numberline {پ-2} پارامترهای آموزش مدل ها}{41}{section.Alph3.2}%
+\contentsline {chapter}{پیوست‌ها}{45}{appendix*.21}%
+\contentsline {section}{\numberline {پ-1}دسترسی به کد ها}{45}{section.Alph3.1}%
+\contentsline {section}{\numberline {پ-2} پارامترهای آموزش مدل ها}{45}{section.Alph3.2}%

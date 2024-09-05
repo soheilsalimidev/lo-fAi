@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (MiKTeX 23.10) (preloaded format=xelatex 2024.1.18)  3 SEP 2024 02:29
+This is XeTeX, Version 3.141592653-2.6-0.999995 (MiKTeX 23.10) (preloaded format=xelatex 2024.9.5)  5 SEP 2024 08:06
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1732,19 +1732,19 @@ tex-text;"
 (fontspec)             - 'bold italic small caps'  (b/scit) with NFSS spec.: 
 
 
-Package fontspec Info: Could not resolve font "B Titr/BI" (it probably doesn't
+Package fontspec Info: Could not resolve font "Titr/BI" (it probably doesn't
 (fontspec)             exist).
 
 
-Package fontspec Info: Could not resolve font "B Titr/B" (it probably doesn't
+Package fontspec Info: Could not resolve font "Titr/B" (it probably doesn't
 (fontspec)             exist).
 
 
-Package fontspec Info: Could not resolve font "B Titr/I" (it probably doesn't
+Package fontspec Info: Could not resolve font "Titr/I" (it probably doesn't
 (fontspec)             exist).
 
 
-Package fontspec Info: Font family 'BTitr(0)' created for font 'B Titr' with
+Package fontspec Info: Font family 'Titr(0)' created for font 'Titr' with
 (fontspec)             options
 (fontspec)             [RawFeature={script=arab},Ligatures=PersianTeX,Scale=1].
 
@@ -1752,9 +1752,9 @@ Package fontspec Info: Font family 'BTitr(0)' created for font 'B Titr' with
 (fontspec)              This font family consists of the following NFSS
 (fontspec)             series/shapes:
 (fontspec)              
-(fontspec)             - 'normal' (m/n) with NFSS spec.: <->s*[1]"B
-(fontspec)             Titr/OT:language=dflt;script=arab;mapping=persian-tex-te
-xt;"
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <->s*[1]"Titr/OT:language=dflt;script=arab;mapping=persi
+an-tex-text;"
 (fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
 
 
@@ -1815,209 +1815,77 @@ Package: multirow 2021/03/15 v2.8 Span multiple rows of a table
 \multirow@cntb=\count417
 \multirow@dima=\skip136
 \bigstrutjot=\dimen311
-) (C:\Users\sohei\AppData\Local\Programs\MiKTeX\tex/latex/pgfplots\pgfplots.sty
-
-(C:\Users\sohei\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots\pgfplots.rev
-ision.tex)
-Package: pgfplots 2021/05/15 v1.18.1 Data Visualization (1.18.1)
-
-(C:\Users\sohei\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots\pgfplots.cod
-e.tex
-(C:\Users\sohei\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots\pgfplotscore
-.code.tex
-\t@pgfplots@toka=\toks69
-\t@pgfplots@tokb=\toks70
-\t@pgfplots@tokc=\toks71
-\pgfplots@tmpa=\dimen312
-\c@pgfplots@coordindex=\count418
-\c@pgfplots@scanlineindex=\count419
-
-(C:\Users\sohei\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots/sys\pgfplots
-sysgeneric.code.tex))
-(C:\Users\sohei\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots/libs\pgfplot
-slibrary.code.tex)
-(C:\Users\sohei\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots/oldpgfcompat
-ib\pgfplotsoldpgfsupp_loader.code.tex
-(C:\Users\sohei\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries\pgflibr
-aryfpu.code.tex)
-Package pgfplots: loading complementary utilities for your pgf version...
-\t@pgf@toka=\toks72
-\t@pgf@tokb=\toks73
-\t@pgf@tokc=\toks74
-
-(C:\Users\sohei\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots/oldpgfcompat
-ib\pgfplotsoldpgfsupp_pgfutil-common-lists.tex))
-(C:\Users\sohei\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots/util\pgfplot
-sutil.code.tex
-(C:\Users\sohei\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots/liststructur
-e\pgfplotsliststructure.code.tex)
-(C:\Users\sohei\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots/liststructur
-e\pgfplotsliststructureext.code.tex)
-(C:\Users\sohei\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots/liststructur
-e\pgfplotsarray.code.tex
-\c@pgfplotsarray@tmp=\count420
-)
-(C:\Users\sohei\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots/liststructur
-e\pgfplotsmatrix.code.tex)
-(C:\Users\sohei\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots/numtable\pgf
-plotstableshared.code.tex
-\c@pgfplotstable@counta=\count421
-\t@pgfplotstable@a=\toks75
-)
-(C:\Users\sohei\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots/liststructur
-e\pgfplotsdeque.code.tex)
-(C:\Users\sohei\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots/util\pgfplot
-sbinary.code.tex
-(C:\Users\sohei\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots/util\pgfplot
-sbinary.data.code.tex))
-(C:\Users\sohei\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots/util\pgfplot
-sutil.verb.code.tex)
-(C:\Users\sohei\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots/libs\pgflibr
-arypgfplots.surfshading.code.tex
-\c@pgfplotslibrarysurf@no=\count422
-
-(C:\Users\sohei\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots/sys\pgflibra
-rypgfplots.surfshading.pgfsys-xetex.def
-(C:\Users\sohei\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots/sys\pgflibra
-rypgfplots.surfshading.pgfsys-dvipdfmx.def
-\c@pgfplotslibrarysurf@streamlen=\count423
-))))
-(C:\Users\sohei\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots/util\pgfplot
-scolormap.code.tex
-(C:\Users\sohei\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots/util\pgfplot
-scolor.code.tex))
-(C:\Users\sohei\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots\pgfplotsstac
-kedplots.code.tex)
-(C:\Users\sohei\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots\pgfplotsplot
-handlers.code.tex
-(C:\Users\sohei\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots\pgfplotsmesh
-plothandler.code.tex
-(C:\Users\sohei\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots\pgfplotsmesh
-plotimage.code.tex)))
-(C:\Users\sohei\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots\pgfplots.sca
-ling.code.tex)
-(C:\Users\sohei\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots\pgfplotscoor
-dprocessing.code.tex)
-(C:\Users\sohei\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots\pgfplots.err
-orbars.code.tex)
-(C:\Users\sohei\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots\pgfplots.mar
-kers.code.tex)
-(C:\Users\sohei\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots\pgfplotstick
-s.code.tex)
-(C:\Users\sohei\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots\pgfplots.pat
-hs.code.tex)
-(C:\Users\sohei\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tik
-z/libraries\tikzlibrarydecorations.code.tex
-(C:\Users\sohei\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules\pgfmodule
-decorations.code.tex
-\pgfdecoratedcompleteddistance=\dimen313
-\pgfdecoratedremainingdistance=\dimen314
-\pgfdecoratedinputsegmentcompleteddistance=\dimen315
-\pgfdecoratedinputsegmentremainingdistance=\dimen316
-\pgf@decorate@distancetomove=\dimen317
-\pgf@decorate@repeatstate=\count424
-\pgfdecorationsegmentamplitude=\dimen318
-\pgfdecorationsegmentlength=\dimen319
-)
-\tikz@lib@dec@box=\box104
-)
-(C:\Users\sohei\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tik
-z/libraries\tikzlibrarydecorations.pathmorphing.code.tex
-(C:\Users\sohei\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries/decorat
-ions\pgflibrarydecorations.pathmorphing.code.tex))
-(C:\Users\sohei\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tik
-z/libraries\tikzlibrarydecorations.pathreplacing.code.tex
-(C:\Users\sohei\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries/decorat
-ions\pgflibrarydecorations.pathreplacing.code.tex))
-(C:\Users\sohei\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots/libs\tikzlib
-rarypgfplots.contourlua.code.tex)
-\pgfplots@numplots=\count425
-\pgfplots@xmin@reg=\dimen320
-\pgfplots@xmax@reg=\dimen321
-\pgfplots@ymin@reg=\dimen322
-\pgfplots@ymax@reg=\dimen323
-\pgfplots@zmin@reg=\dimen324
-\pgfplots@zmax@reg=\dimen325
-)
-(C:\Users\sohei\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tik
-z/libraries\tikzlibraryplotmarks.code.tex
-File: tikzlibraryplotmarks.code.tex 2023-01-15 v3.1.10 (3.1.10)
-
-(C:\Users\sohei\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries\pgflibr
-aryplotmarks.code.tex
-File: pgflibraryplotmarks.code.tex 2023-01-15 v3.1.10 (3.1.10)
-)))
-(C:\Users\sohei\AppData\Local\Programs\MiKTeX\tex/latex/siunitx\siunitx.sty
+) (C:\Users\sohei\AppData\Local\Programs\MiKTeX\tex/latex/siunitx\siunitx.sty
 Package: siunitx 2024-08-01 v3.3.20 A comprehensive (SI) units package
-\l__siunitx_number_uncert_offset_int=\count426
-\l__siunitx_number_exponent_fixed_int=\count427
-\l__siunitx_number_min_decimal_int=\count428
-\l__siunitx_number_min_integer_int=\count429
-\l__siunitx_number_round_precision_int=\count430
-\l__siunitx_number_lower_threshold_int=\count431
-\l__siunitx_number_upper_threshold_int=\count432
-\l__siunitx_number_group_first_int=\count433
-\l__siunitx_number_group_size_int=\count434
-\l__siunitx_number_group_minimum_int=\count435
-\l__siunitx_angle_tmp_dim=\dimen326
-\l__siunitx_angle_marker_box=\box105
-\l__siunitx_angle_unit_box=\box106
-\l__siunitx_compound_count_int=\count436
+\l__siunitx_number_uncert_offset_int=\count418
+\l__siunitx_number_exponent_fixed_int=\count419
+\l__siunitx_number_min_decimal_int=\count420
+\l__siunitx_number_min_integer_int=\count421
+\l__siunitx_number_round_precision_int=\count422
+\l__siunitx_number_lower_threshold_int=\count423
+\l__siunitx_number_upper_threshold_int=\count424
+\l__siunitx_number_group_first_int=\count425
+\l__siunitx_number_group_size_int=\count426
+\l__siunitx_number_group_minimum_int=\count427
+\l__siunitx_angle_tmp_dim=\dimen312
+\l__siunitx_angle_marker_box=\box104
+\l__siunitx_angle_unit_box=\box105
+\l__siunitx_compound_count_int=\count428
 
 (C:\Users\sohei\AppData\Local\Programs\MiKTeX\tex/latex/translations\translatio
 ns.sty
 Package: translations 2022/02/05 v1.12 internationalization of LaTeX2e packages
  (CN)
 )
-\l__siunitx_table_tmp_box=\box107
-\l__siunitx_table_tmp_dim=\dimen327
-\l__siunitx_table_column_width_dim=\dimen328
-\l__siunitx_table_integer_box=\box108
-\l__siunitx_table_decimal_box=\box109
-\l__siunitx_table_uncert_box=\box110
-\l__siunitx_table_before_box=\box111
-\l__siunitx_table_after_box=\box112
-\l__siunitx_table_before_dim=\dimen329
-\l__siunitx_table_carry_dim=\dimen330
-\l__siunitx_unit_tmp_int=\count437
-\l__siunitx_unit_position_int=\count438
-\l__siunitx_unit_total_int=\count439
+\l__siunitx_table_tmp_box=\box106
+\l__siunitx_table_tmp_dim=\dimen313
+\l__siunitx_table_column_width_dim=\dimen314
+\l__siunitx_table_integer_box=\box107
+\l__siunitx_table_decimal_box=\box108
+\l__siunitx_table_uncert_box=\box109
+\l__siunitx_table_before_box=\box110
+\l__siunitx_table_after_box=\box111
+\l__siunitx_table_before_dim=\dimen315
+\l__siunitx_table_carry_dim=\dimen316
+\l__siunitx_unit_tmp_int=\count429
+\l__siunitx_unit_position_int=\count430
+\l__siunitx_unit_total_int=\count431
 )
-\c@thm=\count440
-\c@asmp=\count441
-\c@example=\count442
+\c@thm=\count432
+\c@asmp=\count433
+\c@example=\count434
 Package translations Info: No language package found. I am going to use `englis
-h' as default language. on input line 158.
+h' as default language. on input line 156.
  (ui-thesis.aux)
 \openout1 = `ui-thesis.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 158.
-LaTeX Font Info:    ... okay on input line 158.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 158.
-LaTeX Font Info:    ... okay on input line 158.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 158.
-LaTeX Font Info:    ... okay on input line 158.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 158.
-LaTeX Font Info:    ... okay on input line 158.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 158.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 156.
+LaTeX Font Info:    ... okay on input line 156.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 156.
+LaTeX Font Info:    ... okay on input line 156.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 156.
+LaTeX Font Info:    ... okay on input line 156.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 156.
+LaTeX Font Info:    ... okay on input line 156.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 156.
 LaTeX Font Info:    Trying to load font information for TS1+cmr on input line 1
-58.
+56.
 
 (C:\Users\sohei\AppData\Local\Programs\MiKTeX\tex/latex/base\ts1cmr.fd
 File: ts1cmr.fd 2023/04/13 v2.5m Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 158.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 158.
-LaTeX Font Info:    ... okay on input line 158.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 158.
-LaTeX Font Info:    ... okay on input line 158.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 158.
-LaTeX Font Info:    ... okay on input line 158.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 158.
-LaTeX Font Info:    ... okay on input line 158.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 158.
-LaTeX Font Info:    ... okay on input line 158.
-\c@lstlisting=\count443
+LaTeX Font Info:    ... okay on input line 156.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 156.
+LaTeX Font Info:    ... okay on input line 156.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 156.
+LaTeX Font Info:    ... okay on input line 156.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 156.
+LaTeX Font Info:    ... okay on input line 156.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 156.
+LaTeX Font Info:    ... okay on input line 156.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 156.
+LaTeX Font Info:    ... okay on input line 156.
+\c@lstlisting=\count435
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: xetex
@@ -2057,17 +1925,10 @@ Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: subfig package v1.3 is loaded.
 Package caption Info: hyperref package is loaded.
 Package caption Info: End \AtBeginDocument code.
-Package hyperref Info: Link coloring ON on input line 158.
+Package hyperref Info: Link coloring ON on input line 156.
 (ui-thesis.out) (ui-thesis.out)
 \@outlinefile=\write5
 \openout5 = `ui-thesis.out'.
-
-
-
-Package pgfplots Warning: running in backwards compatibility mode (unsuitable t
-ick labels; missing features). Consider writing \pgfplotsset{compat=1.18} into 
-your preamble.
- on input line 158.
 
 
 (C:\Users\sohei\AppData\Local\Programs\MiKTeX\tex/latex/translations/dicts\tran
@@ -2143,33 +2004,33 @@ File: Settings/Allah.png Graphic file (type bmp)
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 LaTeX Font Info:    Font shape `TU/BNazanin(1)/m/n' will be
-(Font)              scaled to size 10.95pt on input line 189.
+(Font)              scaled to size 10.95pt on input line 188.
 File: Settings/UI_Logo.pdf Graphic file (type pdf)
 <use Settings/UI_Logo.pdf>
 LaTeX Font Info:    Font shape `TU/BNazanin(1)/m/n' will be
-(Font)              scaled to size 13.0pt on input line 189.
+(Font)              scaled to size 13.0pt on input line 188.
 LaTeX Font Info:    Font shape `TU/BNazanin(1)/b/n' will be
-(Font)              scaled to size 13.0pt on input line 189.
+(Font)              scaled to size 13.0pt on input line 188.
 LaTeX Font Info:    Font shape `TU/BNazanin(1)/m/n' will be
-(Font)              scaled to size 12.0pt on input line 189.
+(Font)              scaled to size 12.0pt on input line 188.
 LaTeX Font Info:    Font shape `TU/BNazanin(1)/b/n' will be
-(Font)              scaled to size 12.0pt on input line 189.
+(Font)              scaled to size 12.0pt on input line 188.
 LaTeX Font Info:    Font shape `TU/BNazanin(1)/m/n' will be
-(Font)              scaled to size 11.0pt on input line 189.
+(Font)              scaled to size 11.0pt on input line 188.
 LaTeX Font Info:    Font shape `TU/BNazanin(1)/b/n' will be
-(Font)              scaled to size 11.0pt on input line 189.
+(Font)              scaled to size 11.0pt on input line 188.
 LaTeX Font Info:    Font shape `TU/BNazanin(1)/m/n' will be
-(Font)              scaled to size 18.0pt on input line 189.
+(Font)              scaled to size 18.0pt on input line 188.
 LaTeX Font Info:    Font shape `TU/BNazanin(1)/b/n' will be
-(Font)              scaled to size 18.0pt on input line 189.
+(Font)              scaled to size 18.0pt on input line 188.
 LaTeX Font Info:    Font shape `TU/BNazanin(1)/m/n' will be
-(Font)              scaled to size 15.0pt on input line 189.
-LaTeX Font Info:    Font shape `TU/BTitr(0)/m/n' will be
-(Font)              scaled to size 15.0pt on input line 189.
+(Font)              scaled to size 15.0pt on input line 188.
+LaTeX Font Info:    Font shape `TU/Titr(0)/m/n' will be
+(Font)              scaled to size 15.0pt on input line 188.
 LaTeX Font Info:    Font shape `TU/TimesNewRoman(0)/m/n' will be
-(Font)              scaled to size 15.0pt on input line 189.
+(Font)              scaled to size 15.0pt on input line 188.
 LaTeX Font Info:    Font shape `TU/BNazanin(1)/b/n' will be
-(Font)              scaled to size 15.0pt on input line 189.
+(Font)              scaled to size 15.0pt on input line 188.
  [2
 
 
@@ -2218,9 +2079,9 @@ LaTeX Font Info:    Font shape `TU/TimesNewRoman(0)/b/n' will be
 
 ]) (Chapters/AbstractFa.tex)
 LaTeX Font Info:    Font shape `TU/TimesNewRoman(0)/m/n' will be
-(Font)              scaled to size 13.0pt on input line 196.
+(Font)              scaled to size 13.0pt on input line 195.
 
-Overfull \hbox (10.27773pt too wide) in paragraph at lines 196--197
+Overfull \hbox (10.27773pt too wide) in paragraph at lines 195--196
 []\TU/BNazanin(1)/m/n/13 استفاده در محتوای چندرسانه‌ای شده است. موسیقی ﻟﻮ-ﻓﺎﻱ، 
 با ویژگی‌های آرامش‌بخش و تسکین‌دهنده‌اش،[]
  []
@@ -2262,9 +2123,9 @@ Overfull \hbox (10.27773pt too wide) in paragraph at lines 196--197
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 LaTeX Font Info:    Font shape `TU/BNazanin(0)/m/n' will be
-(Font)              scaled to size 15.59996pt on input line 201.
+(Font)              scaled to size 15.59996pt on input line 200.
 LaTeX Font Info:    Font shape `TU/BNazanin(0)/b/n' will be
-(Font)              scaled to size 15.59996pt on input line 201.
+(Font)              scaled to size 15.59996pt on input line 200.
  (ui-thesis.toc
 LaTeX Font Info:    Font shape `TU/BNazanin(0)/b/n' will be
 (Font)              scaled to size 13.13995pt on input line 1.
@@ -2278,9 +2139,6 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 7.
 (C:\Users\sohei\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Font shape `TU/TimesNewRoman(0)/b/n' will be
-(Font)              scaled to size 13.0pt on input line 48.
-
 [1
 
 
@@ -2408,9 +2266,9 @@ LaTeX Font Info:    Font shape `TU/TimesNewRoman(0)/b/n' will be
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 LaTeX Font Info:    Font shape `TU/BNazanin(0)/m/n' will be
-(Font)              scaled to size 17.99995pt on input line 204.
+(Font)              scaled to size 17.99995pt on input line 203.
 LaTeX Font Info:    Font shape `TU/BNazanin(0)/b/n' will be
-(Font)              scaled to size 17.99995pt on input line 204.
+(Font)              scaled to size 17.99995pt on input line 203.
  (ui-thesis.loa
 LaTeX Font Info:    Font shape `TU/TimesNewRoman(0)/m/n' will be
 (Font)              scaled to size 10.95pt on input line 4.
@@ -2454,67 +2312,73 @@ LaTeX Font Info:    Font shape `TU/TimesNewRoman(0)/m/n' will be
 ]) (Chapters/Chapter2.tex [2]
 فصل 2.
 LaTeX Font Info:    Font shape `TU/BNazanin(0)/m/n' will be
-(Font)              scaled to size 14.39996pt on input line 6.
+(Font)              scaled to size 14.39996pt on input line 8.
 LaTeX Font Info:    Font shape `TU/BNazanin(0)/b/n' will be
-(Font)              scaled to size 14.39996pt on input line 6.
+(Font)              scaled to size 14.39996pt on input line 8.
+LaTeX Font Info:    Font shape `TU/TimesNewRoman(0)/b/n' will be
+(Font)              scaled to size 13.0pt on input line 8.
 [3
 
 ]
-LaTeX Font Info:    Font shape `TU/BNazanin(0)/m/n' will be
-(Font)              scaled to size 7.19998pt on input line 13.
+Missing character: There is no T in font B Nazanin/OT:language=dflt;script=arab
+;mapping=persian-tex-text;!
+
+Overfull \hbox (1.79878pt too wide) in paragraph at lines 18--19
+[]$\OML/cmm/m/it/10.95 O\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 T[] \OT1/cmr/m/
+n/10.95 + \OML/cmm/m/it/10.95 Td\OT1/cmr/m/n/10.95 )$ \TU/BNazanin(0)/m/n/10.95
+ است. این بدان معناست که []\TU/TimesNewRoman(0)/m/n/10.95 RWKV[] \TU/BNazanin(0
+)/m/n/10.95 به حافظه کمتری برای ذخیره وزن‌ها و فعال‌سازی‌های[]
+ []
+
+
+Overfull \vbox (1.13786pt too high) has occurred while \output is active []
+
+
+[4]
+LaTeX Font Info:    Font shape `TU/TimesNewRoman(0)/b/n' will be
+(Font)              scaled to size 12.0pt on input line 33.
 File: Figures/RWKV-arch.png Graphic file (type bmp)
 <Figures/RWKV-arch.png>
-LaTeX Font Info:    Font shape `TU/TimesNewRoman(0)/b/n' will be
-(Font)              scaled to size 12.0pt on input line 26.
 File: Figures/x3.png Graphic file (type bmp)
 <Figures/x3.png>
 File: Figures/x2.png Graphic file (type bmp)
 <Figures/x2.png>
-
-
-LaTeX Warning: Reference `Fig:RWKVB' on page 4 undefined on input line 41.
-
-
-LaTeX Warning: Reference `Fig:RWKVC' on page 4 undefined on input line 41.
-
-
-Overfull \vbox (2.9753pt too high) has occurred while \output is active []
-
-
-[4] [5] [6]
+ [5] [6] [7]
 File: Figures/Screenshot 2024-08-29 021655.png Graphic file (type bmp)
 <Figures/Screenshot 2024-08-29 021655.png>
 
-Overfull \hbox (45.1288pt too wide) in paragraph at lines 84--86
+Overfull \hbox (45.1288pt too wide) in paragraph at lines 109--111
  [][][][][][] 
  []
 
-[7] [8] [9]) (Chapters/Chapter3.tex [10]
+[8] [9] [10]) (Chapters/Chapter3.tex [11]
 فصل 3.
+[12
+
+]
 File: Figures/pipe.png Graphic file (type bmp)
 <Figures/pipe.png>
 
-Overfull \hbox (94.30571pt too wide) in paragraph at lines 14--16
+Overfull \hbox (94.30571pt too wide) in paragraph at lines 17--19
  [][][][][][] 
  []
 
-[11
-
-]
-
-Package hyperref Warning: Difference (2) between bookmark levels is greater 
-(hyperref)                than one, level fixed on input line 26.
-
-[12]
+[13]
 LaTeX Font Info:    Font shape `TU/TimesNewRoman(0)/b/n' will be
-(Font)              scaled to size 10.95pt on input line 32.
+(Font)              scaled to size 10.95pt on input line 35.
+ [14]
 LaTeX Font Info:    Font shape `TU/TimesNewRoman(0)/b/n' will be
-(Font)              scaled to size 14.0pt on input line 56.
- [13] [14] [15]
-Overfull \vbox (2.99881pt too high) has occurred while \output is active []
+(Font)              scaled to size 14.0pt on input line 59.
+LaTeX Font Info:    Font shape `TU/BNazanin(0)/m/n' will be
+(Font)              scaled to size 7.19998pt on input line 92.
 
+Overfull \hbox (7.61348pt too wide) in paragraph at lines 91--93
+[][]\TU/lmtt/m/n/10.95 <Note>\TU/BNazanin(0)/m/n/10.95 : این نشان دهنده نوتی اس
+ت که نواخته می‌شود، جایی که []\TU/TimesNewRoman(0)/m/n/10.95 <Note>[] \TU/BNaza
+nin(0)/m/n/10.95 یک مقدار هگزادسیمال[]
+ []
 
-[16]
+[15] [16] [17]
 
 Package fontspec Info: Font family 'TimesNewRoman(1)' created for font 'Times
 (fontspec)             New Roman' with options [Ligatures=TeX].
@@ -2536,33 +2400,25 @@ Package fontspec Info: Font family 'TimesNewRoman(1)' created for font 'Times
 (fontspec)             - 'bold italic small caps'  (b/scit) with NFSS spec.: 
 
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
-put line 230.
+put line 234.
 
 
 LaTeX Font Warning: Font shape `TU/TimesNewRoman(1)/m/sc' undefined
-(Font)              using `TU/TimesNewRoman(1)/m/n' instead on input line 234.
+(Font)              using `TU/TimesNewRoman(1)/m/n' instead on input line 238.
 
 
-Overfull \hbox (75.31218pt too wide) in paragraph at lines 239--240
+Overfull \hbox (75.31218pt too wide) in paragraph at lines 243--244
 [][] $\OML/cmm/m/it/10.95 bin \OMS/cmsy/m/n/10.95   d[] \OML/cmm/m/it/10.95 =bi
 n[]size\OMS/cmsy/m/n/10.95 e$ []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 249--250
+Underfull \hbox (badness 10000) in paragraph at lines 253--254
 [][] $\OML/cmm/m/it/10.95 velocity \OMS/cmsy/m/n/10.95   []\OT1/cmr/m/n/10.95 (
 0\OML/cmm/m/it/10.95 ; \OMS/cmsy/m/n/10.95 d[] ^^A$[]
  []
 
-Missing character: There is no – in font B Nazanin Bold/OT:language=dflt;script
-=arab;mapping=persian-tex-text;!
-Missing character: There is no – in font B Nazanin Bold/OT:language=dflt;script
-=arab;mapping=persian-tex-text;!
-Missing character: There is no – in font B Nazanin Bold/OT:language=dflt;script
-=arab;mapping=persian-tex-text;!
-Missing character: There is no – in font B Nazanin Bold/OT:language=dflt;script
-=arab;mapping=persian-tex-text;!
-[17]
+[18]
 Missing character: There is no – in font B Nazanin Bold/OT:language=dflt;script
 =arab;mapping=persian-tex-text;!
 Missing character: There is no – in font B Nazanin Bold/OT:language=dflt;script
@@ -2573,22 +2429,30 @@ Missing character: There is no – in font B Nazanin Bold/OT:language=dflt;scrip
 =arab;mapping=persian-tex-text;!
 Missing character: There is no – in font B Nazanin Bold/OT:language=dflt;script
 =arab;mapping=persian-tex-text;!
-[18] [19] [20]
+[19]
+Missing character: There is no – in font B Nazanin Bold/OT:language=dflt;script
+=arab;mapping=persian-tex-text;!
+Missing character: There is no – in font B Nazanin Bold/OT:language=dflt;script
+=arab;mapping=persian-tex-text;!
+Missing character: There is no – in font B Nazanin Bold/OT:language=dflt;script
+=arab;mapping=persian-tex-text;!
+Missing character: There is no – in font B Nazanin Bold/OT:language=dflt;script
+=arab;mapping=persian-tex-text;!
+[20] [21]
 LaTeX Font Info:    Font shape `TU/TimesNewRoman(0)/m/n' will be
-(Font)              scaled to size 8.0pt on input line 439.
-
-Overfull \hbox (1.2627pt too wide) in paragraph at lines 446--447
+(Font)              scaled to size 8.0pt on input line 443.
+ [22]
+Overfull \hbox (1.2627pt too wide) in paragraph at lines 451--452
 [][]\TU/BNazanin(0)/m/n/10.95 در این پروژه ما از کتابخانه []\TU/TimesNewRoman(1
 )/m/sc/10.95 DeepSpeed[] \TU/BNazanin(0)/m/n/10.95 نیز استفاده کردیم توضیحاتی د
 رباره پارامترهای []\TU/TimesNewRoman(1)/m/sc/10.95 DeepSpeed[][]
  []
 
-[21]
 
-LaTeX Warning: Reference `ا' on page 22 undefined on input line 451.
+LaTeX Warning: Reference `ا' on page 23 undefined on input line 456.
 
 
-Underfull \hbox (badness 2103) in paragraph at lines 487--488
+Underfull \hbox (badness 2103) in paragraph at lines 492--493
 [][]\TU/TimesNewRoman(1)/b/n/10.95 if \TU/TimesNewRoman(1)/m/sc/10.95 trainer.i
 s_global_zero \TU/TimesNewRoman(1)/b/n/10.95 and \TU/TimesNewRoman(1)/m/sc/10.9
 5 (args.epoch_save > 0 \TU/TimesNewRoman(1)/b/n/10.95 and \TU/TimesNewRoman(1)/
@@ -2596,87 +2460,82 @@ m/sc/10.95 trainer.current_epoch %[]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 488--489
+Underfull \hbox (badness 10000) in paragraph at lines 493--494
 [][] \TU/TimesNewRoman(1)/m/sc/10.95 save_pth(pl_module.state_dict(), f’args.pr
 oj_dir/self.prefix_args.epoch_begin +[]
  []
 
-[22]
-Overfull \hbox (35.12277pt too wide) in paragraph at lines 515--521
+[23] [24]
+Overfull \hbox (35.12277pt too wide) in paragraph at lines 520--526
 [][]\TU/BNazanin(0)/m/n/10.95 لاگ‌گیری و نظارت گسترده بخش‌های جدایی‌ناپذیر این 
 بخش هستند. متدهای \TU/lmtt/m/n/10.95 on_train_batch_start[]
  []
 
-[23]
+[25]
 File: Figures/loss-pi.png Graphic file (type bmp)
 <Figures/loss-pi.png>
 File: Figures/lr-pi.png Graphic file (type bmp)
 <Figures/lr-pi.png>
- [24]
 File: Figures/loss-dr.png Graphic file (type bmp)
 <Figures/loss-dr.png>
 File: Figures/lr-dr.png Graphic file (type bmp)
 <Figures/lr-dr.png>
- [25] [26] [27] [28] [29]
-Underfull \hbox (badness 10000) in paragraph at lines 867--868
+ [26] [27] [28] [29] [30] [31] [32] [33]
+Underfull \hbox (badness 10000) in paragraph at lines 884--885
 [][] $[]\OT1/cmr/m/n/10.95 ([](\OML/cmm/m/it/10.95 data\OT1/cmr/m/n/10.95 )\OML
 /cmm/m/it/10.95 ; tempo\OT1/cmr/m/n/10.95 ) \OMS/cmsy/m/n/10.95  $[]
  []
 
 
-Overfull \hbox (13.64526pt too wide) in paragraph at lines 868--869
+Overfull \hbox (13.64526pt too wide) in paragraph at lines 885--886
 [][] $[] \OMS/cmsy/m/n/10.95   []\OT1/cmr/m/n/10.95 ([]([]))$[]
  []
 
 
-Overfull \hbox (13.93053pt too wide) in paragraph at lines 869--870
+Overfull \hbox (13.93053pt too wide) in paragraph at lines 886--887
 [][] $[]\OT1/cmr/m/n/10.95 ([]([])\OML/cmm/m/it/10.95 ; []\OT1/cmr/m/n/10.95 ([
 ]))$[]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 873--874
+Underfull \hbox (badness 10000) in paragraph at lines 890--891
 [][] $[]\OT1/cmr/m/n/10.95 ([](\OML/cmm/m/it/10.95 data\OT1/cmr/m/n/10.95 )\OML
 /cmm/m/it/10.95 ; \OT1/cmr/m/n/10.95 400\OML/cmm/m/it/10.95 ; \OT1/cmr/m/n/10.9
 5 9) \OMS/cmsy/m/n/10.95  $[]
  []
 
 
-Overfull \hbox (39.47696pt too wide) in paragraph at lines 874--875
+Overfull \hbox (39.47696pt too wide) in paragraph at lines 891--892
 [][] $[]\OT1/cmr/m/n/10.95 ([]([])\OML/cmm/m/it/10.95 ; []\OT1/cmr/m/n/10.95 ([
 ]))$[]
  []
 
-[30] [31]) (Chapters/Chapter4.tex [32]
+[34]) (Chapters/Chapter4.tex [35] [36]
 فصل 4.
-[33
+[37
 
-] [34]
+] [38]
 Underfull \hbox (badness 10000) in alignment at lines 92--92
 [][] 
  []
 
-[35]) (Chapters/ChapterEnd.tex [36]
+[39]) (Chapters/ChapterEnd.tex [40]
 فصل 5.
-[37
+[41
 
-]
-
-LaTeX Warning: Citation `cai2024survey' on page 38 undefined on input line 18.
-
-) [38]
+]) [42]
 LaTeX Font Info:    Font shape `TU/BNazanin(0)/m/n' will be
-(Font)              scaled to size 13.19997pt on input line 227.
+(Font)              scaled to size 13.19997pt on input line 226.
  (ui-thesis.bbl
 LaTeX Font Info:    Font shape `TU/TimesNewRoman(0)/m/n' will be
 (Font)              scaled to size 11.0pt on input line 7.
 LaTeX Font Info:    Font shape `TU/TimesNewRoman(0)/m/it' will be
-(Font)              scaled to size 11.0pt on input line 45.
- [39
+(Font)              scaled to size 11.0pt on input line 22.
+ [43
 
 
-]) [40]
-LaTeX Info: Redefining \persianfont on input line 244.
+]) [44]
+LaTeX Info: Redefining \persianfont on input line 243.
  (Chapters/Appendices.tex
 LaTeX Font Info:    Calculating math sizes for size <11> on input line 7.
 
@@ -2726,14 +2585,14 @@ Missing character: There is no ‏ in font [lmmono12-regular]:!
 Missing character: There is no ‏ in font [lmmono12-regular]:!
 Missing character: There is no ‏ in font [lmmono12-regular]:!
 Missing character: There is no ‏ in font [lmmono12-regular]:!
-[41
+[45
 
 
 
-]) (Chapters/AbstractEn.tex) [42]
+]) (Chapters/AbstractEn.tex) [46]
 LaTeX Font Info:    Font shape `TU/TimesNewRoman(0)/m/n' will be
-(Font)              scaled to size 12.0pt on input line 273.
- [43
+(Font)              scaled to size 12.0pt on input line 272.
+ [47
 
 ]
 *geometry* verbose mode - [ newgeometry ] result:
@@ -2771,18 +2630,18 @@ LaTeX Font Info:    Font shape `TU/TimesNewRoman(0)/m/n' will be
 File: Settings/UI_Logo.pdf Graphic file (type pdf)
 <use Settings/UI_Logo.pdf>
 LaTeX Font Info:    Font shape `TU/TimesNewRoman(0)/b/n' will be
-(Font)              scaled to size 11.0pt on input line 286.
+(Font)              scaled to size 11.0pt on input line 285.
 LaTeX Font Info:    Font shape `TU/TimesNewRoman(0)/m/n' will be
-(Font)              scaled to size 10.0pt on input line 286.
+(Font)              scaled to size 10.0pt on input line 285.
 LaTeX Font Info:    Font shape `TU/TimesNewRoman(0)/b/n' will be
-(Font)              scaled to size 10.0pt on input line 286.
+(Font)              scaled to size 10.0pt on input line 285.
 LaTeX Font Info:    Font shape `TU/TimesNewRoman(0)/m/n' will be
-(Font)              scaled to size 16.0pt on input line 286.
+(Font)              scaled to size 16.0pt on input line 285.
 LaTeX Font Info:    Font shape `TU/TimesNewRoman(0)/b/n' will be
-(Font)              scaled to size 16.0pt on input line 286.
+(Font)              scaled to size 16.0pt on input line 285.
 LaTeX Font Info:    Font shape `TU/TimesNewRoman(0)/m/n' will be
-(Font)              scaled to size 14.0pt on input line 286.
- [44
+(Font)              scaled to size 14.0pt on input line 285.
+ [48
 
 
 ] (ui-thesis.aux)
@@ -2802,15 +2661,15 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 LaTeX Warning: There were undefined references.
 
 Package rerunfilecheck Info: File `ui-thesis.out' has not changed.
-(rerunfilecheck)             Checksum: A9FB54B4E7EC02158DF15BB6F8155ABC;11344.
+(rerunfilecheck)             Checksum: FF2889358F4641C88450BE1E889BE288;11911.
  ) 
 Here is how much of TeX's memory you used:
- 50260 strings out of 410379
- 1178619 string characters out of 5788051
- 1939416 words of memory out of 5000000
- 70614 multiletter control sequences out of 15000+600000
- 567906 words of font info for 163 fonts, out of 8000000 for 9000
+ 40314 strings out of 410379
+ 842334 string characters out of 5788052
+ 1936416 words of memory out of 256000000
+ 60796 multiletter control sequences out of 15000+600000
+ 569451 words of font info for 169 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 102i,14n,107p,1390b,1080s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 102i,14n,107p,1390b,1082s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on ui-thesis.pdf (57 pages).
+Output written on ui-thesis.pdf (61 pages).

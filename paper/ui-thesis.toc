@@ -7,8 +7,9 @@
 \contentsline {chapter}{\numberline {2}بررسی پیشینه و ادبیات}{3}{chapter.2}%
 \contentsline {section}{\numberline {2-1}ادبیات موضوع}{3}{section.2.1}%
 \contentsline {subsection}{\numberline {2-1-1}معماری \lr {RWKV}}{4}{subsection.2.1.1}%
-\contentsline {subsubsection}{\numberline {2-1-1-1}\lr {RWKV} در مقایسه با \lr {Transformer}}{4}{subsubsection.2.1.1.1}%
-\contentsline {subsection}{\numberline {2-1-2}فرمت فایل \lr {MIDI}}{6}{subsection.2.1.2}%
+\contentsline {subsubsection}{\numberline {2-1-1-1}نحویه عملکرد \lr {RWKV}}{4}{subsubsection.2.1.1.1}%
+\contentsline {subsubsection}{\numberline {2-1-1-2}\lr {RWKV} در مقایسه با \lr {Transformer}}{5}{subsubsection.2.1.1.2}%
+\contentsline {subsection}{\numberline {2-1-2}فرمت فایل \lr {MIDI}}{7}{subsection.2.1.2}%
 \contentsline {section}{\numberline {2-2}روشهای پيشين}{9}{section.2.2}%
 \contentsline {subsection}{\numberline {2-2-1}استفاده از معماری \lr {VAE}}{9}{subsection.2.2.1}%
 \contentsline {subsection}{\numberline {2-2-2}استفاده از شبکه‌های حافظه طولانی کوتاه مدت}{10}{subsection.2.2.2}%
@@ -44,19 +45,20 @@
 \contentsline {subsubsection}{\numberline {3-6-3-3} ثبات صدا \lr {(Tonal Stability Metric)}}{29}{subsubsection.3.6.3.3}%
 \contentsline {subsubsection}{\numberline {3-6-3-4} هماهنگی هارمونیک \lr {(Harmonic Coherence Metric)} }{30}{subsubsection.3.6.3.4}%
 \contentsline {subsubsection}{\numberline {3-6-3-5}نتایج این معیار ها برای مدل پیانو}{31}{subsubsection.3.6.3.5}%
-\contentsline {section}{\numberline {3-7}ساخت موسیقی نهایی}{32}{section.3.7}%
-\contentsline {subsection}{\numberline {3-7-1}جمع بندی}{35}{subsection.3.7.1}%
-\contentsline {chapter}{\numberline {4}ساخت خط لوله متن به لو-فای}{37}{chapter.4}%
-\contentsline {section}{\numberline {4-1}معماری خط‌ لوله}{37}{section.4.1}%
-\contentsline {subsection}{\numberline {4-1-1}کمبودهای استفاده مستقیم از مدل \lr {MusicGen} برای تولید موسیقی}{38}{subsection.4.1.1}%
-\contentsline {section}{\numberline {4-2}ارزیابی خط لوله}{39}{section.4.2}%
-\contentsline {chapter}{\numberline {5}نتیجه‌گیری و پیشنهادها}{41}{chapter.5}%
-\contentsline {section}{\numberline {5-1}‌نتیجه‌گیری}{41}{section.5.1}%
-\contentsline {section}{\numberline {5-2}پیشنهادها}{42}{section.5.2}%
+\contentsline {section}{\numberline {3-7}استنتاج مدل ها}{32}{section.3.7}%
+\contentsline {subsection}{\numberline {3-7-1}ساخت موسیقی نهایی}{35}{subsection.3.7.1}%
+\contentsline {subsection}{\numberline {3-7-2}جمع بندی}{39}{subsection.3.7.2}%
+\contentsline {chapter}{\numberline {4}ساخت خط لوله متن به لو-فای}{40}{chapter.4}%
+\contentsline {section}{\numberline {4-1}معماری خط‌ لوله}{40}{section.4.1}%
+\contentsline {subsection}{\numberline {4-1-1}کمبودهای استفاده مستقیم از مدل \lr {MusicGen} برای تولید موسیقی}{41}{subsection.4.1.1}%
+\contentsline {section}{\numberline {4-2}ارزیابی خط لوله}{42}{section.4.2}%
+\contentsline {chapter}{\numberline {5}نتیجه‌گیری و پیشنهادها}{44}{chapter.5}%
+\contentsline {section}{\numberline {5-1}‌نتیجه‌گیری}{44}{section.5.1}%
+\contentsline {section}{\numberline {5-2}پیشنهادها}{45}{section.5.2}%
 \vspace {10pt}
-\contentsline {section}{منابع و مآخذ}{43}{section.5.2}%
+\contentsline {section}{منابع و مآخذ}{46}{section.5.2}%
 \setcounter {tocdepth}{-1}
 \setcounter {tocdepth}{2}
-\contentsline {chapter}{پیوست‌ها}{45}{appendix*.21}%
-\contentsline {section}{\numberline {پ-1}دسترسی به کد ها}{45}{section.Alph3.1}%
-\contentsline {section}{\numberline {پ-2} پارامترهای آموزش مدل ها}{45}{section.Alph3.2}%
+\contentsline {chapter}{پیوست‌ها}{48}{appendix*.22}%
+\contentsline {section}{\numberline {پ-1}دسترسی به کد ها}{48}{section.Alph3.1}%
+\contentsline {section}{\numberline {پ-2} پارامترهای آموزش مدل ها}{48}{section.Alph3.2}%

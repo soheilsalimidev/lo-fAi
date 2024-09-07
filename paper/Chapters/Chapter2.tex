@@ -9,6 +9,38 @@
 
 \lr{RWKV} \LTRfootnote{Receptance Weighted Key Value} \cite{RWKV} \cite{peng2024eagle} یک معماری شبکه عصبی است که ترکیبی از مزایای شبکه‌های عصبی بازگشتی \LTRfootnote{Recurrent Neural Networks} \cite{1808.03314} و ترانسفورمرها \LTRfootnote{Transformers} \cite{1706.03762} را به کار می‌گیرد. این معماری برای پردازش کارآمد دنباله‌های داده طراحی شده است، مانند ﺷﺒﻜﻪ ﻫﺎی ﻋﺼﺒﻲ ﺑﺎﺯگشتی، اما همچنین از قابلیت‌های پردازش موازی ترانسفورمرها بهره می‌برد. این رویکرد ترکیبی به \lr{RWKV} اجازه می‌دهد تا وابستگی‌های بلندمدت در داده‌ها را حفظ کند، که این مسئله برای ﺷﺒﻜﻪ ﻫﺎی ﻋﺼﺒﻲ ﺑﺎﺯگشتی ها به دلیل مشکلاتی مانند مشکل ناپدید شدن گرادیان چالش‌برانگیز است. در عین حال، از مقیاس‌پذیری و عملکرد ترانسفورمرها، به ویژه در طول آموزش، بهره‌مند می‌شود. به طور کلی، \lr{RWKV} می‌تواند به صورت موازی مانند ترانسفورمرها آموزش ببیند اما در زمان استنتاج \LTRfootnote{Inference} به صورت دنباله‌ای عمل کند، که این ویژگی آن را هم کارآمد و هم قدرتمند برای وظایف مختلف پردازش زبان طبیعی می‌سازد.
 
+
+\subsubsection{نحویه عملکرد \lr{RWKV}} \label{sec:rwkvWorks}
+
+همانطور که در \xf{Fig:RWKV} نشان داده شده است،
+مدل با یک لایه \lr{embedding} شروع می‌شود که، پس از آن، چندین  \lr{residual blocks} مشابه به صورت متوالی قرار گرفته‌اند. این بلوک‌ها در \xf{fig:RWKVB} نشان داده شده‌اند. پس از آخرین بلوک که در \xf{fig:RWKVC} نشان داده شده است، یک سر خروجی ساده شامل یک لایه نرمال‌سازی \LTRfootnote{\lr{LayerNorm}} و یک پروجکشن خطی برای تولید لاجیت‌ها \LTRfootnote{\lr{Logits}} جهت پیش‌بینی توکن بعدی و محاسبه‌ی خطای آنتروپی متقاطع \LTRfootnote{\lr{Cross-entropy loss}} در طول آموزش استفاده می‌شود.
+
+در حالت استنتاج، \lr{RWKV} به حالت شبیه به شبکه عصبی بازگشتی تغییر می‌کند و هر توکن را به صورت جداگانه پردازش می‌کند در حالی که یک حالت \LTRfootnote{Stateful} را حفظ می‌کند. این پردازش حالت‌دار برای تولید توالی‌های منسجم و مرتبط از نظر مفهومی بسیار مهم است، زیرا بدون نیاز به نگاه به جلو \LTRfootnote{Look-ahead} یا ماسک \LTRfootnote{Masking} کردن توکن‌های آینده، ترتیب توکن‌ها را پیگیری می‌کند.
+
+ماهیت حالت‌دار حالت استنتاج \lr{RWKV} تضمین می‌کند که هر توکن تولید شده توسط توکن‌های قبلی اطلاع‌رسانی می‌شود و انسجام و ارتباط در توالی تولید شده حفظ می‌شود. با اجتناب از تکنیک‌های ماسکینگ \lr{RWKV} فرآیند تولید را ساده می‌کند، پیچیدگی معماری را کاهش می‌دهد و کارایی را افزایش می‌دهد. این رویکرد منحصر به فرد به \lr{RWKV} اجازه می‌دهد تا خروجی‌های متنی با کیفیت بالا تولید کند و آن را به یک پیشرفت قابل توجه در زمینه مدل‌های مولد تبدیل کند.
+
+\begin{figure}[!htb]
+      \centering
+      \includegraphics[scale=0.5]{Figures/RWKV-arch.png}
+      \caption{معماری \lr{RWKV} برای مدل های زبانی}
+      \vspace{0.7em}
+      \caption*{گرفته شده از \cite{RWKV}}
+      \label{Fig:RWKV}
+\end{figure}
+
+\begin{figure}%
+      \centering
+      \subfloat[\centering \lr{Residual block} \label{fig:RWKVB}]{\includegraphics[scale=0.15]{Figures/x3.png} }%
+      \qquad
+      \subfloat[\centering \lr{Final head of language model} \label{fig:RWKVC}]{\includegraphics[scale=0.15]{Figures/x2.png} }%
+      \caption{عناصر موجود در یک بلوک \lr{RWKV}}
+      \vspace{0.7em}
+      \caption*{گرفته شده از \cite{RWKV}}
+      \label{fig:RWKVBocks}
+      %
+\end{figure}
+
+
 \subsubsection{\lr{RWKV} در مقایسه با \lr{Transformer}}
 در مورد آموزش یک مدل زبانی برای تولید موسیقی لو-فای، ما تصمیم گرفتیم از معماری \lr{RWKV} به جای معماری ترانسفورمر استفاده کنیم. یکی از دلایل اصلی این انتخاب این است که \lr{RWKV} برای کارایی بیشتر و اجرای آسان‌تر روی \lr{CPU} طراحی شده است که برای پروژه ما مفید است.
 
@@ -26,7 +58,7 @@
             \multicolumn{1}{|c|}{\textbf{مدل}}                            & \multicolumn{1}{c|}{\textbf{پیچیدگی زمانی}} & \multicolumn{1}{c|}{\textbf{پیچیدگی فضایی}} \\
             \hline
             \lr{Transformer}                                              & $O(T^2d)$                                   & $O(T^2 + Td)$                               \\
-            \lr{Linear Transformers} \cite{katharopoulos2020transformers} & $O(Td^2)$                                   & $O(Td + d^2)$                               \\
+            \lr{Linear Transformers \cite{katharopoulos2020transformers}} & $O(Td^2)$                                   & $O(Td + d^2)$                               \\
             \lr{RWKV}                                                     & $O(Td)$                                     & $O(d)$                                      \\
             \hline
       \end{tabular}
@@ -35,35 +67,12 @@
       \label{tab:inference_complexity}
 \end{table}
 
-
 علاوه بر این، \lr{RWKV} یک مکانیزم توجه \LTRfootnote{Attention mechanism} را در خود جای داده است که به مدل اجازه می‌دهد هنگام تولید توکن بعدی، بر روی بخش‌های خاصی از دنباله ورودی تمرکز کند. این مکانیزم به \lr{RWKV} امکان می‌دهد تا وابستگی‌ها و روابط بلندمدت بین توکن‌ها را به دست آورد، در حالی که همچنان کارایی یک مدل ترتیبی را حفظ می‌کند. مکانیزم توجه در \lr{RWKV} به گونه‌ای طراحی شده است که از نظر محاسباتی کارآمد باشد و از ترکیبی از تبدیل‌های خطی و ضرب نقطه‌ای برای محاسبه وزن‌های توجه استفاده کند.
 
 معماری \lr{RWKV} .به طور خاص برای پردازش داده‌های جریانی طراحی شده است. \lr{RWKV} داده‌های ورودی را به صورت جریانی پردازش می‌کند، به طوری که هر توکن ورودی به محض ورود پردازش می‌شود، بدون نیاز به بارگذاری کل دنباله ورودی در حافظه. این به \lr{RWKV} اجازه می‌دهد تا دنباله‌های ورودی بزرگ، مانند آهنگ‌ها یا فایل‌های صوتی طولانی، را بدون تمام شدن حافظه مدیریت کند.
 
 به طور کلی، معماری \lr{RWKV} تعادلی بهتر بین عملکرد، کارایی و سهولت استقرار فراهم می‌کند و آن را به یک انتخاب ایده‌آل برای تولید موسیقی لو-فای تبدیل می‌کند.
-\begin{figure}[!htb]
-      \centering
-      \includegraphics[scale=0.5]{Figures/RWKV-arch.png}
-      \caption{معماری \lr{RWKV} برای مدل های زبانی}
-      \vspace{0.7em}
-      \caption*{گرفته شده از \cite{RWKV}}
-      \label{Fig:RWKV}
-\end{figure}
 
-\begin{figure}%
-      \centering
-      \subfloat[\centering \lr{Residual block} \label{fig:RWKVB}]{\includegraphics[width=5cm]{Figures/x3.png} }%
-      \qquad
-      \subfloat[\centering \lr{Final head of language model} \label{fig:RWKVC}]{\includegraphics[width=5cm]{Figures/x2.png} }%
-      \caption{عناصر موجود در یک بلوک \lr{RWKV}}
-      \vspace{0.7em}
-      \caption*{گرفته شده از \cite{RWKV}}
-      \label{fig:RWKVBocks}
-      %
-\end{figure}
-
-همانطور که در \xf{Fig:RWKV} نشان داده شده است،
-مدل با یک لایه \lr{embedding} شروع می‌شود که، پس از آن، چندین  \lr{residual blocks} مشابه به صورت متوالی قرار گرفته‌اند. این بلوک‌ها در \xf{fig:RWKVB} نشان داده شده‌اند. پس از آخرین بلوک که در \xf{fig:RWKVC} نشان داده شده است، یک سر خروجی ساده شامل یک لایه نرمال‌سازی \LTRfootnote{\lr{LayerNorm}} و یک پروجکشن خطی برای تولید لاجیت‌ها \LTRfootnote{\lr{logits}} جهت پیش‌بینی توکن بعدی و محاسبه‌ی خطای آنتروپی متقاطع \LTRfootnote{\lr{cross-entropy loss}} در طول آموزش استفاده می‌شود.
 
 \subsection{فرمت فایل \lr{MIDI}}
 

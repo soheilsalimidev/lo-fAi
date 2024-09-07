@@ -751,7 +751,210 @@ $ (Note * velocity) + Wait  time + pad + start + end =(128 * 16) + 125 + 3 = 217
 
 ملودی های ساخته شده توسط مدل دارای هماهنگی بالایی در هارمونی و ریتم است، اما هنوز دارای بعضی از ناهمسانی‌ها و عدم هماهنگی است که می تواند بهبود یابد.
 
-\section{ساخت موسیقی نهایی}\label{finalMusic}
+\section{استنتاج مدل ها}
+همانطور که در \xf{fig:infer} نمایش داده شده است، می تواند از سه نوع ورودی  مختلف که موسیقي خود را تولید کند.
+برای ورودی \lr{MIDI}، فایل ابتدا طبق مواردی که در \xs{se:tokenizer} گفته شد توکنایزر می‌شود و به مدل داده می‌شود.
+برای حالت رندم هم چند نوت تصادفی با فاصله زمانی های تصادفی می‌سازیم و آن را به مدل می‌دهیم. در نهایت مدل ما یک خروجی از نوت ها
+و فاصله زمانی آن ها می‌دهد که میتواند آن ها را پردازش کرد.
+این روند به طور خلاصه در \xa{alg:generate-music} آمده است. همین‌طور می‌تواند الگوریتم آن را در \xal{algo:infer} مشاهده کنید.لازم به ذکر است که نحویه استنتاج \lr{RWKV} به طور دقیق‌تر در \xs{sec:rwkvWorks}  آمده است.
+\begin{figure}
+      \begin{LTR}
+            \tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
+            \setmainfont{Times New Roman}
+
+            \begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+                  %uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+                  %Shape: Rectangle [id:dp5585442080188429] 
+                  \draw   (94,33) -- (201.25,33) -- (201.25,89.55) -- (94,89.55) -- cycle ;
+                  %Shape: Rectangle [id:dp7550814062252466] 
+                  \draw   (96,112) -- (203.25,112) -- (203.25,168.55) -- (96,168.55) -- cycle ;
+                  %Shape: Rectangle [id:dp019838831400627255] 
+                  \draw   (98,189) -- (205.25,189) -- (205.25,245.55) -- (98,245.55) -- cycle ;
+                  %Rounded Rect [id:dp987230941886203] 
+                  \draw   (275,88.07) .. controls (275,71.04) and (288.81,57.22) .. (305.85,57.22) -- (398.4,57.22) .. controls (415.44,57.22) and (429.25,71.04) .. (429.25,88.07) -- (429.25,209.93) .. controls (429.25,226.96) and (415.44,240.78) .. (398.4,240.78) -- (305.85,240.78) .. controls (288.81,240.78) and (275,226.96) .. (275,209.93) -- cycle ;
+                  %Straight Lines [id:da8384711680380997] 
+                  \draw    (200.25,60.55) -- (274.82,133.15) ;
+                  \draw [shift={(276.25,134.55)}, rotate = 224.24] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+                  %Straight Lines [id:da1802444988123586] 
+                  \draw    (204,141) -- (271.25,141.53) ;
+                  \draw [shift={(273.25,141.55)}, rotate = 180.46] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+                  %Straight Lines [id:da09591518836912816] 
+                  \draw    (204.25,226.55) -- (269.89,156.01) ;
+                  \draw [shift={(271.25,154.55)}, rotate = 132.94] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+                  %Shape: Rectangle [id:dp9106595572009932] 
+                  \draw   (313,75) -- (391.25,75) -- (391.25,115) -- (313,115) -- cycle ;
+                  %Shape: Rectangle [id:dp8262012088276145] 
+                  \draw   (313,129) -- (391.25,129) -- (391.25,169) -- (313,169) -- cycle ;
+                  %Shape: Rectangle [id:dp9223252538056267] 
+                  \draw   (312,179) -- (390.25,179) -- (390.25,219) -- (312,219) -- cycle ;
+                  %Straight Lines [id:da6062695476934228] 
+                  \draw    (431.25,148.55) -- (493.25,148.55) ;
+                  \draw [shift={(495.25,148.55)}, rotate = 180] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+
+                  % Text Node
+                  \draw (132,57) node [anchor=north west][inner sep=0.75pt]   [align=left] {\begin{minipage}[lt]{24.25pt}\setlength\topsep{0pt}
+                              \begin{flushright}
+                                    MIDI
+                              \end{flushright}
+
+                        \end{minipage}};
+                  % Text Node
+                  \draw (103,134) node [anchor=north west][inner sep=0.75pt]   [align=left] {\begin{minipage}[lt]{62.3pt}\setlength\topsep{0pt}
+                              \begin{flushright}
+                                    2f:4 t5 13:12
+                              \end{flushright}
+
+                        \end{minipage}};
+                  % Text Node
+                  \draw (114,213) node [anchor=north west][inner sep=0.75pt]   [align=left] {\begin{minipage}[lt]{41.3pt}\setlength\topsep{0pt}
+                              \begin{flushright}
+                                    Random
+                              \end{flushright}
+
+                        \end{minipage}};
+                  % Text Node
+                  \draw (333,87) node [anchor=north west][inner sep=0.75pt]   [align=left] {Piano};
+                  % Text Node
+                  \draw (333,141) node [anchor=north west][inner sep=0.75pt]   [align=left] {Drum};
+                  % Text Node
+                  \draw (332,191) node [anchor=north west][inner sep=0.75pt]   [align=left] {SFX};
+                  % Text Node
+                  \draw (496,139) node [anchor=north west][inner sep=0.75pt]   [align=left] {\begin{minipage}[lt]{109.94pt}\setlength\topsep{0pt}
+                              \begin{flushright}
+                                    2f:4 t5 13:12 t15 4c:6 ...
+                              \end{flushright}
+
+                        \end{minipage}};
+
+
+            \end{tikzpicture}
+      \end{LTR}
+      \caption{نحویه استنتاج مدل ها برای ساخت موسیقی}
+      \label{fig:infer}
+\end{figure}
+
+در اینجا توضیحی درباره هایپرپارامترهای استفاده شده در موفع استنتاج مدل‌ها آمده است. این
+هایپرپارامترها می‌توانند برای دستیابی به تعادل مطلوب بین انسجام و
+نوآوری در موسیقی تولید شده تنظیم شوند:
+
+\begin{enumerate}
+      \def\labelenumi{\arabic{enumi}.}
+      \item
+            \textbf{ \lr{Temperature}}
+
+            \begin{itemize}
+                  \item
+                        \textbf{هدف}: کنترل تصادفی بودن موسیقی تولید شده.
+                  \item
+                        \textbf{محدوده}: معمولاً بین 0 تا 1.
+                  \item
+                        \textbf{تأثیر بر خروجی}: مقدار  \lr{Temperature} بالاتر به این معنی است که مدل
+                        احتمال بیشتری دارد خروجی‌های جدید و غیرمنتظره تولید کند، در حالی که
+                        مقدار  \lr{Temperature} پایین‌تر به این معنی است که مدل احتمال بیشتری دارد
+                        خروجی‌هایی مشابه داده‌های آموزشی تولید کند. این به این دلیل است که  \lr{Temperature}
+                        احتمال انتخاب یک توکن از توزیع خروجی را کنترل می‌کند. وقتی  \lr{Temperature} بالا
+                        است، مدل احتمال بیشتری دارد توکن‌هایی از انتهای توزیع انتخاب کند که
+                        منجر به خروجی‌های تصادفی‌تر و جدیدتر می‌شود.
+            \end{itemize}
+      \item
+            \textbf{\lr{Top\_p}}
+
+            \begin{itemize}
+                  \item
+                        \textbf{هدف}: کنترل احتمال انتخاب یک توکن از بین توکن‌های با بیشترین
+                        احتمال در توزیع خروجی.
+                  \item
+                        \textbf{محدوده}: معمولاً بین 0 تا 1.
+                  \item
+                        \textbf{تأثیر بر خروجی}: مقدار \lr{Top-p} بالاتر به این معنی است که مدل
+                        احتمال بیشتری دارد توکن‌هایی از بخش با بیشترین احتمال توزیع انتخاب
+                        کند که منجر به خروجی‌های روان‌تر و منسجم‌تر می‌شود. مقدار \lr{Top-p} پایین‌تر
+                        به این معنی است که مدل احتمال بیشتری دارد توکن‌هایی از بخش با احتمال
+                        کمتر توزیع انتخاب کند که منجر به خروجی‌های جدیدتر و غیرمنتظره‌تر
+                        می‌شود.
+            \end{itemize}
+      \item
+            \textbf{\lr{Top\_k}}
+
+            \begin{itemize}
+                  \item
+                        \textbf{هدف}: کنترل تعداد توکن‌هایی که هنگام انتخاب توکن بعدی در
+                        دنباله خروجی در نظر گرفته می‌شوند.
+                  \item
+                        \textbf{محدوده}: معمولاً یک عدد صحیح کوچک (مثلاً 8، 10، 20).
+                  \item
+                        \textbf{تأثیر بر خروجی}: مقدار \lr{Top-k} بالاتر به این معنی است که مدل
+                        احتمال بیشتری دارد دامنه وسیع‌تری از توکن‌های ممکن را هنگام انتخاب
+                        توکن بعدی در نظر بگیرد که منجر به خروجی‌های متنوع‌تر و جالب‌تر می‌شود.
+            \end{itemize}
+      \item
+            \textbf{\lr{Alpha\_decay}}
+
+            \begin{itemize}
+                  \item
+                        \textbf{هدف}: کنترل نرخ کاهش جریمه برای انتخاب توکنی که در بین
+                        توکن‌های با بیشترین احتمال \lr{Top-p} نیست.
+                  \item
+                        \textbf{محدوده}: معمولاً بین 0 تا 1.
+                  \item
+                        \textbf{تأثیر بر خروجی}: مقدار \lr{Alpha\_decay} بالاتر به این معنی است
+                        که جریمه برای انتخاب توکنی که در بین توکن‌های با بیشترین احتمال \lr{Top-p}
+                        نیست، به آرامی کاهش می‌یابد که منجر به خروجی‌های روان‌تر و منسجم‌تر
+                        می‌شود. مقدار \lr{Alpha\_decay} پایین‌تر به این معنی است که جریمه برای
+                        انتخاب توکنی که در بین توکن‌های با بیشترین احتمال \lr{Top-p} نیست، سریع‌تر
+                        کاهش می‌یابد که منجر به خروجی‌های جدیدتر و غیرمنتظره‌تر می‌شود.
+            \end{itemize}
+\end{enumerate}
+
+\begin{LTR}
+      \begin{algorithm}[H]
+            \label{algo:infer}
+            \caption{استنتاج مدل ها}
+            \begin{algorithmic}[1]
+                  \setmainfont{Times New Roman}
+                  \Function{generateTheSong}{ctx, lenOfOut, modelPath, temperature}
+                  \State model $\gets$ \texttt{RWKV}(model=modelPath, strategy="cpu fp32")
+                  \State pipeline $\gets$ \texttt{PIPELINE}(model, os.environ["tokenizer"])
+                  \State data $\gets$ []
+                  \State args $\gets$ \texttt{PIPELINE\_ARGS}(
+                  temperature, top\_p=0.8, top\_k=8, alpha\_decay=0.997, token\_stop=["<end>"], chunk\_len=512)
+                  \While{len(data) $\leq$ lenOfOut}
+                  \State pipeline.generate(ctx, args=args, callback=lambda token: data.append(token))
+                  \State ctx $\gets$ " ".join(map(str, data[:5]))
+                  \State print(len(data))
+                  \EndWhile
+                  \State \Return data
+                  \EndFunction
+
+                  \Function{mixTheSongs}{song\_len, ctx, out\_len, te=1.0}
+                  \State pinio, drum $\gets$ \texttt{generateTheSong}(ctx, out\_len, os.environ["PIANO\_MODEL\_PATH"], te), \texttt{generateTheSong}(ctx, out\_len, os.environ["DRUM\_MODEL\_PATH"], te)
+                  \EndFunction
+
+                  \Statex
+
+                  \State arg\_parser $\gets$ \texttt{argparse.ArgumentParser}()
+                  \State arg\_parser.add\_argument("-c", "--ctx", help="Enter the Context")
+                  \State arg\_parser.add\_argument("-m", "--midi", help="Enter the Midi file path", type=str)
+                  \State arg\_parser.add\_argument("-t", "--out\_len", help="Enter the Length of unique output", default=100, type=int)
+                  \State arg\_parser.add\_argument("-st", "--song\_len", help="Enter the Length of song len", default=60, type=int)
+                  \State arg\_parser.add\_argument("-te", "--temperature", help="Enter the temperature of model", default=1.0, type=float)
+                  \State args $\gets$ arg\_parser.parse\_args()
+
+                  \State context $\gets$ ''
+                  \If{args.midi is not None}
+                  \State \textbf{with} open(args.midi, 'rb') \textbf{as} f:
+                  \State context $\gets$ convert\_midi\_bytes\_to\_str(None, ('', f.read()))[1][0]
+                  \ElsIf{args.ctx is not None}
+                  \State context $\gets$ args.ctx
+                  \Else
+                  \State context $\gets$ f"{random.randint(50,90):x}:{random.randint(1,16):x} t{random.randint(20,80)} " * 2
+                  \EndIf
+
+                  \State \texttt{mixTheSongs}(args.song\_len, context, args.out\_len, args.temperature)
+            \end{algorithmic}
+      \end{algorithm}
+\end{LTR}
+\subsection{ساخت موسیقی نهایی}\label{finalMusic}
 در کد ما که در \xal{algo:lofi_music} نشان داده شده است، برای تولید موسیقی لو-فای، چندین روش به کار گرفته شده است
 تا یک قطعه موسیقی منحصر به فرد و هماهنگ ایجاد شود. این فرآیند با تولید
 یک تمپوی \footnote{در \lr{MIDI}، تمپو به سرعت اجرای یک قطعه موسیقی اشاره دارد که معمولاً بر حسب ضرب در دقیقه \lr{(BPM)} اندازه‌گیری می‌شود و مدت زمان هر نت ساز را بر حسب میکروثانیه تعیین می‌کند.} تصادفی آغاز می‌شود که به هر قطعه موسیقی تنوع و یگانگی می‌بخشد.

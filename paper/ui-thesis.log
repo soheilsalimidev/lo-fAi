@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (MiKTeX 23.10) (preloaded format=xelatex 2024.9.5)  5 SEP 2024 10:23
+This is XeTeX, Version 3.141592653-2.6-0.999995 (MiKTeX 23.10) (preloaded format=xelatex 2024.9.5)  7 SEP 2024 08:45
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1855,36 +1855,36 @@ Package: translations 2022/02/05 v1.12 internationalization of LaTeX2e packages
 \c@asmp=\count433
 \c@example=\count434
 Package translations Info: No language package found. I am going to use `englis
-h' as default language. on input line 109.
+h' as default language. on input line 108.
  (ui-thesis.aux)
 \openout1 = `ui-thesis.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 109.
-LaTeX Font Info:    ... okay on input line 109.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 109.
-LaTeX Font Info:    ... okay on input line 109.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 109.
-LaTeX Font Info:    ... okay on input line 109.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 109.
-LaTeX Font Info:    ... okay on input line 109.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 109.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 108.
+LaTeX Font Info:    ... okay on input line 108.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 108.
+LaTeX Font Info:    ... okay on input line 108.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 108.
+LaTeX Font Info:    ... okay on input line 108.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 108.
+LaTeX Font Info:    ... okay on input line 108.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 108.
 LaTeX Font Info:    Trying to load font information for TS1+cmr on input line 1
-09.
+08.
 
 (C:\Users\sohei\AppData\Local\Programs\MiKTeX\tex/latex/base\ts1cmr.fd
 File: ts1cmr.fd 2023/04/13 v2.5m Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 109.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 109.
-LaTeX Font Info:    ... okay on input line 109.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 109.
-LaTeX Font Info:    ... okay on input line 109.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 109.
-LaTeX Font Info:    ... okay on input line 109.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 109.
-LaTeX Font Info:    ... okay on input line 109.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 109.
-LaTeX Font Info:    ... okay on input line 109.
+LaTeX Font Info:    ... okay on input line 108.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 108.
+LaTeX Font Info:    ... okay on input line 108.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 108.
+LaTeX Font Info:    ... okay on input line 108.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 108.
+LaTeX Font Info:    ... okay on input line 108.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 108.
+LaTeX Font Info:    ... okay on input line 108.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 108.
+LaTeX Font Info:    ... okay on input line 108.
 \c@lstlisting=\count435
 
 *geometry* driver: auto-detecting
@@ -1925,7 +1925,7 @@ Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: subfig package v1.3 is loaded.
 Package caption Info: hyperref package is loaded.
 Package caption Info: End \AtBeginDocument code.
-Package hyperref Info: Link coloring ON on input line 109.
+Package hyperref Info: Link coloring ON on input line 108.
 (ui-thesis.out) (ui-thesis.out)
 \@outlinefile=\write5
 \openout5 = `ui-thesis.out'.
@@ -2004,33 +2004,33 @@ File: Settings/Allah.png Graphic file (type bmp)
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 LaTeX Font Info:    Font shape `TU/BNazanin(1)/m/n' will be
-(Font)              scaled to size 10.95pt on input line 140.
+(Font)              scaled to size 10.95pt on input line 139.
 File: Settings/UI_Logo.pdf Graphic file (type pdf)
 <use Settings/UI_Logo.pdf>
 LaTeX Font Info:    Font shape `TU/BNazanin(1)/m/n' will be
-(Font)              scaled to size 13.0pt on input line 140.
+(Font)              scaled to size 13.0pt on input line 139.
 LaTeX Font Info:    Font shape `TU/BNazanin(1)/b/n' will be
-(Font)              scaled to size 13.0pt on input line 140.
+(Font)              scaled to size 13.0pt on input line 139.
 LaTeX Font Info:    Font shape `TU/BNazanin(1)/m/n' will be
-(Font)              scaled to size 12.0pt on input line 140.
+(Font)              scaled to size 12.0pt on input line 139.
 LaTeX Font Info:    Font shape `TU/BNazanin(1)/b/n' will be
-(Font)              scaled to size 12.0pt on input line 140.
+(Font)              scaled to size 12.0pt on input line 139.
 LaTeX Font Info:    Font shape `TU/BNazanin(1)/m/n' will be
-(Font)              scaled to size 11.0pt on input line 140.
+(Font)              scaled to size 11.0pt on input line 139.
 LaTeX Font Info:    Font shape `TU/BNazanin(1)/b/n' will be
-(Font)              scaled to size 11.0pt on input line 140.
+(Font)              scaled to size 11.0pt on input line 139.
 LaTeX Font Info:    Font shape `TU/BNazanin(1)/m/n' will be
-(Font)              scaled to size 18.0pt on input line 140.
+(Font)              scaled to size 18.0pt on input line 139.
 LaTeX Font Info:    Font shape `TU/BNazanin(1)/b/n' will be
-(Font)              scaled to size 18.0pt on input line 140.
+(Font)              scaled to size 18.0pt on input line 139.
 LaTeX Font Info:    Font shape `TU/BNazanin(1)/m/n' will be
-(Font)              scaled to size 15.0pt on input line 140.
+(Font)              scaled to size 15.0pt on input line 139.
 LaTeX Font Info:    Font shape `TU/Titr(0)/m/n' will be
-(Font)              scaled to size 15.0pt on input line 140.
+(Font)              scaled to size 15.0pt on input line 139.
 LaTeX Font Info:    Font shape `TU/TimesNewRoman(0)/m/n' will be
-(Font)              scaled to size 15.0pt on input line 140.
+(Font)              scaled to size 15.0pt on input line 139.
 LaTeX Font Info:    Font shape `TU/BNazanin(1)/b/n' will be
-(Font)              scaled to size 15.0pt on input line 140.
+(Font)              scaled to size 15.0pt on input line 139.
  [2
 
 
@@ -2079,9 +2079,9 @@ LaTeX Font Info:    Font shape `TU/TimesNewRoman(0)/b/n' will be
 
 ]) (Chapters/AbstractFa.tex)
 LaTeX Font Info:    Font shape `TU/TimesNewRoman(0)/m/n' will be
-(Font)              scaled to size 13.0pt on input line 147.
+(Font)              scaled to size 13.0pt on input line 146.
 
-Overfull \hbox (10.27773pt too wide) in paragraph at lines 147--148
+Overfull \hbox (10.27773pt too wide) in paragraph at lines 146--147
 []\TU/BNazanin(1)/m/n/13 استفاده در محتوای چندرسانه‌ای شده است. موسیقی ﻟﻮ-ﻓﺎﻱ، 
 با ویژگی‌های آرامش‌بخش و تسکین‌دهنده‌اش،[]
  []
@@ -2123,9 +2123,9 @@ Overfull \hbox (10.27773pt too wide) in paragraph at lines 147--148
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 LaTeX Font Info:    Font shape `TU/BNazanin(0)/m/n' will be
-(Font)              scaled to size 15.59996pt on input line 153.
+(Font)              scaled to size 15.59996pt on input line 152.
 LaTeX Font Info:    Font shape `TU/BNazanin(0)/b/n' will be
-(Font)              scaled to size 15.59996pt on input line 153.
+(Font)              scaled to size 15.59996pt on input line 152.
  (ui-thesis.toc
 LaTeX Font Info:    Font shape `TU/BNazanin(0)/b/n' will be
 (Font)              scaled to size 13.13995pt on input line 1.
@@ -2261,9 +2261,9 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 LaTeX Font Info:    Font shape `TU/BNazanin(0)/m/n' will be
-(Font)              scaled to size 17.99995pt on input line 156.
+(Font)              scaled to size 17.99995pt on input line 155.
 LaTeX Font Info:    Font shape `TU/BNazanin(0)/b/n' will be
-(Font)              scaled to size 17.99995pt on input line 156.
+(Font)              scaled to size 17.99995pt on input line 155.
  (ui-thesis.loa
 LaTeX Font Info:    Font shape `TU/TimesNewRoman(0)/m/n' will be
 (Font)              scaled to size 10.95pt on input line 4.
@@ -2314,32 +2314,28 @@ LaTeX Font Info:    Font shape `TU/TimesNewRoman(0)/b/n' will be
 (Font)              scaled to size 13.0pt on input line 8.
 [3
 
-]
-Overfull \hbox (1.79878pt too wide) in paragraph at lines 18--19
+] [4]
+File: Figures/RWKV-arch.png Graphic file (type bmp)
+<Figures/RWKV-arch.png>
+LaTeX Font Info:    Font shape `TU/TimesNewRoman(0)/b/n' will be
+(Font)              scaled to size 12.0pt on input line 25.
+File: Figures/x3.png Graphic file (type bmp)
+<Figures/x3.png>
+File: Figures/x2.png Graphic file (type bmp)
+<Figures/x2.png>
+ [5]
+Overfull \hbox (1.79878pt too wide) in paragraph at lines 50--51
 []$\OML/cmm/m/it/10.95 O\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 T[] \OT1/cmr/m/
 n/10.95 + \OML/cmm/m/it/10.95 Td\OT1/cmr/m/n/10.95 )$ \TU/BNazanin(0)/m/n/10.95
  است. این بدان معناست که []\TU/TimesNewRoman(0)/m/n/10.95 RWKV[] \TU/BNazanin(0
 )/m/n/10.95 به حافظه کمتری برای ذخیره وزن‌ها و فعال‌سازی‌های[]
  []
 
-
-Overfull \vbox (1.13786pt too high) has occurred while \output is active []
-
-
-[4]
-LaTeX Font Info:    Font shape `TU/TimesNewRoman(0)/b/n' will be
-(Font)              scaled to size 12.0pt on input line 33.
-File: Figures/RWKV-arch.png Graphic file (type bmp)
-<Figures/RWKV-arch.png>
-File: Figures/x3.png Graphic file (type bmp)
-<Figures/x3.png>
-File: Figures/x2.png Graphic file (type bmp)
-<Figures/x2.png>
- [5] [6] [7]
+[6] [7]
 File: Figures/Screenshot 2024-08-29 021655.png Graphic file (type bmp)
 <Figures/Screenshot 2024-08-29 021655.png>
 
-Overfull \hbox (45.1288pt too wide) in paragraph at lines 109--111
+Overfull \hbox (45.1288pt too wide) in paragraph at lines 118--120
  [][][][][][] 
  []
 
@@ -2472,62 +2468,108 @@ File: Figures/loss-dr.png Graphic file (type bmp)
 <Figures/loss-dr.png>
 File: Figures/lr-dr.png Graphic file (type bmp)
 <Figures/lr-dr.png>
- [26] [27] [28] [29] [30] [31] [32] [33]
-Underfull \hbox (badness 10000) in paragraph at lines 884--885
+ [26] [27] [28] [29] [30] [31]
+
+LaTeX Warning: Reference `alg:generate-music' on page 32 undefined on input lin
+e 759.
+
+
+Package caption Warning: \label without proper reference on input line 911.
+See the caption package documentation for explanation.
+
+
+LaTeX Warning: Reference `algo:infer' on page 32 undefined on input line 759.
+
+
+Overfull \hbox (0.6869pt too wide) in paragraph at lines 797--798
+ []\TU/TimesNewRoman(1)/m/sc/10.95 MIDI[]
+ []
+
+
+Overfull \hbox (15.35141pt too wide) in paragraph at lines 765--831
+[][][][][] []
+ []
+
+[32] [33]
+Underfull \hbox (badness 10000) in paragraph at lines 930--931
+[][] \TU/TimesNewRoman(1)/m/sc/10.95 pinio, drum $\OMS/cmsy/m/n/10.95  $ \TU/lm
+tt/m/n/10.95 generateTheSong\TU/TimesNewRoman(1)/m/sc/10.95 (ctx, out_len,[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 930--931
+[]\TU/TimesNewRoman(1)/m/sc/10.95 os.environ[”PIANO_MODEL_PATH”], te), \TU/lmtt
+/m/n/10.95 generateTheSong\TU/TimesNewRoman(1)/m/sc/10.95 (ctx, out_len,[]
+ []
+
+
+Underfull \hbox (badness 3872) in paragraph at lines 940--941
+[][]\TU/TimesNewRoman(1)/m/sc/10.95 arg_parser.add_argument(”-te”, ”–temperatur
+e”, help=”Enter the temperature of[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 950--951
+[][] \TU/TimesNewRoman(1)/m/sc/10.95 context $\OMS/cmsy/m/n/10.95  $ \TU/TimesN
+ewRoman(1)/m/sc/10.95 f”random.randint(50,90):x:random.randint(1,16):x tran-[]
+ []
+
+[34] [35] [36] [37]
+Underfull \hbox (badness 10000) in paragraph at lines 1087--1088
 [][] $[]\OT1/cmr/m/n/10.95 ([](\OML/cmm/m/it/10.95 data\OT1/cmr/m/n/10.95 )\OML
 /cmm/m/it/10.95 ; tempo\OT1/cmr/m/n/10.95 ) \OMS/cmsy/m/n/10.95  $[]
  []
 
 
-Overfull \hbox (13.64526pt too wide) in paragraph at lines 885--886
+Overfull \hbox (13.64526pt too wide) in paragraph at lines 1088--1089
 [][] $[] \OMS/cmsy/m/n/10.95   []\OT1/cmr/m/n/10.95 ([]([]))$[]
  []
 
 
-Overfull \hbox (13.93053pt too wide) in paragraph at lines 886--887
+Overfull \hbox (13.93053pt too wide) in paragraph at lines 1089--1090
 [][] $[]\OT1/cmr/m/n/10.95 ([]([])\OML/cmm/m/it/10.95 ; []\OT1/cmr/m/n/10.95 ([
 ]))$[]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 890--891
+Underfull \hbox (badness 10000) in paragraph at lines 1093--1094
 [][] $[]\OT1/cmr/m/n/10.95 ([](\OML/cmm/m/it/10.95 data\OT1/cmr/m/n/10.95 )\OML
 /cmm/m/it/10.95 ; \OT1/cmr/m/n/10.95 400\OML/cmm/m/it/10.95 ; \OT1/cmr/m/n/10.9
 5 9) \OMS/cmsy/m/n/10.95  $[]
  []
 
 
-Overfull \hbox (39.47696pt too wide) in paragraph at lines 891--892
+Overfull \hbox (39.47696pt too wide) in paragraph at lines 1094--1095
 [][] $[]\OT1/cmr/m/n/10.95 ([]([])\OML/cmm/m/it/10.95 ; []\OT1/cmr/m/n/10.95 ([
 ]))$[]
  []
 
-[34]) (Chapters/Chapter4.tex [35] [36]
+[38]) (Chapters/Chapter4.tex [39]
 فصل 4.
-[37
+[40
 
-] [38]
+] [41]
 Underfull \hbox (badness 10000) in alignment at lines 92--92
 [][] 
  []
 
-[39]) (Chapters/ChapterEnd.tex [40]
+[42]) (Chapters/ChapterEnd.tex [43]
 فصل 5.
-[41
+[44
 
-]) [42]
+]) [45]
 LaTeX Font Info:    Font shape `TU/BNazanin(0)/m/n' will be
-(Font)              scaled to size 13.19997pt on input line 178.
+(Font)              scaled to size 13.19997pt on input line 177.
  (ui-thesis.bbl
 LaTeX Font Info:    Font shape `TU/TimesNewRoman(0)/m/n' will be
 (Font)              scaled to size 11.0pt on input line 7.
 LaTeX Font Info:    Font shape `TU/TimesNewRoman(0)/m/it' will be
 (Font)              scaled to size 11.0pt on input line 22.
- [43
+ [46
 
 
-]) [44]
-LaTeX Info: Redefining \persianfont on input line 195.
+]) [47]
+LaTeX Info: Redefining \persianfont on input line 194.
  (Chapters/Appendices.tex
 LaTeX Font Info:    Calculating math sizes for size <11> on input line 7.
 
@@ -2577,14 +2619,14 @@ Missing character: There is no ‏ in font [lmmono12-regular]:!
 Missing character: There is no ‏ in font [lmmono12-regular]:!
 Missing character: There is no ‏ in font [lmmono12-regular]:!
 Missing character: There is no ‏ in font [lmmono12-regular]:!
-[45
+[48
 
 
 
-]) (Chapters/AbstractEn.tex) [46]
+]) (Chapters/AbstractEn.tex) [49]
 LaTeX Font Info:    Font shape `TU/TimesNewRoman(0)/m/n' will be
-(Font)              scaled to size 12.0pt on input line 224.
- [47
+(Font)              scaled to size 12.0pt on input line 223.
+ [50
 
 ]
 *geometry* verbose mode - [ newgeometry ] result:
@@ -2622,18 +2664,18 @@ LaTeX Font Info:    Font shape `TU/TimesNewRoman(0)/m/n' will be
 File: Settings/UI_Logo.pdf Graphic file (type pdf)
 <use Settings/UI_Logo.pdf>
 LaTeX Font Info:    Font shape `TU/TimesNewRoman(0)/b/n' will be
-(Font)              scaled to size 11.0pt on input line 237.
+(Font)              scaled to size 11.0pt on input line 236.
 LaTeX Font Info:    Font shape `TU/TimesNewRoman(0)/m/n' will be
-(Font)              scaled to size 10.0pt on input line 237.
+(Font)              scaled to size 10.0pt on input line 236.
 LaTeX Font Info:    Font shape `TU/TimesNewRoman(0)/b/n' will be
-(Font)              scaled to size 10.0pt on input line 237.
+(Font)              scaled to size 10.0pt on input line 236.
 LaTeX Font Info:    Font shape `TU/TimesNewRoman(0)/m/n' will be
-(Font)              scaled to size 16.0pt on input line 237.
+(Font)              scaled to size 16.0pt on input line 236.
 LaTeX Font Info:    Font shape `TU/TimesNewRoman(0)/b/n' will be
-(Font)              scaled to size 16.0pt on input line 237.
+(Font)              scaled to size 16.0pt on input line 236.
 LaTeX Font Info:    Font shape `TU/TimesNewRoman(0)/m/n' will be
-(Font)              scaled to size 14.0pt on input line 237.
- [48
+(Font)              scaled to size 14.0pt on input line 236.
+ [51
 
 
 ] (ui-thesis.aux)
@@ -2653,15 +2695,15 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 LaTeX Warning: There were undefined references.
 
 Package rerunfilecheck Info: File `ui-thesis.out' has not changed.
-(rerunfilecheck)             Checksum: FF2889358F4641C88450BE1E889BE288;11911.
+(rerunfilecheck)             Checksum: 1ADAD28355D690A3B6D0B590EB5E5A93;12281.
  ) 
 Here is how much of TeX's memory you used:
- 40311 strings out of 410379
- 842244 string characters out of 5788052
- 1936416 words of memory out of 256000000
- 60793 multiletter control sequences out of 15000+600000
+ 40401 strings out of 410379
+ 844336 string characters out of 5788052
+ 1935416 words of memory out of 256000000
+ 60883 multiletter control sequences out of 15000+600000
  569451 words of font info for 169 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 102i,14n,107p,1390b,1082s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 102i,14n,107p,1390b,1106s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on ui-thesis.pdf (57 pages).
+Output written on ui-thesis.pdf (60 pages).

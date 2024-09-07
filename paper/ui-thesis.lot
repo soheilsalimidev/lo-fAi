@@ -1,7 +1,7 @@
 \nobreakspace {}\textbf {\fontsize {13pt}{0}\selectfont {\BNazaninScaleOne عنوان}}\hfill \textbf {\fontsize {13pt}{0}\selectfont {\BNazaninScaleOne صفحه}}\vspace {-0.1cm}\par 
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {2-1}{\ignorespaces مقایسه پیچیدگی استنتاج \lr {RWKV} با ترانسفورمرهای مختلف}}{5}{table.caption.8}%
+\contentsline {table}{\numberline {2-1}{\ignorespaces مقایسه پیچیدگی استنتاج \lr {RWKV} با ترانسفورمرهای مختلف}}{7}{table.caption.10}%
 \addvspace {10\p@ }
 \contentsline {table}{\numberline {3-1}{\ignorespaces خلاصه‌ای از مجموعه داده های درام}}{14}{table.caption.13}%
 \contentsline {table}{\numberline {3-2}{\ignorespaces نگاشت های فرمت \lr {MIDICompact}}}{17}{table.caption.14}%
@@ -9,5 +9,5 @@
 \contentsline {subtable}{\numberline {(ب)}{\ignorespaces {\centering نگاشت سرعت }}}{17}{subtable.2.2}%
 \contentsline {table}{\numberline {3-3}{\ignorespaces نتایج این معیار ها برای مدل پیانو}}{31}{table.caption.17}%
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {4-1}{\ignorespaces نتایج نظرسنجی ارزیابی خط لوله}}{40}{table.caption.18}%
+\contentsline {table}{\numberline {4-1}{\ignorespaces نتایج نظرسنجی ارزیابی خط لوله}}{43}{table.caption.19}%
 \addvspace {10\p@ }

@@ -508,6 +508,7 @@ def convert_str_to_midi(
         "<end>", "").replace("<pad>", "").strip()
     for msg in str_to_midi_messages(utils, data, channel):
         track.append(msg)
+        track.append(msg)
 
     track.append(mido.MetaMessage("end_of_track", time=0))
 

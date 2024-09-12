@@ -26,7 +26,7 @@
 \contentsline {subsection}{\numberline {3-4-2}کوانتایز کردن سرعت}{16}{subsection.3.4.2}%
 \contentsline {subsubsection}{\numberline {3-4-2-1}کوانتایز کردن خطی}{18}{subsubsection.3.4.2.1}%
 \contentsline {subsubsection}{\numberline {3-4-2-2}کوانتایز کردن نمایی}{18}{subsubsection.3.4.2.2}%
-\contentsline {subsubsection}{\numberline {3-4-2-3}چرا کوانتایز کردن نمایی؟}{18}{subsubsection.3.4.2.3}%
+\contentsline {subsubsection}{\numberline {3-4-2-3}چرا کوانتایز کردن نمایی؟}{19}{subsubsection.3.4.2.3}%
 \contentsline {subsection}{\numberline {3-4-3}تبدیل فایل های \lr {MIDI} به متن}{19}{subsection.3.4.3}%
 \contentsline {subsection}{\numberline {3-4-4}توکن سازی}{20}{subsection.3.4.4}%
 \contentsline {subsubsection}{\numberline {3-4-4-1}توکن‌سازی سریع با کتابخانه \lr {Tokenizer}}{20}{subsubsection.3.4.4.1}%
@@ -34,7 +34,7 @@
 \contentsline {subsubsection}{\numberline {3-4-4-3}تبدیل به فرمت \lr {binidx} برای آموزش سریع}{22}{subsubsection.3.4.4.3}%
 \contentsline {section}{\numberline {3-5}آموزش مدل}{22}{section.3.5}%
 \contentsline {subsection}{\numberline {3-5-1}پارامترهای آموزش مدل}{22}{subsection.3.5.1}%
-\contentsline {subsection}{\numberline {3-5-2}نحویه آموزش مدل}{23}{subsection.3.5.2}%
+\contentsline {subsection}{\numberline {3-5-2}نحویه آموزش مدل}{25}{subsection.3.5.2}%
 \contentsline {subsubsection}{\numberline {3-5-2-1}کتابخانه‌ها استفاده شده}{26}{subsubsection.3.5.2.1}%
 \contentsline {section}{\numberline {3-6}ارزیابی عملکرد مدل}{26}{section.3.6}%
 \contentsline {subsection}{\numberline {3-6-1}ارزیابی مدل پیانو}{26}{subsection.3.6.1}%
@@ -47,7 +47,7 @@
 \contentsline {subsubsection}{\numberline {3-6-3-5}نتایج این معیار ها برای مدل پیانو}{31}{subsubsection.3.6.3.5}%
 \contentsline {section}{\numberline {3-7}استنتاج مدل ها}{32}{section.3.7}%
 \contentsline {subsection}{\numberline {3-7-1}ساخت موسیقی نهایی}{35}{subsection.3.7.1}%
-\contentsline {subsection}{\numberline {3-7-2}جمع بندی}{39}{subsection.3.7.2}%
+\contentsline {subsection}{\numberline {3-7-2}جمع بندی}{38}{subsection.3.7.2}%
 \contentsline {chapter}{\numberline {4}ساخت خط لوله متن به لو-فای}{40}{chapter.4}%
 \contentsline {section}{\numberline {4-1}معماری خط‌ لوله}{40}{section.4.1}%
 \contentsline {subsection}{\numberline {4-1-1}کمبودهای استفاده مستقیم از مدل \lr {MusicGen} برای تولید موسیقی}{41}{subsection.4.1.1}%

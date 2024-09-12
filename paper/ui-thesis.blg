@@ -1,0 +1,62 @@
+This is BibTeX, Version 0.99d
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: ui-thesis.aux
+Reallocating 'name_of_file' (item size: 1) to 19 items.
+The style file: Settings/ieeetr-fa.bst
+Reallocating 'name_of_file' (item size: 1) to 11 items.
+Database file #1: References.bib
+Warning--entry type for "Falcon_PyTorch_Lightning_2019" isn't style-file defined
+--line 193 of file References.bib
+Warning--entry type for "gpt-neox-library" isn't style-file defined
+--line 215 of file References.bib
+Warning--entry type for "Moi_HuggingFace_s_Tokenizers_2023" isn't style-file defined
+--line 253 of file References.bib
+-- ieeetr-fa.bst version 0.9 (2015/05/09) 
+-- This is a BibTeX style for XePersian: http://www.parsilatex.com
+Warning--empty journal in RWKV
+Warning--empty journal in 1808.03314
+Warning--empty journal in 1706.03762
+
+Done.
+You've used 20 entries,
+            2349 wiz_defined-function locations,
+            704 strings with 9694 characters,
+and the built_in function-call counts, 5607 in all, are:
+= -- 288
+> -- 448
+< -- 0
++ -- 156
+- -- 136
+* -- 428
+:= -- 810
+add.period$ -- 20
+call.type$ -- 20
+change.case$ -- 24
+chr.to.int$ -- 0
+cite$ -- 23
+duplicate$ -- 187
+empty$ -- 422
+format.name$ -- 136
+if$ -- 1497
+int.to.chr$ -- 0
+int.to.str$ -- 20
+missing$ -- 241
+newline$ -- 147
+num.names$ -- 24
+pop$ -- 122
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 81
+stack$ -- 0
+substring$ -- 68
+swap$ -- 29
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 4
+type$ -- 0
+warning$ -- 3
+while$ -- 27
+width$ -- 22
+write$ -- 223
+(There were 6 warnings)

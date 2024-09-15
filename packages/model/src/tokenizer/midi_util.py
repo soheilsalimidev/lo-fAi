@@ -358,22 +358,6 @@ def convert_midi_to_str(
         elif t == "note_off":
             handle_note_off(
                 msg.channel, channel_program[msg.channel], msg.note)
-        elif t == "control_change":
-            if msg.control == 7 or msg.control == 39:  # volume
-                channel_volume[msg.channel] = msg.value
-            elif msg.control == 11:  # expression
-                channel_expression[msg.channel] = msg.value
-            elif msg.control == 64:  # sustain pedal
-                channel_pedal_on[msg.channel] = msg.value >= 64
-                if not channel_pedal_on[msg.channel]:
-                    for note, program in channel_pedal_events[msg.channel]:
-                        handle_note_off(msg.channel, program, note)
-                    channel_pedal_events[msg.channel] = {}
-            elif msg.control == 123:  # all notes off
-                for channel in channel_notes.keys():
-                    for note in list(channel_notes[channel]).copy():
-                        handle_note_off(
-                            channel, channel_program[channel], note)
         else:
             pass
 

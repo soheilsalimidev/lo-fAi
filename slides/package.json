@@ -1,0 +1,20 @@
+{
+  "name": "research",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "slidev build",
+    "dev": "slidev --open",
+    "export": "slidev export"
+  },
+  "dependencies": {
+    "@slidev/cli": "^0.49.29",
+    "@slidev/theme-default": "^0.25.0",
+    "@slidev/theme-seriph": "^0.25.0",
+    "slidev-theme-penguin": "^2.2.2"
+  },
+  "devDependencies": {
+    "@iconify-json/logos": "^1.2.0",
+    "playwright-chromium": "^1.47.0"
+  }
+}

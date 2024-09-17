@@ -56,5 +56,24 @@ strong {
 }
 
 th {
-  text-align: right;
+  text-align: right !important;
+}
+
+.dark #slide-content h1,
+h2 {
+  --un-text-opacity: 1;
+  color: rgb(52 211 153 / var(--un-text-opacity));
+}
+
+.slidev-code,
+.katex-display {
+  direction: ltr;
+}
+
+.slidev-code-wrapper {
+  max-width: unset !important;
+}
+
+svg{
+  z-index:10
 }

@@ -12,6 +12,7 @@ packages/model/L20-D512-x060/train_log.txt
 packages/model/L20-D512-x0601/rwkv-init.pth
 packages/model/L20-D512-x0601/train_log.txt
 packages/model/L20-D512-x060/train_log.txt
+packages/inference/eval/validation
 packages/model/src/midiData/piano_temp.jsonl
 packages/model/src/midiData/piano/piano.jsonl
 .conda
@@ -19,6 +20,7 @@ packages/inference/__pycache__/
 packages/inference/soundFont/florestan-piano.sf2
 **/__pycache__
 **/*.sf2
+**/*.mid
 packages/inference/soundFont/SGM-v2.01-NicePianosGuitarsBass-V1.2.sf2
 packages/model/piano-model/rwkv-0.pth
 packages/model/piano-model/rwkv-8.pth
@@ -52,3 +54,5 @@ rwkv-drum.pth
 packages/inference/output.mp3
 packages/inference/outputRandom_instrument.mp3
 slides/fonts/IRANYekanXVF.woff2
+packages/pipe/.ipynb_checkpoints/pipe-checkpoint.ipynb
+packages/inference/.ipynb_checkpoints/infer-checkpoint.ipynb

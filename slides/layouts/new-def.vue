@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-section slidev-layout new-section">
+  <div class="bg-section slidev-layout new-section p-4">
     <CornerCurves class="absolute left-0 top-0 transform rotate-90" />
     <div class="flex flex-col justify-center text-center h-full w-full">
       <glass id="glass" class="min-h-2/3 w-4/5 text-start leading-7">

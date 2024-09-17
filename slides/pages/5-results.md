@@ -22,6 +22,7 @@ layout: "default"
 
 ---
 layout: "default"
+hideInToc: true
 ---
 # منابع
 

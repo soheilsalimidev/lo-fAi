@@ -12,6 +12,6 @@
 <script setup lang="ts">
 defineProps<{
   caption: string
-  cla:string
+  cla?: string
 }>()
 </script>

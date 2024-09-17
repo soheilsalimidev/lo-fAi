@@ -149,7 +149,7 @@ Scale and quantize: To map the result to a discrete range of values. -->
 </Caption>
 
 ---
----
+
 ```py{all|10-13|1-5|15-18}
 def midiToWav():
     # Load soundfont and synthesize MIDI to WAV
@@ -170,6 +170,10 @@ class GenMusic:
         self.RandRoll.overlay(self.fill, position=5).overlay(self.drum, position=-5) \
          * (music_len // self.RandRoll.duration_seconds).fade_out(2000)
 ```
+
+<!--
+temp from 168 to 216
+-->
 
 ---
 ---

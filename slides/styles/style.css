@@ -77,3 +77,7 @@ h2 {
 svg{
   z-index:10
 }
+
+html:not(.dark) #slide-content{
+  background-color: #f0fdf4;
+}

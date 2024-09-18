@@ -33,28 +33,10 @@ Some resets
 gc.collect()
 torch.cuda.empty_cache()
 
-"""
-Some definitions
-"""
-DEVICE = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
-PRECISION = os.environ['PRECISION'] if 'PRECISION' in os.environ else '16'
-CTX_LEN = 1024
-
-# training related
-BATCHES = 5
-N_EMBED = 768
-N_LAYER = 24
-DROPOUT = float(os.environ['DROPOUT']) if 'DROPOUT' in os.environ else 0.05
-EPOCHS = 100
-EPOCH_STEPS = 250
-LR_RATE = 1e-4
-LR_DECAY = 0
 
 os.environ['RWKV_JIT_ON'] = '0'
 os.environ['MODEL_TYPE'] = 'x060'
 os.environ['RWKV_HEAD_SIZE_A'] = '64'
-os.environ['RWKV_FLOAT_MODE'] = 'fp16' if PRECISION == '16' else 'bf16'
-
 
 def save_pth(dd, ff):
     torch.save(dd, ff)

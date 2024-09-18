@@ -89,7 +89,4 @@ class RegularDataset(Dataset):
         x = tensor(dix[:-1], dtype=long)
         y = tensor(dix[1:], dtype=long)
 
-        if args.my_qa_mask == 1:
-            return x, y, z
-
         return x, y

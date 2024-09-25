@@ -41,6 +41,8 @@
 
 \begin{table}[!ht]
       \centering
+      \caption{خلاصه‌ای از مجموعه داده های درام}
+      \label{drumInfo}
       \begin{tabular}{|l|l|l|l|}
             \hline
             بخش        & تعداد توالی‌های منحصربه‌فرد & تعداد کل توالی‌ها & مدت زمان (ساعت) \\ \hline
@@ -49,8 +51,6 @@
             اعتبارسنجی & 117                       & 5,031            & 52.2            \\ \hline
             کل         & 1,059                     & 45,537           & 444.5           \\ \hline
       \end{tabular}
-      \caption{خلاصه‌ای از مجموعه داده های درام}
-      \label{drumInfo}
 \end{table}
 
 ما تقسیم‌بندی‌های آموزشی، آزمایشی و اعتبارسنجی را که در \lr{GMD} وجود داشت، حفظ
@@ -98,6 +98,8 @@
 \end{itemize}
 
 \begin{table}%
+      \caption{نگاشت های فرمت \lr{MIDICompact}}
+      \label{tb:MIDICompact}%
       \centering
       \subfloat[\centering نگاشت نوت ها \label{noteMap}]{
             \begin{tabular}{|c|c|}
@@ -158,8 +160,7 @@
                   \hline
             \end{tabular}
       }%
-      \caption{نگاشت های فرمت \lr{MIDICompact}}
-      \label{tb:MIDICompact}%
+
 \end{table}
 
 
@@ -213,13 +214,13 @@ $ (Note * velocity) + Wait  time + pad + start + end =(128 * 16) + 125 + 3 = 217
 می‌شود که شکل منحنی را تعیین می‌کند. مقدار بالاتر \lr{velocity\_exp} منجر به
 منحنی نمایی‌تر می‌شود، در حالی که مقدار پایین‌تر منجر به منحنی خطی‌تر می‌شود.
 
-فرمول کوانتایز کردن نمایی به صورت زیر است:
-\begin{LTR}
-      \setmainfont{Times New Roman}
-$$
+فرمول کوانتایز کردن نمایی در \xeq{Eq:quinz} آمده است.
+\begin{equation}
+\setmainfont{Times New Roman}
 \left\lceil \frac{ \text{velocity\_events} \cdot \left( \frac{ \text{velocity\_exp}^{\left( \frac{\text{velocity}}{\text{velocity\_events}} \right)} - 1 }{ \text{velocity\_exp} - 1 } \right) }{ \text{binsize} } \right\rceil
-$$
-\end{LTR}
+\label{Eq:quinz}
+\end{equation}\vspace{-\baselineskip}
+
 
 که در آن \lr{velocity\_events} حداکثر مقدار سرعت، \lr{velocity} مقدار سرعت ورودی و
 \lr{velocity\_exp} یک مقدار ثابت برای نمایی کردن تابع است.
